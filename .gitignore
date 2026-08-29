@@ -1,0 +1,32 @@
+# OS junk
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Environment / secrets
+.env
+.env.local
+*.local
+**/.opencode/state/
+
+# Node dependencies
+node_modules/
+
+# Backup snapshots (large full-project copies incl. OLD API keys) - keep tooling scripts only
+tcg-web-prototype/backups/*
+!tcg-web-prototype/backups/create-checkpoint.ps1
+!tcg-web-prototype/backups/verify-checkpoint.ps1
+!tcg-web-prototype/backups/restore-checkpoint.ps1
+
+# Repo-root future backup destination (local-only)
+backups/*
+!backups/README.md
+
+# opencode.json configs (provider setup) - not uploaded
+**/opencode.json
+
+# Pre-repo quarantine stash (desktop-only recoverable strays)
+_quarantine_pre_repo/
+
+# Stray binary
+curl.exe

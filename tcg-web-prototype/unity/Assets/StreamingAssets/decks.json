@@ -1,0 +1,1712 @@
+{
+  "formats": {
+    "Classic": {
+      "decks": {
+        "volcano_inferno_aggro": {
+          "name": "Crimson Classic",
+          "faction": "Crimson",
+          "format": "Classic",
+          "strategy": "Ultra-aggressive burn. Flood board with cheap creatures, finish with direct damage.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 1,
+              "count": 2
+            },
+            {
+              "id": 2,
+              "count": 2
+            },
+            {
+              "id": 3,
+              "count": 2
+            },
+            {
+              "id": 4,
+              "count": 2
+            },
+            {
+              "id": 5,
+              "count": 1
+            },
+            {
+              "id": 6,
+              "count": 1
+            },
+            {
+              "id": 7,
+              "count": 1
+            },
+            {
+              "id": 8,
+              "count": 1
+            },
+            {
+              "id": 9,
+              "count": 1
+            },
+            {
+              "id": 10,
+              "count": 1
+            },
+            {
+              "id": 11,
+              "count": 1
+            },
+            {
+              "id": 12,
+              "count": 1
+            },
+            {
+              "id": 13,
+              "count": 1
+            },
+            {
+              "id": 14,
+              "count": 1
+            },
+            {
+              "id": 15,
+              "count": 1
+            },
+            {
+              "id": 16,
+              "count": 1
+            },
+            {
+              "id": 17,
+              "count": 1
+            },
+            {
+              "id": 18,
+              "count": 1
+            },
+            {
+              "id": 19,
+              "count": 1
+            },
+            {
+              "id": 20,
+              "count": 1
+            },
+            {
+              "id": 21,
+              "count": 4
+            },
+            {
+              "id": 22,
+              "count": 4
+            },
+            {
+              "id": 23,
+              "count": 4
+            },
+            {
+              "id": 27,
+              "count": 4
+            },
+            {
+              "id": 30,
+              "count": 4
+            },
+            {
+              "id": 1017,
+              "count": 4
+            },
+            {
+              "id": 281,
+              "count": 4
+            },
+            {
+              "id": 35,
+              "count": 4
+            },
+            {
+              "id": 38,
+              "count": 4
+            },
+            {
+              "id": 204,
+              "count": 4
+            },
+            {
+              "id": 1011,
+              "count": 4
+            },
+            {
+              "id": 233,
+              "count": 2
+            }
+          ]
+        },
+        "forest_verdant_stompy": {
+          "name": "Sunforged Classic",
+          "faction": "Sunforged",
+          "format": "Classic",
+          "strategy": "Stompy ramp and overrun. Big creatures and token swarms.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 41,
+              "count": 2
+            },
+            {
+              "id": 42,
+              "count": 2
+            },
+            {
+              "id": 43,
+              "count": 2
+            },
+            {
+              "id": 44,
+              "count": 2
+            },
+            {
+              "id": 45,
+              "count": 1
+            },
+            {
+              "id": 46,
+              "count": 1
+            },
+            {
+              "id": 47,
+              "count": 1
+            },
+            {
+              "id": 48,
+              "count": 1
+            },
+            {
+              "id": 49,
+              "count": 1
+            },
+            {
+              "id": 50,
+              "count": 1
+            },
+            {
+              "id": 51,
+              "count": 1
+            },
+            {
+              "id": 52,
+              "count": 1
+            },
+            {
+              "id": 53,
+              "count": 1
+            },
+            {
+              "id": 54,
+              "count": 1
+            },
+            {
+              "id": 55,
+              "count": 1
+            },
+            {
+              "id": 56,
+              "count": 1
+            },
+            {
+              "id": 57,
+              "count": 1
+            },
+            {
+              "id": 58,
+              "count": 1
+            },
+            {
+              "id": 59,
+              "count": 1
+            },
+            {
+              "id": 60,
+              "count": 1
+            },
+            {
+              "id": 1059,
+              "count": 4
+            },
+            {
+              "id": 1065,
+              "count": 4
+            },
+            {
+              "id": 291,
+              "count": 4
+            },
+            {
+              "id": 208,
+              "count": 4
+            },
+            {
+              "id": 243,
+              "count": 4
+            },
+            {
+              "id": 1071,
+              "count": 4
+            },
+            {
+              "id": 293,
+              "count": 4
+            },
+            {
+              "id": 297,
+              "count": 4
+            },
+            {
+              "id": 300,
+              "count": 4
+            },
+            {
+              "id": 361,
+              "count": 4
+            },
+            {
+              "id": 207,
+              "count": 4
+            },
+            {
+              "id": 212,
+              "count": 2
+            }
+          ]
+        },
+        "swamp_death_decay": {
+          "name": "Lantern Classic",
+          "faction": "Lantern",
+          "format": "Classic",
+          "strategy": "Death and decay. Sacrifice value, drain life, recursive threats.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 81,
+              "count": 2
+            },
+            {
+              "id": 82,
+              "count": 2
+            },
+            {
+              "id": 83,
+              "count": 2
+            },
+            {
+              "id": 84,
+              "count": 2
+            },
+            {
+              "id": 85,
+              "count": 1
+            },
+            {
+              "id": 86,
+              "count": 1
+            },
+            {
+              "id": 87,
+              "count": 1
+            },
+            {
+              "id": 88,
+              "count": 1
+            },
+            {
+              "id": 89,
+              "count": 1
+            },
+            {
+              "id": 90,
+              "count": 1
+            },
+            {
+              "id": 91,
+              "count": 1
+            },
+            {
+              "id": 92,
+              "count": 1
+            },
+            {
+              "id": 93,
+              "count": 1
+            },
+            {
+              "id": 94,
+              "count": 1
+            },
+            {
+              "id": 95,
+              "count": 1
+            },
+            {
+              "id": 96,
+              "count": 1
+            },
+            {
+              "id": 97,
+              "count": 1
+            },
+            {
+              "id": 98,
+              "count": 1
+            },
+            {
+              "id": 99,
+              "count": 1
+            },
+            {
+              "id": 100,
+              "count": 1
+            },
+            {
+              "id": 101,
+              "count": 4
+            },
+            {
+              "id": 117,
+              "count": 4
+            },
+            {
+              "id": 1041,
+              "count": 4
+            },
+            {
+              "id": 301,
+              "count": 4
+            },
+            {
+              "id": 213,
+              "count": 4
+            },
+            {
+              "id": 1035,
+              "count": 4
+            },
+            {
+              "id": 254,
+              "count": 4
+            },
+            {
+              "id": 1036,
+              "count": 4
+            },
+            {
+              "id": 1047,
+              "count": 4
+            },
+            {
+              "id": 364,
+              "count": 4
+            },
+            {
+              "id": 305,
+              "count": 4
+            },
+            {
+              "id": 310,
+              "count": 2
+            }
+          ]
+        },
+        "ocean_tidal_control": {
+          "name": "Gilded Classic",
+          "faction": "Gilded",
+          "format": "Classic",
+          "strategy": "Control and card draw. Bounce, counters, outcard opponents.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 121,
+              "count": 2
+            },
+            {
+              "id": 122,
+              "count": 2
+            },
+            {
+              "id": 123,
+              "count": 2
+            },
+            {
+              "id": 124,
+              "count": 2
+            },
+            {
+              "id": 125,
+              "count": 1
+            },
+            {
+              "id": 126,
+              "count": 1
+            },
+            {
+              "id": 127,
+              "count": 1
+            },
+            {
+              "id": 128,
+              "count": 1
+            },
+            {
+              "id": 129,
+              "count": 1
+            },
+            {
+              "id": 130,
+              "count": 1
+            },
+            {
+              "id": 131,
+              "count": 1
+            },
+            {
+              "id": 132,
+              "count": 1
+            },
+            {
+              "id": 133,
+              "count": 1
+            },
+            {
+              "id": 134,
+              "count": 1
+            },
+            {
+              "id": 135,
+              "count": 1
+            },
+            {
+              "id": 136,
+              "count": 1
+            },
+            {
+              "id": 137,
+              "count": 1
+            },
+            {
+              "id": 138,
+              "count": 1
+            },
+            {
+              "id": 139,
+              "count": 1
+            },
+            {
+              "id": 140,
+              "count": 1
+            },
+            {
+              "id": 149,
+              "count": 4
+            },
+            {
+              "id": 1089,
+              "count": 4
+            },
+            {
+              "id": 360,
+              "count": 4
+            },
+            {
+              "id": 222,
+              "count": 4
+            },
+            {
+              "id": 1083,
+              "count": 4
+            },
+            {
+              "id": 145,
+              "count": 4
+            },
+            {
+              "id": 1084,
+              "count": 4
+            },
+            {
+              "id": 1095,
+              "count": 4
+            },
+            {
+              "id": 353,
+              "count": 4
+            },
+            {
+              "id": 372,
+              "count": 4
+            },
+            {
+              "id": 314,
+              "count": 4
+            },
+            {
+              "id": 315,
+              "count": 2
+            }
+          ]
+        },
+        "artifact_neutral_midrange": {
+          "name": "Colorless Classic",
+          "faction": "Colorless",
+          "format": "Classic",
+          "strategy": "Artifact midrange. Efficient colorless threats and utility.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 1,
+              "count": 1
+            },
+            {
+              "id": 2,
+              "count": 1
+            },
+            {
+              "id": 3,
+              "count": 1
+            },
+            {
+              "id": 4,
+              "count": 1
+            },
+            {
+              "id": 5,
+              "count": 1
+            },
+            {
+              "id": 6,
+              "count": 1
+            },
+            {
+              "id": 7,
+              "count": 1
+            },
+            {
+              "id": 8,
+              "count": 1
+            },
+            {
+              "id": 9,
+              "count": 1
+            },
+            {
+              "id": 10,
+              "count": 1
+            },
+            {
+              "id": 11,
+              "count": 1
+            },
+            {
+              "id": 12,
+              "count": 1
+            },
+            {
+              "id": 13,
+              "count": 1
+            },
+            {
+              "id": 14,
+              "count": 1
+            },
+            {
+              "id": 15,
+              "count": 1
+            },
+            {
+              "id": 16,
+              "count": 1
+            },
+            {
+              "id": 17,
+              "count": 1
+            },
+            {
+              "id": 18,
+              "count": 1
+            },
+            {
+              "id": 19,
+              "count": 1
+            },
+            {
+              "id": 20,
+              "count": 1
+            },
+            {
+              "id": 41,
+              "count": 1
+            },
+            {
+              "id": 42,
+              "count": 1
+            },
+            {
+              "id": 43,
+              "count": 1
+            },
+            {
+              "id": 44,
+              "count": 1
+            },
+            {
+              "id": 161,
+              "count": 4
+            },
+            {
+              "id": 179,
+              "count": 4
+            },
+            {
+              "id": 1097,
+              "count": 4
+            },
+            {
+              "id": 1113,
+              "count": 4
+            },
+            {
+              "id": 323,
+              "count": 4
+            },
+            {
+              "id": 325,
+              "count": 4
+            },
+            {
+              "id": 326,
+              "count": 4
+            },
+            {
+              "id": 185,
+              "count": 4
+            },
+            {
+              "id": 187,
+              "count": 4
+            },
+            {
+              "id": 193,
+              "count": 4
+            },
+            {
+              "id": 225,
+              "count": 4
+            },
+            {
+              "id": 1107,
+              "count": 2
+            }
+          ]
+        },
+        "zealot_holy_inquisition": {
+          "name": "Zealot Classic",
+          "faction": "Zealot",
+          "format": "Classic",
+          "strategy": "Anti-heresy. Buffs, lifegain, and purge the unworthy.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 556,
+              "count": 2
+            },
+            {
+              "id": 557,
+              "count": 2
+            },
+            {
+              "id": 558,
+              "count": 2
+            },
+            {
+              "id": 559,
+              "count": 2
+            },
+            {
+              "id": 560,
+              "count": 1
+            },
+            {
+              "id": 561,
+              "count": 1
+            },
+            {
+              "id": 562,
+              "count": 1
+            },
+            {
+              "id": 563,
+              "count": 1
+            },
+            {
+              "id": 564,
+              "count": 1
+            },
+            {
+              "id": 565,
+              "count": 1
+            },
+            {
+              "id": 566,
+              "count": 1
+            },
+            {
+              "id": 567,
+              "count": 1
+            },
+            {
+              "id": 568,
+              "count": 1
+            },
+            {
+              "id": 569,
+              "count": 1
+            },
+            {
+              "id": 570,
+              "count": 1
+            },
+            {
+              "id": 571,
+              "count": 1
+            },
+            {
+              "id": 572,
+              "count": 1
+            },
+            {
+              "id": 573,
+              "count": 1
+            },
+            {
+              "id": 574,
+              "count": 1
+            },
+            {
+              "id": 575,
+              "count": 1
+            },
+            {
+              "id": 487,
+              "count": 4
+            },
+            {
+              "id": 509,
+              "count": 4
+            },
+            {
+              "id": 576,
+              "count": 4
+            },
+            {
+              "id": 497,
+              "count": 4
+            },
+            {
+              "id": 539,
+              "count": 4
+            },
+            {
+              "id": 540,
+              "count": 4
+            },
+            {
+              "id": 485,
+              "count": 4
+            },
+            {
+              "id": 510,
+              "count": 4
+            },
+            {
+              "id": 577,
+              "count": 4
+            },
+            {
+              "id": 541,
+              "count": 4
+            },
+            {
+              "id": 542,
+              "count": 4
+            },
+            {
+              "id": 543,
+              "count": 2
+            }
+          ]
+        }
+      }
+    },
+    "Standard": {
+      "decks": {
+        "volcano_inferno_aggro": {
+          "name": "Crimson Standard",
+          "faction": "Crimson",
+          "format": "Standard",
+          "strategy": "Ultra-aggressive burn. Flood board with cheap creatures, finish with direct damage.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 1,
+              "count": 2
+            },
+            {
+              "id": 2,
+              "count": 2
+            },
+            {
+              "id": 3,
+              "count": 2
+            },
+            {
+              "id": 4,
+              "count": 2
+            },
+            {
+              "id": 5,
+              "count": 1
+            },
+            {
+              "id": 6,
+              "count": 1
+            },
+            {
+              "id": 7,
+              "count": 1
+            },
+            {
+              "id": 8,
+              "count": 1
+            },
+            {
+              "id": 9,
+              "count": 1
+            },
+            {
+              "id": 10,
+              "count": 1
+            },
+            {
+              "id": 11,
+              "count": 1
+            },
+            {
+              "id": 12,
+              "count": 1
+            },
+            {
+              "id": 13,
+              "count": 1
+            },
+            {
+              "id": 14,
+              "count": 1
+            },
+            {
+              "id": 15,
+              "count": 1
+            },
+            {
+              "id": 16,
+              "count": 1
+            },
+            {
+              "id": 17,
+              "count": 1
+            },
+            {
+              "id": 18,
+              "count": 1
+            },
+            {
+              "id": 19,
+              "count": 1
+            },
+            {
+              "id": 20,
+              "count": 1
+            },
+            {
+              "id": 21,
+              "count": 4
+            },
+            {
+              "id": 22,
+              "count": 4
+            },
+            {
+              "id": 23,
+              "count": 4
+            },
+            {
+              "id": 27,
+              "count": 4
+            },
+            {
+              "id": 30,
+              "count": 4
+            },
+            {
+              "id": 1017,
+              "count": 3
+            },
+            {
+              "id": 281,
+              "count": 4
+            },
+            {
+              "id": 35,
+              "count": 4
+            },
+            {
+              "id": 38,
+              "count": 4
+            },
+            {
+              "id": 204,
+              "count": 4
+            },
+            {
+              "id": 1011,
+              "count": 4
+            },
+            {
+              "id": 233,
+              "count": 3
+            }
+          ]
+        },
+        "forest_verdant_stompy": {
+          "name": "Sunforged Standard",
+          "faction": "Sunforged",
+          "format": "Standard",
+          "strategy": "Stompy ramp and overrun. Big creatures and token swarms.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 41,
+              "count": 2
+            },
+            {
+              "id": 42,
+              "count": 2
+            },
+            {
+              "id": 43,
+              "count": 2
+            },
+            {
+              "id": 44,
+              "count": 2
+            },
+            {
+              "id": 45,
+              "count": 1
+            },
+            {
+              "id": 46,
+              "count": 1
+            },
+            {
+              "id": 47,
+              "count": 1
+            },
+            {
+              "id": 48,
+              "count": 1
+            },
+            {
+              "id": 49,
+              "count": 1
+            },
+            {
+              "id": 50,
+              "count": 1
+            },
+            {
+              "id": 51,
+              "count": 1
+            },
+            {
+              "id": 52,
+              "count": 1
+            },
+            {
+              "id": 53,
+              "count": 1
+            },
+            {
+              "id": 54,
+              "count": 1
+            },
+            {
+              "id": 55,
+              "count": 1
+            },
+            {
+              "id": 56,
+              "count": 1
+            },
+            {
+              "id": 57,
+              "count": 1
+            },
+            {
+              "id": 58,
+              "count": 1
+            },
+            {
+              "id": 59,
+              "count": 1
+            },
+            {
+              "id": 60,
+              "count": 1
+            },
+            {
+              "id": 1059,
+              "count": 4
+            },
+            {
+              "id": 1065,
+              "count": 3
+            },
+            {
+              "id": 291,
+              "count": 4
+            },
+            {
+              "id": 208,
+              "count": 4
+            },
+            {
+              "id": 243,
+              "count": 4
+            },
+            {
+              "id": 1071,
+              "count": 1
+            },
+            {
+              "id": 293,
+              "count": 4
+            },
+            {
+              "id": 297,
+              "count": 4
+            },
+            {
+              "id": 300,
+              "count": 4
+            },
+            {
+              "id": 361,
+              "count": 4
+            },
+            {
+              "id": 207,
+              "count": 4
+            },
+            {
+              "id": 212,
+              "count": 4
+            },
+            {
+              "id": 241,
+              "count": 2
+            }
+          ]
+        },
+        "swamp_death_decay": {
+          "name": "Lantern Standard",
+          "faction": "Lantern",
+          "format": "Standard",
+          "strategy": "Death and decay. Sacrifice value, drain life, recursive threats.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 81,
+              "count": 2
+            },
+            {
+              "id": 82,
+              "count": 2
+            },
+            {
+              "id": 83,
+              "count": 2
+            },
+            {
+              "id": 84,
+              "count": 2
+            },
+            {
+              "id": 85,
+              "count": 1
+            },
+            {
+              "id": 86,
+              "count": 1
+            },
+            {
+              "id": 87,
+              "count": 1
+            },
+            {
+              "id": 88,
+              "count": 1
+            },
+            {
+              "id": 89,
+              "count": 1
+            },
+            {
+              "id": 90,
+              "count": 1
+            },
+            {
+              "id": 91,
+              "count": 1
+            },
+            {
+              "id": 92,
+              "count": 1
+            },
+            {
+              "id": 93,
+              "count": 1
+            },
+            {
+              "id": 94,
+              "count": 1
+            },
+            {
+              "id": 95,
+              "count": 1
+            },
+            {
+              "id": 96,
+              "count": 1
+            },
+            {
+              "id": 97,
+              "count": 1
+            },
+            {
+              "id": 98,
+              "count": 1
+            },
+            {
+              "id": 99,
+              "count": 1
+            },
+            {
+              "id": 100,
+              "count": 1
+            },
+            {
+              "id": 101,
+              "count": 4
+            },
+            {
+              "id": 117,
+              "count": 4
+            },
+            {
+              "id": 1041,
+              "count": 3
+            },
+            {
+              "id": 301,
+              "count": 4
+            },
+            {
+              "id": 213,
+              "count": 4
+            },
+            {
+              "id": 1035,
+              "count": 4
+            },
+            {
+              "id": 254,
+              "count": 4
+            },
+            {
+              "id": 1036,
+              "count": 4
+            },
+            {
+              "id": 1047,
+              "count": 1
+            },
+            {
+              "id": 364,
+              "count": 4
+            },
+            {
+              "id": 305,
+              "count": 4
+            },
+            {
+              "id": 310,
+              "count": 4
+            },
+            {
+              "id": 215,
+              "count": 2
+            }
+          ]
+        },
+        "ocean_tidal_control": {
+          "name": "Gilded Standard",
+          "faction": "Gilded",
+          "format": "Standard",
+          "strategy": "Control and card draw. Bounce, counters, outcard opponents.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 121,
+              "count": 2
+            },
+            {
+              "id": 122,
+              "count": 2
+            },
+            {
+              "id": 123,
+              "count": 2
+            },
+            {
+              "id": 124,
+              "count": 2
+            },
+            {
+              "id": 125,
+              "count": 1
+            },
+            {
+              "id": 126,
+              "count": 1
+            },
+            {
+              "id": 127,
+              "count": 1
+            },
+            {
+              "id": 128,
+              "count": 1
+            },
+            {
+              "id": 129,
+              "count": 1
+            },
+            {
+              "id": 130,
+              "count": 1
+            },
+            {
+              "id": 131,
+              "count": 1
+            },
+            {
+              "id": 132,
+              "count": 1
+            },
+            {
+              "id": 133,
+              "count": 1
+            },
+            {
+              "id": 134,
+              "count": 1
+            },
+            {
+              "id": 135,
+              "count": 1
+            },
+            {
+              "id": 136,
+              "count": 1
+            },
+            {
+              "id": 137,
+              "count": 1
+            },
+            {
+              "id": 138,
+              "count": 1
+            },
+            {
+              "id": 139,
+              "count": 1
+            },
+            {
+              "id": 140,
+              "count": 1
+            },
+            {
+              "id": 149,
+              "count": 4
+            },
+            {
+              "id": 1089,
+              "count": 3
+            },
+            {
+              "id": 360,
+              "count": 4
+            },
+            {
+              "id": 222,
+              "count": 4
+            },
+            {
+              "id": 1083,
+              "count": 4
+            },
+            {
+              "id": 145,
+              "count": 4
+            },
+            {
+              "id": 1084,
+              "count": 4
+            },
+            {
+              "id": 1095,
+              "count": 1
+            },
+            {
+              "id": 353,
+              "count": 4
+            },
+            {
+              "id": 372,
+              "count": 4
+            },
+            {
+              "id": 314,
+              "count": 4
+            },
+            {
+              "id": 315,
+              "count": 4
+            },
+            {
+              "id": 317,
+              "count": 2
+            }
+          ]
+        },
+        "artifact_neutral_midrange": {
+          "name": "Colorless Standard",
+          "faction": "Colorless",
+          "format": "Standard",
+          "strategy": "Artifact midrange. Efficient colorless threats and utility.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 1,
+              "count": 1
+            },
+            {
+              "id": 2,
+              "count": 1
+            },
+            {
+              "id": 3,
+              "count": 1
+            },
+            {
+              "id": 4,
+              "count": 1
+            },
+            {
+              "id": 5,
+              "count": 1
+            },
+            {
+              "id": 6,
+              "count": 1
+            },
+            {
+              "id": 7,
+              "count": 1
+            },
+            {
+              "id": 8,
+              "count": 1
+            },
+            {
+              "id": 9,
+              "count": 1
+            },
+            {
+              "id": 10,
+              "count": 1
+            },
+            {
+              "id": 11,
+              "count": 1
+            },
+            {
+              "id": 12,
+              "count": 1
+            },
+            {
+              "id": 13,
+              "count": 1
+            },
+            {
+              "id": 14,
+              "count": 1
+            },
+            {
+              "id": 15,
+              "count": 1
+            },
+            {
+              "id": 16,
+              "count": 1
+            },
+            {
+              "id": 17,
+              "count": 1
+            },
+            {
+              "id": 18,
+              "count": 1
+            },
+            {
+              "id": 19,
+              "count": 1
+            },
+            {
+              "id": 20,
+              "count": 1
+            },
+            {
+              "id": 41,
+              "count": 1
+            },
+            {
+              "id": 42,
+              "count": 1
+            },
+            {
+              "id": 43,
+              "count": 1
+            },
+            {
+              "id": 44,
+              "count": 1
+            },
+            {
+              "id": 161,
+              "count": 4
+            },
+            {
+              "id": 179,
+              "count": 4
+            },
+            {
+              "id": 1097,
+              "count": 4
+            },
+            {
+              "id": 1113,
+              "count": 3
+            },
+            {
+              "id": 323,
+              "count": 4
+            },
+            {
+              "id": 325,
+              "count": 4
+            },
+            {
+              "id": 326,
+              "count": 4
+            },
+            {
+              "id": 185,
+              "count": 4
+            },
+            {
+              "id": 187,
+              "count": 4
+            },
+            {
+              "id": 193,
+              "count": 4
+            },
+            {
+              "id": 225,
+              "count": 4
+            },
+            {
+              "id": 1107,
+              "count": 3
+            }
+          ]
+        },
+        "zealot_holy_inquisition": {
+          "name": "Zealot Standard",
+          "faction": "Zealot",
+          "format": "Standard",
+          "strategy": "Anti-heresy. Buffs, lifegain, and purge the unworthy.",
+          "lands": 24,
+          "total": 70,
+          "cards": [
+            {
+              "id": 556,
+              "count": 2
+            },
+            {
+              "id": 557,
+              "count": 2
+            },
+            {
+              "id": 558,
+              "count": 2
+            },
+            {
+              "id": 559,
+              "count": 2
+            },
+            {
+              "id": 560,
+              "count": 1
+            },
+            {
+              "id": 561,
+              "count": 1
+            },
+            {
+              "id": 562,
+              "count": 1
+            },
+            {
+              "id": 563,
+              "count": 1
+            },
+            {
+              "id": 564,
+              "count": 1
+            },
+            {
+              "id": 565,
+              "count": 1
+            },
+            {
+              "id": 566,
+              "count": 1
+            },
+            {
+              "id": 567,
+              "count": 1
+            },
+            {
+              "id": 568,
+              "count": 1
+            },
+            {
+              "id": 569,
+              "count": 1
+            },
+            {
+              "id": 570,
+              "count": 1
+            },
+            {
+              "id": 571,
+              "count": 1
+            },
+            {
+              "id": 572,
+              "count": 1
+            },
+            {
+              "id": 573,
+              "count": 1
+            },
+            {
+              "id": 574,
+              "count": 1
+            },
+            {
+              "id": 575,
+              "count": 1
+            },
+            {
+              "id": 487,
+              "count": 4
+            },
+            {
+              "id": 509,
+              "count": 4
+            },
+            {
+              "id": 576,
+              "count": 4
+            },
+            {
+              "id": 497,
+              "count": 4
+            },
+            {
+              "id": 539,
+              "count": 4
+            },
+            {
+              "id": 540,
+              "count": 4
+            },
+            {
+              "id": 485,
+              "count": 4
+            },
+            {
+              "id": 510,
+              "count": 4
+            },
+            {
+              "id": 577,
+              "count": 4
+            },
+            {
+              "id": 541,
+              "count": 4
+            },
+            {
+              "id": 542,
+              "count": 4
+            },
+            {
+              "id": 543,
+              "count": 2
+            }
+          ]
+        }
+      }
+    }
+  }
+}

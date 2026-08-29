@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCG Card Prototype</title>
+  <link rel="stylesheet" href="card-prototype.css">
+</head>
+<body>
+  <div class="prototype-container">
+    <h1>TCG Card Prototype — MTG Proportions</h1>
+    <p class="subtitle">2.5" x 3.5" (63mm x 88mm) — Standard Poker Size</p>
+
+    <!-- PROTOTYPE CARD: Lightning Bolt -->
+    <div class="card-prototype" data-color="Colorless" data-type="Instant" data-rarity="Common">
+      <div class="card-border">
+        <!-- TITLE BAR -->
+        <div class="card-title-bar">
+          <span class="card-name">Lightning Bolt</span>
+          <span class="card-cost">
+            <span class="mana-symbol generic">1</span>
+          </span>
+        </div>
+
+        <!-- ILLUSTRATION BOX -->
+        <div class="card-illustration">
+          <div class="art-placeholder">
+            <div class="art-placeholder-text">Card Art<br>56×40 px</div>
+          </div>
+        </div>
+
+        <!-- TYPE LINE -->
+        <div class="card-type-line">
+          <span class="card-type">Instant</span>
+          <span class="expansion-symbol common">◆</span>
+        </div>
+
+        <!-- TEXT BOX -->
+        <div class="card-text-box">
+          <div class="rules-text">
+            <span class="ability-text">Deal 3 damage to any target.</span>
+          </div>
+          <div class="flavor-divider"></div>
+          <div class="flavor-text">
+            "The storm obeyed."
+          </div>
+        </div>
+
+        <!-- P/T BOX (creatures only) -->
+        <!-- <div class="card-pt-box">3/2</div> -->
+
+        <!-- INFO STRIP -->
+        <div class="card-info-strip">
+          <span class="artist-credit">Artist: AI</span>
+          <span class="collector-info">VOL-032 · C</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD WITH CREATURE STATS -->
+    <div class="card-prototype" data-color="Volcano" data-type="Champion" data-rarity="Rare">
+      <div class="card-border">
+        <div class="card-title-bar">
+          <span class="card-name">Inferno Sovereign</span>
+          <span class="card-cost">
+            <span class="mana-symbol generic">5</span>
+            <span class="mana-symbol red">R</span>
+            <span class="mana-symbol red">R</span>
+          </span>
+        </div>
+
+        <div class="card-illustration">
+          <div class="art-placeholder volcano">
+            <div class="art-placeholder-text">Card Art</div>
+          </div>
+        </div>
+
+        <div class="card-type-line">
+          <span class="card-type">Legendary Champion — Elemental</span>
+          <span class="expansion-symbol rare">◆</span>
+        </div>
+
+        <div class="card-text-box">
+          <div class="rules-text">
+            <span class="keyword">Haste</span><br>
+            <span class="keyword">First Strike</span><br>
+            When this enters, deal 2 damage to all enemies.
+          </div>
+          <div class="flavor-divider"></div>
+          <div class="flavor-text">
+            "The mountain speaks through fire."
+          </div>
+        </div>
+
+        <div class="card-pt-box">6/5</div>
+
+        <div class="card-info-strip">
+          <span class="artist-credit">Artist: AI</span>
+          <span class="collector-info">VOL-041 · R</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD WITH LOYALTY (Planeswalker placeholder) -->
+    <div class="card-prototype" data-color="Forest" data-type="Relic" data-rarity="Mythic">
+      <div class="card-border">
+        <div class="card-title-bar">
+          <span class="card-name">Worldtree Ancient</span>
+          <span class="card-cost">
+            <span class="mana-symbol generic">5</span>
+            <span class="mana-symbol green">G</span>
+            <span class="mana-symbol green">G</span>
+          </span>
+        </div>
+
+        <div class="card-illustration">
+          <div class="art-placeholder forest">
+            <div class="art-placeholder-text">Card Art</div>
+          </div>
+        </div>
+
+        <div class="card-type-line">
+          <span class="card-type">Legendary Champion — Treefolk</span>
+          <span class="expansion-symbol mythic">★</span>
+        </div>
+
+        <div class="card-text-box">
+          <div class="rules-text">
+            <span class="keyword">Vigilance</span><br>
+            <span class="keyword">Trample</span><br>
+            When this enters, create two 2/2 Saproling tokens.
+          </div>
+          <div class="flavor-divider"></div>
+          <div class="flavor-text">
+            "The forest remembers what the world forgets."
+          </div>
+        </div>
+
+        <div class="card-pt-box">5/8</div>
+
+        <div class="card-info-strip">
+          <span class="artist-credit">Artist: AI</span>
+          <span class="collector-info">FOR-043 · M</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAND CARD -->
+    <div class="card-prototype" data-color="Swamp" data-type="Land" data-rarity="Common">
+      <div class="card-border">
+        <div class="card-title-bar">
+          <span class="card-name">Swamp</span>
+          <span class="card-cost"></span>
+        </div>
+
+        <div class="card-illustration">
+          <div class="art-placeholder swamp">
+            <div class="art-placeholder-text">Card Art</div>
+          </div>
+        </div>
+
+        <div class="card-type-line">
+          <span class="card-type">Basic Land — Swamp</span>
+          <span class="expansion-symbol common">◆</span>
+        </div>
+
+        <div class="card-text-box land-text">
+          <div class="rules-text land-ability">
+            <span class="tap-symbol">⟳</span> Add {B}.
+          </div>
+        </div>
+
+        <div class="card-info-strip">
+          <span class="artist-credit">Artist: AI</span>
+          <span class="collector-info">SWP-001 · C</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN SYSTEM REFERENCE -->
+    <div class="design-system">
+      <h2>Design System Reference</h2>
+      
+      <div class="color-palette">
+        <h3>Faction Colors</h3>
+        <div class="color-row">
+          <div class="color-swatch volcano">
+            <div class="swatch-primary"></div>
+            <div class="swatch-dark"></div>
+            <div class="swatch-light"></div>
+            <span>Volcano</span>
+          </div>
+          <div class="color-swatch forest">
+            <div class="swatch-primary"></div>
+            <div class="swatch-dark"></div>
+            <div class="swatch-light"></div>
+            <span>Forest</span>
+          </div>
+          <div class="color-swatch swamp">
+            <div class="swatch-primary"></div>
+            <div class="swatch-dark"></div>
+            <div class="swatch-light"></div>
+            <span>Swamp</span>
+          </div>
+          <div class="color-swatch ocean">
+            <div class="swatch-primary"></div>
+            <div class="swatch-dark"></div>
+            <div class="swatch-light"></div>
+            <span>Ocean</span>
+          </div>
+          <div class="color-swatch colorless">
+            <div class="swatch-primary"></div>
+            <div class="swatch-dark"></div>
+            <div class="swatch-light"></div>
+            <span>Colorless</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rarity-gems">
+        <h3>Rarity Gems</h3>
+        <div class="gem-row">
+          <div class="gem common">◆ Common</div>
+          <div class="gem uncommon">● Uncommon</div>
+          <div class="gem rare">◆ Rare</div>
+          <div class="gem mythic">★ Mythic</div>
+          <div class="gem legendary">♛ Legendary</div>
+        </div>
+      </div>
+
+      <div class="mana-symbols">
+        <h3>Mana Symbols</h3>
+        <div class="symbol-row">
+          <div class="mana-symbol generic">0</div>
+          <div class="mana-symbol generic">1</div>
+          <div class="mana-symbol generic">5</div>
+          <div class="mana-symbol red">R</div>
+          <div class="mana-symbol green">G</div>
+          <div class="mana-symbol blue">U</div>
+          <div class="mana-symbol black">B</div>
+          <div class="mana-symbol white">W</div>
+        </div>
+      </div>
+
+      <div class="card-zones">
+        <h3>Card Zones</h3>
+        <ul>
+          <li><strong>Title Bar:</strong> Name (left) + Mana Cost (right)</li>
+          <li><strong>Illustration Box:</strong> 45% height — Card art</li>
+          <li><strong>Type Line:</strong> Card type (left) + Expansion symbol (right)</li>
+          <li><strong>Text Box:</strong> 35% height — Rules + Flavor text</li>
+          <li><strong>P/T Box:</strong> Bottom-right — Champion stats (or Loyalty for planeswalkers)</li>
+          <li><strong>Info Strip:</strong> Artist credit + Collector number</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

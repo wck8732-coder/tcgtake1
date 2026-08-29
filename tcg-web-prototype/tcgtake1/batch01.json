@@ -1,0 +1,354 @@
+[
+{
+"id": 1001,
+"source_id": "CT01",
+"name": "Gutter Thrall",
+"type": "Champion",
+"cost": 1,
+"power": 1,
+"toughness": 2,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "dies",
+"effect": "custom",
+"text": "When this dies, each player loses 1 life."
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1002,
+"source_id": "CT02",
+"name": "Willing Vessel",
+"type": "Champion",
+"cost": 2,
+"power": 2,
+"toughness": 1,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "dies",
+"effect": "draw_then_discard"
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1003,
+"source_id": "CT03",
+"name": "Velvet Courtier",
+"type": "Champion",
+"cost": 2,
+"power": 2,
+"toughness": 3,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_gain_life",
+"effect": "pump_self_stats",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1004,
+"source_id": "CT04",
+"name": "Taste for Blood",
+"type": "Decree",
+"cost": 2,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "damage_any_target",
+"value": 1,
+"target": "unit"
+},
+{
+"trigger": "on_cast",
+"effect": "drain_life",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1005,
+"source_id": "CT05",
+"name": "Crimson Supplicant",
+"type": "Champion",
+"cost": 3,
+"power": 2,
+"toughness": 4,
+"color": "Crimson",
+"abilities": [
+"Siphon"
+],
+"rarity": "Common"
+},
+{
+"id": 1006,
+"source_id": "CT06",
+"name": "Feast-Hall Butcher",
+"type": "Champion",
+"cost": 3,
+"power": 3,
+"toughness": 2,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_ally_dies",
+"effect": "pump_self_stats",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1007,
+"source_id": "CT07",
+"name": "Restless Noble",
+"type": "Champion",
+"cost": 3,
+"power": 3,
+"toughness": 3,
+"color": "Crimson",
+"abilities": [
+"Recall 1"
+],
+"rarity": "Common"
+},
+{
+"id": 1008,
+"source_id": "CT08",
+"name": "Blood Bargain",
+"type": "Decree",
+"cost": 4,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "sacrifice_then_draw",
+"value": 2
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1009,
+"source_id": "CT09",
+"name": "Banquet Duelist",
+"type": "Champion",
+"cost": 4,
+"power": 4,
+"toughness": 4,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_gain_life",
+"effect": "pump_self_stats",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1010,
+"source_id": "CT10",
+"name": "Chalice of Ashen Wine",
+"type": "Relic",
+"cost": 6,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "dies",
+"effect": "drain_life",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1011,
+"source_id": "CT11",
+"name": "Open Vein",
+"type": "Decree",
+"cost": 1,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "sacrifice_then_draw",
+"value": 1
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1012,
+"source_id": "CT12",
+"name": "Ruby Funeral Cup",
+"type": "Relic",
+"cost": 2,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "static",
+"effect": "custom",
+"text": "Your Drain effects heal 1 extra."
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1013,
+"source_id": "CT13",
+"name": "Funeral Bell Omen",
+"type": "Omen",
+"cost": 3,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_ally_dies",
+"effect": "damage_any_target",
+"value": 2,
+"target": "enemy_leader"
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1014,
+"source_id": "CT14",
+"name": "Bloodcount Heir",
+"type": "Champion",
+"cost": 4,
+"power": 4,
+"toughness": 5,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_gain_life",
+"effect": "draw_cards",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1015,
+"source_id": "CT15",
+"name": "Hall of Red Masks",
+"type": "Domain",
+"cost": 5,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_ally_dies",
+"effect": "custom",
+"text": "The first ally that dies each turn returns to your hand at end of turn.",
+"oncePerTurn": true
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1016,
+"source_id": "CT16",
+"name": "Grave Feast Hound",
+"type": "Champion",
+"cost": 6,
+"power": 5,
+"toughness": 5,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "enter_battlefield",
+"effect": "return_from_graveyard",
+"target": "ally_2_cost"
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1017,
+"source_id": "CT17",
+"name": "First-Bite Aristocrat",
+"type": "Champion",
+"cost": 1,
+"power": 2,
+"toughness": 1,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "dies",
+"effect": "create_token",
+"value": 1
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1018,
+"source_id": "CT18",
+"name": "Moonlit Host",
+"type": "Champion",
+"cost": 2,
+"power": 2,
+"toughness": 3,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_champion_played",
+"effect": "buff_ally_toughness",
+"value": 1,
+"target": "cost_1_or_less"
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1019,
+"source_id": "CT19",
+"name": "Scarlet Accounting",
+"type": "Decree",
+"cost": 3,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "drain_life",
+"value": 2
+},
+{
+"trigger": "on_cast",
+"effect": "custom",
+"text": "If a unit died this turn, draw a card."
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1020,
+"source_id": "CT20",
+"name": "Lady of the Last Toast",
+"type": "Champion",
+"cost": 5,
+"power": 4,
+"toughness": 6,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_gain_life",
+"effect": "damage_any_target",
+"value": 1,
+"target": "enemy_leader"
+}
+],
+"rarity": "Rare"
+}
+]

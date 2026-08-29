@@ -1,0 +1,370 @@
+[
+{
+"id": 1101,
+"source_id": "N05",
+"name": "Portable Lantern",
+"type": "Relic",
+"cost": 2,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_reveal",
+"effect": "scry_1",
+"oncePerTurn": true
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1102,
+"source_id": "N06",
+"name": "Hiring Notice",
+"type": "Decree",
+"cost": 3,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "create_token",
+"value": 1
+},
+{
+"trigger": "on_cast",
+"effect": "custom",
+"text": "Draw a card if you control a faction Champion."
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1103,
+"source_id": "N07",
+"name": "Roadside Protector",
+"type": "Champion",
+"cost": 3,
+"power": 3,
+"toughness": 3,
+"color": "Colorless",
+"abilities": [
+"Guard",
+{
+"trigger": "enter_battlefield",
+"effect": "reveal_top_deck"
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1104,
+"source_id": "N08",
+"name": "Smuggler's Cache",
+"type": "Omen",
+"cost": 3,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "static",
+"effect": "custom",
+"text": "Omen - Draw a card. If it is neutral, gain 1 life."
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1105,
+"source_id": "N09",
+"name": "Old Battlefield",
+"type": "Domain",
+"cost": 4,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_champion_played",
+"effect": "pump_stats_target",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1106,
+"source_id": "N10",
+"name": "Mercy Token",
+"type": "Champion",
+"cost": 6,
+"power": 4,
+"toughness": 5,
+"color": "Colorless",
+"abilities": [
+"Siphon",
+{
+"trigger": "enter_battlefield",
+"effect": "drain_life",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1107,
+"source_id": "N11",
+"name": "Wanderer's Counsel",
+"type": "Decree",
+"cost": 1,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "draw_cards",
+"value": 1
+},
+{
+"trigger": "on_cast",
+"effect": "reveal_card",
+"target": "hand"
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1108,
+"source_id": "N12",
+"name": "Auctioneer's Friend",
+"type": "Champion",
+"cost": 2,
+"power": 2,
+"toughness": 3,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_non_draw_step",
+"effect": "pump_self_stats",
+"value": 1
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1109,
+"source_id": "N13",
+"name": "Portable Forge",
+"type": "Relic",
+"cost": 3,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_discard",
+"effect": "custom",
+"text": "Once each turn, the first card you discard costs 1 less to play this turn if returned somehow.",
+"oncePerTurn": true
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1110,
+"source_id": "N14",
+"name": "Crossroads Decision",
+"type": "Omen",
+"cost": 4,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "static",
+"effect": "custom",
+"text": "Omen - Choose one: draw a card or deal 2 damage to a unit."
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1111,
+"source_id": "N15",
+"name": "Seasoned Caravan",
+"type": "Champion",
+"cost": 4,
+"power": 3,
+"toughness": 4,
+"color": "Colorless",
+"abilities": [
+"Guard",
+{
+"trigger": "enter_battlefield",
+"effect": "draw_cards",
+"value": 1
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1112,
+"source_id": "N16",
+"name": "Borderless Treaty",
+"type": "Domain",
+"cost": 6,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "static",
+"effect": "drain_life",
+"value": 1,
+"oncePerTurn": true,
+"text": "Once each turn, when you play a neutral card, gain 1 life."
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1113,
+"source_id": "N17",
+"name": "Roving Duelist",
+"type": "Champion",
+"cost": 1,
+"power": 2,
+"toughness": 1,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "attacks",
+"effect": "pump_self_stats",
+"value": 2
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1114,
+"source_id": "N18",
+"name": "Far-Way Merchant",
+"type": "Relic",
+"cost": 2,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_gain_life",
+"effect": "draw_cards",
+"value": 1,
+"oncePerTurn": true,
+"text": "Once each turn, when you gain life, draw a card if you haven't drawn this turn."
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1115,
+"source_id": "N19",
+"name": "Loaned Muscle",
+"type": "Champion",
+"cost": 3,
+"power": 3,
+"toughness": 3,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "dies",
+"effect": "create_token",
+"value": 1
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1116,
+"source_id": "N20",
+"name": "Open Road Gambit",
+"type": "Decree",
+"cost": 4,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "ready_champion"
+},
+{
+"trigger": "on_cast",
+"effect": "pump_stats_target",
+"value": 1
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1117,
+"source_id": "N21",
+"name": "Wayfarer's Omen",
+"type": "Omen",
+"cost": 4,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "static",
+"effect": "next_card_costs_less",
+"value": 1,
+"text": "Omen - The next card you play costs 1 less."
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1118,
+"source_id": "N22",
+"name": "Hearth of Many Paths",
+"type": "Domain",
+"cost": 7,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "static",
+"effect": "draw_cards",
+"value": 1,
+"oncePerTurn": true,
+"text": "Once each turn, after you play a neutral card, draw a card."
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1119,
+"source_id": "N23",
+"name": "Contracted Blade",
+"type": "Champion",
+"cost": 2,
+"power": 3,
+"toughness": 2,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "enter_battlefield",
+"effect": "custom",
+"text": "When this enters play, choose a faction. It gets +1 attack while you control a card of that faction."
+}
+],
+"rarity": "Legendary"
+},
+{
+"id": 1120,
+"source_id": "N24",
+"name": "Archivist of the Road",
+"type": "Champion",
+"cost": 4,
+"power": 2,
+"toughness": 5,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_reveal",
+"effect": "drain_life",
+"value": 1,
+"oncePerTurn": true
+},
+{
+"trigger": "on_draw",
+"effect": "drain_life",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Legendary"
+}
+]

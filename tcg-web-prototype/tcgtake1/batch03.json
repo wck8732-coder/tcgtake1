@@ -1,0 +1,390 @@
+[
+{
+"id": 1041,
+"source_id": "LC17",
+"name": "Helsing, Dawn Marshal",
+"type": "Champion",
+"cost": 1,
+"power": 2,
+"toughness": 2,
+"color": "Lantern",
+"abilities": [
+"Guard",
+{
+"trigger": "enter_battlefield",
+"effect": "reveal_card",
+"target": "hand"
+},
+{
+"trigger": "enter_battlefield",
+"effect": "drain_life",
+"value": 1
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1042,
+"source_id": "LC18",
+"name": "Sanctum Sentence",
+"type": "Decree",
+"cost": 2,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "purge_target",
+"target": "enemy_unit"
+},
+{
+"trigger": "on_cast",
+"effect": "custom",
+"text": "If it was hidden, draw 2 cards."
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1043,
+"source_id": "LC19",
+"name": "Vault of Stained Gold",
+"type": "Champion",
+"cost": 3,
+"power": 3,
+"toughness": 4,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_reveal",
+"effect": "drain_life",
+"value": 1,
+"target": "leader"
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1044,
+"source_id": "LC20",
+"name": "Exorcist's Verdict",
+"type": "Decree",
+"cost": 4,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "purge_target",
+"target": "curse_or_omen"
+},
+{
+"trigger": "on_cast",
+"effect": "damage_any_target",
+"value": 3,
+"target": "unit"
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1045,
+"source_id": "LC21",
+"name": "Houndmaster of the Lantern",
+"type": "Champion",
+"cost": 4,
+"power": 4,
+"toughness": 4,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_ally_dies",
+"effect": "create_token",
+"value": 1,
+"text": "When a revealed enemy unit dies, create a 1/1 Hunter."
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1046,
+"source_id": "LC22",
+"name": "Cathedral of Revealed Truth",
+"type": "Domain",
+"cost": 7,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_reveal",
+"effect": "draw_cards",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1047,
+"source_id": "LC23",
+"name": "Abraham Van Helsing",
+"type": "Champion",
+"cost": 2,
+"power": 3,
+"toughness": 3,
+"color": "Lantern",
+"abilities": [
+"Guard",
+{
+"trigger": "attacks",
+"effect": "destroy_weakest_enemy",
+"target": "hidden_unit",
+"text": "When this attacks a hidden unit, destroy it."
+}
+],
+"rarity": "Legendary"
+},
+{
+"id": 1048,
+"source_id": "LC24",
+"name": "High Curator Seraphine",
+"type": "Champion",
+"cost": 4,
+"power": 4,
+"toughness": 5,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_reveal",
+"effect": "purge_target",
+"value": 1,
+"target": "damage_from_ally",
+"oncePerTurn": true
+}
+],
+"rarity": "Legendary"
+},
+{
+"id": 1049,
+"source_id": "SD01",
+"name": "Sunblade Recruit",
+"type": "Champion",
+"cost": 1,
+"power": 2,
+"toughness": 1,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "attacks",
+"effect": "pump_self_stats",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1050,
+"source_id": "SD02",
+"name": "Banner-Runner",
+"type": "Champion",
+"cost": 1,
+"power": 1,
+"toughness": 2,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "enter_battlefield",
+"effect": "buff_ally_toughness",
+"value": 1,
+"target": "next_champion"
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1051,
+"source_id": "SD03",
+"name": "Frontline Drums",
+"type": "Decree",
+"cost": 1,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "pump_stats_target",
+"value": 1,
+"target": "ally"
+},
+{
+"trigger": "on_cast",
+"effect": "custom",
+"text": "If it attacked, draw a card."
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1052,
+"source_id": "SD04",
+"name": "Shielded Legionary",
+"type": "Champion",
+"cost": 2,
+"power": 2,
+"toughness": 3,
+"color": "Sunforged",
+"abilities": [
+"Guard",
+{
+"trigger": "attacks",
+"effect": "pump_stats_target",
+"value": 1,
+"target": "another_ally"
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1053,
+"source_id": "SD05",
+"name": "Marching Standard",
+"type": "Relic",
+"cost": 2,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "on_champion_played",
+"effect": "custom",
+"text": "Once each turn, when you play a Champion, it gains Guard until your next turn.",
+"oncePerTurn": true
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1054,
+"source_id": "SD06",
+"name": "Golden Pike",
+"type": "Champion",
+"cost": 2,
+"power": 3,
+"toughness": 1,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "attacks",
+"effect": "pump_self_stats",
+"value": 2
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1055,
+"source_id": "SD07",
+"name": "Formation Drill",
+"type": "Decree",
+"cost": 3,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "ready_champion"
+},
+{
+"trigger": "on_cast",
+"effect": "pump_stats_target",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1056,
+"source_id": "SD08",
+"name": "Sunforged Veteran",
+"type": "Champion",
+"cost": 3,
+"power": 3,
+"toughness": 3,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "attacks",
+"effect": "draw_cards",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1057,
+"source_id": "SD09",
+"name": "Battle Chorus",
+"type": "Decree",
+"cost": 4,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "buff_all_allies",
+"value": 1
+},
+{
+"trigger": "on_cast",
+"effect": "custom",
+"text": "If three or more attacked, gain 2 life."
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1058,
+"source_id": "SD10",
+"name": "Imperial Causeway",
+"type": "Domain",
+"cost": 5,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "on_champion_played",
+"effect": "pump_stats_target",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1059,
+"source_id": "SD11",
+"name": "Vanguard Spearline",
+"type": "Champion",
+"cost": 1,
+"power": 2,
+"toughness": 2,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "attacks",
+"effect": "custom",
+"text": "When you attack with two or more allies, this gets Guard until end of turn."
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1060,
+"source_id": "SD12",
+"name": "War Drum of the Ninth",
+"type": "Relic",
+"cost": 2,
+"color": "Sunforged",
+"abilities": [
+{
+"trigger": "attacks",
+"effect": "pump_stats_target",
+"value": 1,
+"target": "champion",
+"oncePerTurn": true
+}
+],
+"rarity": "Uncommon"
+}
+]

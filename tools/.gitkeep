@@ -1,0 +1,5 @@
+# tools/
+
+Future home for dev/build/CI tooling that operates on the repo as a whole.
+
+Placeholder so the folder is tracked by git. Delete this file once real tools land here.

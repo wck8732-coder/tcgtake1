@@ -1,0 +1,371 @@
+[
+{
+"id": 1081,
+"source_id": "GA09",
+"name": "Tax the Future",
+"type": "Decree",
+"cost": 4,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "next_opponent_card_costs_more",
+"value": 1
+},
+{
+"trigger": "on_cast",
+"effect": "draw_cards",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1082,
+"source_id": "GA10",
+"name": "Observatory of Chains",
+"type": "Domain",
+"cost": 6,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_draw",
+"effect": "next_card_costs_less",
+"value": 1,
+"target": "decree",
+"oncePerTurn": true
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1083,
+"source_id": "GA11",
+"name": "Index Runner",
+"type": "Relic",
+"cost": 1,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_discard",
+"effect": "scry_1",
+"oncePerTurn": true
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1084,
+"source_id": "GA12",
+"name": "Process Engineer",
+"type": "Champion",
+"cost": 2,
+"power": 2,
+"toughness": 3,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_decree_played",
+"effect": "pump_self_stats",
+"value": 1
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1085,
+"source_id": "GA13",
+"name": "False Prediction",
+"type": "Omen",
+"cost": 3,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "static",
+"effect": "next_opponent_card_costs_more",
+"value": 2,
+"text": "Omen - The next card your opponent plays costs 2 more."
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1086,
+"source_id": "GA14",
+"name": "Break the Loop",
+"type": "Decree",
+"cost": 4,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "bounce_champion",
+"target": "unit"
+},
+{
+"trigger": "on_cast",
+"effect": "draw_cards",
+"value": 1
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1087,
+"source_id": "GA15",
+"name": "Vault of Small Miracles",
+"type": "Domain",
+"cost": 4,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_non_draw_step",
+"effect": "drain_life",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1088,
+"source_id": "GA16",
+"name": "Sequence Overclock",
+"type": "Decree",
+"cost": 6,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "next_two_cards_cost_less",
+"value": 1
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1089,
+"source_id": "GA17",
+"name": "Albert Einstein",
+"type": "Champion",
+"cost": 1,
+"power": 1,
+"toughness": 3,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_decree_played",
+"effect": "draw_then_discard",
+"oncePerTurn": true
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1090,
+"source_id": "GA18",
+"name": "Causal Tax",
+"type": "Decree",
+"cost": 2,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "custom",
+"text": "Target unit gets -2 attack this turn. If it was damaged, it also gets -1 life."
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1091,
+"source_id": "GA19",
+"name": "Grand Theorem Clerk",
+"type": "Champion",
+"cost": 3,
+"power": 3,
+"toughness": 3,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "enter_battlefield",
+"effect": "next_card_costs_less",
+"value": 1,
+"target": "chosen_card_in_hand"
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1092,
+"source_id": "GA20",
+"name": "Revoke the Answer",
+"type": "Decree",
+"cost": 4,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "bounce_champion"
+},
+{
+"trigger": "on_cast",
+"effect": "discard_opponent",
+"value": 1
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1093,
+"source_id": "GA21",
+"name": "Paradox Mirror",
+"type": "Omen",
+"cost": 4,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_decree_played",
+"effect": "custom",
+"text": "Omen - The next Decree you play this turn triggers twice."
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1094,
+"source_id": "GA22",
+"name": "Archive of Endings",
+"type": "Champion",
+"cost": 7,
+"power": 4,
+"toughness": 6,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "enter_battlefield",
+"effect": "return_from_graveyard",
+"target": "decree"
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1095,
+"source_id": "GA23",
+"name": "Mansa Musa, Ledger King",
+"type": "Champion",
+"cost": 2,
+"power": 2,
+"toughness": 3,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_gain_life",
+"effect": "create_token",
+"value": 1
+},
+{
+"trigger": "on_non_draw_step",
+"effect": "create_token",
+"value": 1
+}
+],
+"rarity": "Legendary"
+},
+{
+"id": 1096,
+"source_id": "GA24",
+"name": "Chronarch Selene",
+"type": "Champion",
+"cost": 4,
+"power": 4,
+"toughness": 5,
+"color": "Gilded",
+"abilities": [
+{
+"trigger": "on_second_card_played",
+"effect": "draw_cards",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Legendary"
+},
+{
+"id": 1097,
+"source_id": "N01",
+"name": "Mercenary Guide",
+"type": "Champion",
+"cost": 1,
+"power": 1,
+"toughness": 2,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "enter_battlefield",
+"effect": "reveal_card",
+"target": "neutral_card_in_hand"
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1098,
+"source_id": "N02",
+"name": "Wandering Shrine",
+"type": "Relic",
+"cost": 1,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_champion_played",
+"effect": "drain_life",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1099,
+"source_id": "N03",
+"name": "Traveling Sellsword",
+"type": "Champion",
+"cost": 2,
+"power": 2,
+"toughness": 2,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "attacks",
+"effect": "pump_self_stats",
+"value": 1,
+"text": "When this attacks, you may pay 1 to give it +1 attack this turn."
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1100,
+"source_id": "N04",
+"name": "Field Rations",
+"type": "Decree",
+"cost": 2,
+"color": "Colorless",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "buff_ally_toughness",
+"value": 1,
+"target": "ally"
+},
+{
+"trigger": "on_cast",
+"effect": "custom",
+"text": "Draw a card if it is a Champion."
+}
+],
+"rarity": "Common"
+}
+]

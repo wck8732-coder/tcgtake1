@@ -1,0 +1,2 @@
+# Unity placeholder — keeps Assets/Resources in VCS.
+# Load runtime assets here via Resources.Load<T>("...").

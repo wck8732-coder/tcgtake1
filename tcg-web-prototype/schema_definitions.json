@@ -1,0 +1,290 @@
+{
+  "version": "1.0",
+  "types": {
+    "LAND": "Land",
+    "CHAMPION": "Champion",
+    "SPELL": "Spell",
+    "INSTANT": "Instant",
+    "DECREE": "Decree",
+    "RELIC": "Relic",
+    "DOMAIN": "Domain",
+    "OMENT": "Omen"
+  },
+  "typeEnum": [
+    "Land",
+    "Champion",
+    "Spell",
+    "Instant",
+    "Decree",
+    "Relic",
+    "Domain",
+    "Omen"
+  ],
+  "rarities": [
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Legendary",
+    "Mythic"
+  ],
+  "factions": [
+    "Crimson",
+    "Sunforged",
+    "Lantern",
+    "Gilded",
+    "Zealot",
+    "Colorless"
+  ],
+  "triggerPhases": {
+    "START_OF_TURN": "START_OF_TURN",
+    "END_OF_TURN": "END_OF_TURN",
+    "ON_COMBAT_DAMAGE": "ON_COMBAT_DAMAGE",
+    "ON_OPPONENT_SPELL": "ON_OPPONENT_SPELL",
+    "ON_ALLY_DIES": "ON_ALLY_DIES"
+  },
+  "triggers": [
+    "attacks",
+    "dies",
+    "end_of_turn",
+    "enter_battlefield",
+    "on_ally_dies",
+    "on_cast",
+    "on_champion_played",
+    "on_decree_played",
+    "on_discard",
+    "on_draw",
+    "on_enemy_attack",
+    "on_gain_life",
+    "on_non_draw_step",
+    "on_reveal",
+    "on_sacrifice",
+    "on_second_card_played",
+    "once_per_turn",
+    "paid_mana",
+    "static",
+    "tap",
+    "untap",
+    "END_OF_TURN",
+    "START_OF_TURN",
+    "ON_COMBAT_DAMAGE",
+    "ON_OPPONENT_SPELL",
+    "ON_ALLY_DIES"
+  ],
+  "effects": [
+    "bounce_all_enemies",
+    "bounce_champion",
+    "bounce_enemies",
+    "bounce_relic",
+    "bounce_two_enemies",
+    "buff_all_allies",
+    "buff_ally_toughness",
+    "buff_crimson_attack",
+    "choose_faction_conditional_attack",
+    "create_token",
+    "damage_all_champions",
+    "damage_all_enemies",
+    "damage_any_target",
+    "damage_hidden",
+    "damage_random_enemy",
+    "damage_relic",
+    "damage_two_targets",
+    "deathtouch",
+    "destroy_all",
+    "destroy_all_enemies",
+    "destroy_omen",
+    "destroy_relic",
+    "destroy_weakest_enemy",
+    "discard_opponent",
+    "double_fire_damage",
+    "drain_all_opponents",
+    "drain_heal_extra",
+    "drain_life",
+    "draw_cards",
+    "draw_then_discard",
+    "draw_then_discard_gain_life",
+    "draw_two_discard_one",
+    "extra_land_per_turn",
+    "first_ally_dies_return_hand",
+    "first_discard_cost_less",
+    "first_strike",
+    "flying",
+    "gain_life",
+    "grant_guard_all_champions",
+    "grant_guard_self_if_two_plus_attack",
+    "grant_swiftstrike_ally",
+    "haste",
+    "invert_stats_all",
+    "lifelink",
+    "menace",
+    "next_card_costs_less",
+    "next_decree_triggers_twice",
+    "next_opponent_card_costs_more",
+    "next_two_cards_cost_less",
+    "omen_choice_draw_or_damage",
+    "omen_draw_gain_life_if_neutral",
+    "omen_return_ally_with_1_life",
+    "opponent_chooses_purge",
+    "pump_all_champions",
+    "pump_self_stats",
+    "pump_stats_target",
+    "purge_all_enemies",
+    "purge_from_graveyard",
+    "purge_hidden",
+    "purge_relic",
+    "purge_target",
+    "purge_weakest",
+    "ramp_extra_land",
+    "ramp_search_land",
+    "ready_all_champions",
+    "ready_champion",
+    "ready_two_champions",
+    "recall_cost_less",
+    "reduce_combat_damage_all",
+    "return_from_exile",
+    "return_from_graveyard",
+    "reveal_card",
+    "reveal_hidden",
+    "reveal_top_deck",
+    "sacrifice_then_damage",
+    "sacrifice_then_draw",
+    "scry_1",
+    "scry_2",
+    "scry_3",
+    "stat_change_target",
+    "swap_champion",
+    "tap_enemy_champion",
+    "trample",
+    "vigilance"
+  ],
+  "fields": {
+    "id": {
+      "type": "integer",
+      "required": true,
+      "description": "Unique card ID"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "Card name"
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "enum": [
+        "Land",
+        "Champion",
+        "Spell",
+        "Instant",
+        "Decree",
+        "Relic",
+        "Domain",
+        "Omen"
+      ],
+      "description": "Card type"
+    },
+    "cost": {
+      "type": "mixed",
+      "required": false,
+      "description": "{color, generic} object or integer or null"
+    },
+    "power": {
+      "type": "integer",
+      "required": false,
+      "description": "Champion power / damage value"
+    },
+    "toughness": {
+      "type": "integer",
+      "required": false,
+      "description": "Champion toughness"
+    },
+    "providesMana": {
+      "type": "boolean",
+      "required": false,
+      "description": "Land produces mana"
+    },
+    "color": {
+      "type": "string",
+      "required": true,
+      "enum": [
+        "Crimson",
+        "Sunforged",
+        "Lantern",
+        "Gilded",
+        "Zealot",
+        "Colorless"
+      ],
+      "description": "Faction color"
+    },
+    "abilities": {
+      "type": "mixed[]",
+      "required": false,
+      "description": "Array of strings (keywords) or objects (triggered effects)"
+    },
+    "text": {
+      "type": "string",
+      "required": false,
+      "description": "Authored final rules text; renderer prefers this over generated ability text (engine behavior unchanged)"
+    },
+    "flavor": {
+      "type": "string",
+      "required": false,
+      "description": "Italic flavor line displayed under the rules text"
+    },
+    "rarity": {
+      "type": "string",
+      "enum": [
+        "Common",
+        "Uncommon",
+        "Rare",
+        "Legendary",
+        "Mythic"
+      ],
+      "description": "Rarity"
+    },
+    "faceDownCost": {
+      "type": "object",
+      "required": false,
+      "description": "Omen flip cost: {generic:N, color:null}"
+    },
+    "flipTrigger": {
+      "type": "string",
+      "required": false,
+      "description": "ON_COMBAT_DAMAGE / END_OF_TURN / ON_ALLY_DIES"
+    },
+    "flipCost": {
+      "type": "object",
+      "required": false,
+      "description": "Optional flip payment: {selfDamage:N, tapFriendly:N, sacrificeChampion:N, bounceFriendlyLand:N}"
+    },
+    "flipAbilities": {
+      "type": "object[]",
+      "required": false,
+      "description": "Abilities fired on flip"
+    },
+    "recallCharges": {
+      "type": "integer",
+      "required": false,
+      "description": "Recall N charges remaining"
+    },
+    "tokenPower": {
+      "type": "integer",
+      "required": false,
+      "description": "Token created by ability"
+    },
+    "tokenToughness": {
+      "type": "integer",
+      "required": false,
+      "description": "Token created by ability"
+    },
+    "tokenName": {
+      "type": "string",
+      "required": false,
+      "description": "Token name"
+    },
+    "allowedPhase": {
+      "type": "string[]",
+      "required": false,
+      "description": "Phase windows for activation"
+    }
+  }
+}

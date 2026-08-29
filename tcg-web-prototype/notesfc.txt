@@ -1,0 +1,352 @@
+================================================================================
+NOTESFC.TXT — MASTER PROJECT HANDOFF / AGENT ORIENTATION
+================================================================================
+ROLE: This file is the authoritative orientation for any agent (primary or the
+secondary/supplemental coding agent, currently "Hermes") stepping into the TCG
+Prototype project, whether resuming in this terminal or delegated one or more
+of the three goals. It contains: (1) the full agenda post verbatim, (2) a
+complete map of the file hierarchy with line anchors, (3) what has been done,
+(4) what needs to be done, how, and why, and (5) hard rules to prevent drift.
+
+================================================================================
+SECTION 0 — TRUTH OF CURRENT STATE (as of snapshot v0.1048)
+===============================================================================
+Current version label: v0.1048 (card text/flavor finalization Waves 1-2 +
+UI scale pass; foundations complete; 3-goal roadmap still active).
+
+Latest verified snapshot:
+  backups\v0.1048_2026-08-27_1816
+  Status: INTACT (verified with verify-checkpoint.ps1).
+
+LIVE data files at root (generated, DO NOT hand-edit):
+  card_database.json            — LIVE card DB the game/sim reads (480 cards).
+  card_database.master.json     — frozen authoritative reference.
+  card_database.backup.json     — backup of master.
+  card_database.tentative.json  — editable working copy (promote to master
+                                   only when confident).
+  cards.json                    — SOURCE input for build-cards.js.
+  decks.json                    — 12 format-split decks (6 Classic + 6 Standard).
+  schema_definitions.json       — canonical card schema.
+  shared/card-schema.js         — REGENERATED from schema_definitions.json.
+
+Source of truth rule: transformCards() in build-cards.js is the ONLY source
+that generates card data. NOTE (v0.1048): the old "build-cards.js / simulate.js
+/ game.js each embed a byte-for-byte-identical copy" note is STALE — since the
+v0.1039 refactor only build-cards.js contains transformCards(); simulate.js /
+game.js read the generated card_database.json directly. If you change a card or
+a transform patch, edit cards.json (source) or build-cards.js transformCards()
+ONLY, then rebuild — never hand-edit the generated card_database* files.
+
+FINAL-TEXT WORKSTREAM (v0.1048, user priority): every card gets authored rules
+text + MTG-style italic flavor. Author via textPatch/flavorPatch maps inside
+build-cards.js transformCards() (display-only; `abilities` remain canonical for
+the engine), then `node build-cards.js build` + `init` + `verify`. Renderer:
+cardData.text overrides generated text (keyword spans/footnotes still scanned);
+.card-flavor italic line hidden when face-down. Schema fields text/flavor added
+to schema_definitions.json. shared/effects.js: STRING_EFFECTS for
+destroy_enchantment/bounce_enchantment + pluralization cleanup (a card / N cards,
+a Saproling / N Saprolings). Wave 1 = 24 cards, Wave 2 = 30 (all deck-pool), Wave 3 = 30 (all 11 Domains,
+10 Omens, showcase leaders), Wave 4 = 30 (Relics across all factions),
+Wave 5 = 35 (final 29 Relics — Relic type fully authored — plus 6 Decrees) —
+141/380 authored; ~239 non-land cards still on generated text → continue in
+review waves.
+
+================================================================================
+SECTION 1 — THE THREE MAIN GOALS (verbatim, reprioritized agenda)
+================================================================================
+[VERIFIED BUILD STATE — ALL GREEN]
+Run consistently after any change:
+  node --check game.js rules_engine.js simulate.js      (syntax gate)
+  node recall_ominous_test.js                            (MUST stay green)
+  node simulate.js 10 medium Classic / Standard         (clean games, no stalls)
+  powershell -ExecutionPolicy Bypass -File verify.ps1   (7-step suite: syntax +
+    build identity + schema 0 violations + 123 tests + validate-data (116) +
+    Classic sim + Standard sim + Unity data regen)
+Snapshot rule: create-checkpoint / verify-checkpoint / restore-checkpoint are
+the ONLY tools for project snapshots. A checkpoint is ALWAYS the very LAST step
+of any plan or workflow, and only when approved by the user. AGENTS.md update
+happens at the SAME TIME as the next approved checkpoint, and only when the
+user instructs it.
+
+POSTPONED (deferred to "final touches" phase — DO NOT TOUCH until the user
+lifts the hold):
+  - C3 AI / game speed toggle (code already removed/reverted to fixed 400/600
+    ms delays; #ai-speed-select UI removed from index.html and game.js).
+  - Keyboard navigation beyond what already exists (Space/Enter/C are already
+    wired; further arrow-key nav is deferred).
+  - Rarity tooltips.
+  - Checkpoint / snapshot creation until user approves its next creation.
+  - AGENTS.md update until user instructs (will coincide with next checkpoint).
+
+-------------------------------------------------------------------------------
+GOAL 1 — Card Data Integrity + Format/Deck Validation Audit
+WHY FIRST: Data correctness is foundational. If the 480-card DB, the 12
+format-split decks, or Standard rarity caps are wrong, every downstream system
+(engine, sims, UI) inherits the defect. verify.ps1 only reports identity-level
+drift, not semantic validity, so a dedicated validation pass is needed.
+Minor steps:
+  1. Audit cards.json / build-cards.js transformCards() for orphan defs:
+     TRIM_IDS entries that don't exist; spellPatch/enchantPatch/instantPatch/kw
+     keys referencing missing IDs; legendaryKit ids not in
+     legendaryChampionIds.
+  2. Verify all 480 cards: color is one of the 6 faction enum values; rarity is
+     one of the 5 schema rarities. Use a node filter (context protection blocks
+     full reads of card_database*.json / cards.json / decks.json).
+  3. Validate each of the 12 decks in decks.json: exactly 70 cards (24 lands +
+     46 non-land); all card ids resolve to live card_database.json; Standard
+     rarity caps hold (Legendary x1, Mythic x2, Rare x3).
+  4. Add a semantic data-validation script (e.g. validate-data.js) that reports
+     violations so it can be run and/or folded into verify.ps1.
+  5. Fix any violations in build-cards.js transformCards() ONLY, rebuild via
+     `node build-cards.js build`, confirm build IDENTICAL + schema 0 violations.
+FILES TO READ:  cards.json, build-cards.js, decks.json, schema_definitions.json,
+                shared/card-schema.js, verify.ps1
+FILES TO EDIT:  build-cards.js (only if a transform bug). DO NOT hand-edit
+                card_database*.json / cards.json / decks.json (generated).
+-------------------------------------------------------------------------------
+GOAL 2 — Engine Correctness: Stack/Priority Edge Cases + Combat Logic Audit
+WHY: The full stack/priority system (A3) is the newest, most complex logic.
+Sims running clean only proves no crashes, not rules-legal behavior. Bugs here
+undermine game integrity.
+Minor steps:
+  1. [DONE] Review resolveStack() in rules_engine.js (LIFO order) + the priority
+     window in promptForResponse() — confirm the stack cannot deadlock when
+     both players decline. (Depth-cap @100 + unified response-finish.)
+  2. [DONE] Check removeBlocker() / confirmBlockers() / assignBlocker() flow so
+     the blocking UI state cannot desync from the engine (the B2 fix).
+  3. [DONE] Add a focused rule test (same style as recall_ominous_test.js)
+     covering: nested stack resolution, instant on opponent's turn, fatigue
+     deck-out, blocking reassignment. (27 checks added, harness now 123.)
+  4. [DONE] Run the extended harness + both sims; confirm fees + no stalls.
+     (Classic + Standard sims clean; verify gate 7/7 green.)
+  5. [DONE] Confirm no regressions: full verify.ps1 pass.
+  RELAXED-TIMING WINDOW (v0.1047+): response window = MTGA mimic. getViableResponses()
+  (hand Instant/Spell always legal; zone-effect = own-main-phase OR relaxed in-window;
+  board-activated stub empty) + relaxedTiming() = Legendary/Mythic OR recall-keyworded
+  champions. processGameEvent(..., deferResolve) + playSpell(..., deferResolve) let an
+  opponent response be inserted on top of a cast (LIFO). DEFERRED: board-activated
+  abilities (future mechanic), AI never initiates responses (human-only), no timing
+  beyond main phases.
+FILES TO READ:  rules_engine.js, game.js, recall_ominous_test.js, simulate.js
+FILES TO EDIT:  rules_engine.js, game.js, recall_ominous_test.js (add tests).
+                Do NOT edit generated data files. Do not change engine rule
+                files outside UI scope.
+-------------------------------------------------------------------------------
+GOAL 3 — UI/UX Stabilization (Blocking UI, End-Game Modal, Action Log)
+WHY: User-facing systems already built. Stabilize and polish so the game feels
+complete before the deferred final-touches pass.
+Minor steps:
+  1. Verify blocker-selection overlay (#blocker-screen) renders correctly and
+     defender clicks reliably toggle blocks with no stale .selected state.
+  2. Confirm end-game modal (#end-game-modal) victory/defeat text + player/AI
+     attribution is accurate after stack resolution.
+  3. Polish action log: cap entries, newest-on-top + scroll, correct
+     .log-entry color classes.
+  4. UI smoke test both Classic and Standard in browser-level terms (DOM id
+     checks via code paths that drive them).
+  5. Final verify.ps1 pass — completes Goal 3 and the current phase.
+FILES TO READ:  game.js, index.html, style.css
+FILES TO EDIT:  game.js, index.html, style.css (input + styling only).
+                Do NOT edit generated data files or engine rules outside UI
+                scope.
+-------------------------------------------------------------------------------
+ORDER OF EXECUTION: Goal 1 -> Goal 2 -> Goal 3. Each ends with full
+verification (syntax gate, 123/123 tests, both sims, verify.ps1 IDENTICAL).
+Checkpoints / AGENTS.md updates happen only at the very end of the WHOLE
+workflow and only when the user approves.
+
+================================================================================
+SECTION 2 — WHAT HAS BEEN ACCOMPLISHED (Phase A / B / C record)
+================================================================================
+PHASE A — Core gameplay systems (ALL COMPLETE, verified green)
+  A1 London mulligan system:
+    rules_engine.js mulligan() (~line 112). game.js showMulligan() + keep/toss
+    UI. index.html #mulligan-screen. style.css .mull-panel (bg #16213e, accent
+    #f0c040). Redraws -1 card, min 1 card.
+  A2 End-game modal + concede:
+    index.html #end-game-modal (Play Again / New Game). game.js showEndGameModal()
+    + checkWin() sets gameOver/winner. Concede button in HUD.
+  A3 Full ability stack + priority:
+    rules_engine.js stack[] array + resolvingStack flag (ctor ~line 88).
+    playSpell() pushes {proc,type,sourceCard,targets,userId} to stack.
+    resolveStack() LIFO with on_cast / Decree triggers, graveyard placement,
+    gameOver check (~lines 782-800). AI aiMainPhase resolves stack.
+    game.js promptForResponse() shows "You have playable cards..." modal;
+    onCardClick gates via _responding flag; Decline resolves stack.
+PHASE B — AI & blocking (ALL COMPLETE, verified green)
+  B1 AI improvements: aiMainPhase() targeting sorts champions by power
+    (weakest first), prefers removing blockers over player-life direct damage;
+    resolves stack after each AI spell.
+  B2 Blocking UX: index.html #blocker-screen. game.js
+    playerAssignBlockersUI() renders attacker groups with selectable defenders;
+    #blocker-done-btn confirms. Defender click toggles block assignment,
+    removes previous selections (uses removeBlocker + assignBlocker).
+  B3 Deck-out fatigue: drawCard() sets player.life = 0 when deck empty, then
+    checkWin(). No extra code needed.
+PHASE C — UX polish (partial; C3 speed POSTPONED)
+  C1 Action log + phase.past CSS: style.css .log-entries (column-reverse,
+    newest first, max-height 180px overflow), .log-entry color classes,
+    .phase.past (struck-through, opacity 0.5).
+  C2 Keyboard shortcuts: game.js (end of file) Space -> nextPhase(), Enter ->
+    nextPhase() (player turn only), C/c -> concede(), Escape -> cancel
+    targeting. VERIFIED green.
+  C3 AI speed toggle: REVERTED by user instruction. Fixed delays (400/600ms)
+    restored in runAI(). #ai-speed-select removed from index.html and game.js.
+    selectedAISpeed var + its click handlers commented out. Deferred.
+
+================================================================================
+SECTION 3 — EFFICIENT FILE-LOCATOR HIERARCHY (avoid re-parsing huge files)
+================================================================================
+WHY: rules_engine.js, game.js, build-cards.js are thousands of lines and the
+generated data files (card_database*.json, cards.json, decks.json) are context-
+protected (large static data reads are blocked). Use these anchors + grep/rg
+with specific patterns instead of full reads. NEVER full-read the blocked data
+files; start with build-cards.js transformCards() for card/data logic because
+it is the source of truth and more compact than the generated JSON.
+
+--- rules_engine.js (strict module; CANONICAL rules) ---
+  ctor GameState(difficulty, deckKey, cardDB, deckDB, format)  ~line 69
+  stack[] + resolvingStack                                      ~line 88
+  mulligan(player)                                              ~line 112
+  drawCard(player) / deck-out fatigue                           ~line 238+
+  playSpell -> stack push                                       ~line 343
+  difficulty branches (easy/medium/hard)                        ~line 461
+  resolveStack() (LIFO)                                         ~line 782
+  aiMainPhase() targeting/stack resolve                         ~line 1831
+  playerMainPhase() stack resolve                               ~line 2030
+  confirmBlockers / assignBlocker / removeBlocker               ~line 2062
+  buildDeckFromDef (deck size 70 + 4-copy + Standard caps)      (search if needed)
+
+--- game.js (browser UI layer; extends RULES_ENGINE.GameState) ---
+  constructor(difficulty, deckKey, format)                      ~line 187
+  updateUI() life/deck+hand size counts                         ~line 2001
+  drawCard AI delay in end-turn hook                            ~line ~490 (reverted to 400)
+  onCardClick click handling / _responding                      ~line 2393 area
+  promptForResponse() response modal                            ~line ~463
+  declareAttacker / aiCombat                                    ~line 500+
+  playerAssignBlockersUI + blocker click handlers               ~line ~1739-1832
+  showCardModal / setupLongPress                                ~line 2393
+  showMulligan()                                                ~line 2628
+  runAI() phase switch (untap/draw/main1/combat/main2)          ~line 2418
+  aiCardValue()                                  ~line 2463 (hard-mode bonus)
+  end-of-file: keydown handler (Space/Enter/C/Escape)           ~line 2712
+  init: selectedDifficulty/selectedFormat/selectedAISpeed,
+        difficulty + format + (commented) speed selectors       ~line 2515-2552
+  format buttons set selectedFormat                             ~line 2538
+  difficulty buttons set selectedDifficulty                     ~line 2529
+
+--- build-cards.js (data materializer; SOURCE OF TRUTH for card data) ---
+  ROOT / transformCards(cards)                                  ~line 37
+    a() helper (ability factory)                                ~line 38
+    newCards array (hard-coded new cards)                       ~line 41
+    TRIM_IDS set (cards removed)                                ~line 174
+    rarityOverride map                                          ~line 177
+    legendaryChampionIds + legendaryKit                         ~line 179
+    spellPatch / enchantPatch / instantPatch / kw               ~line 196 onward
+  CLI: node build-cards.js build | init | promote | verify
+
+--- simulate.js (headless harness) ---
+  Usage: node simulate.js [games] [difficulty] [format]
+  Imagines the same transformCards() copy + re-exports RULES_ENGINE.
+  Deck resolution from deckDB.formats[format].decks.
+
+--- index.html (screen overlays / DOM ids) ---
+  start-screen
+    #step-difficulty  (format select + difficulty select)
+      #format-select  (buttons data-format="Classic"/"Standard")
+      #difficulty-select (data-difficulty easy/medium/hard)
+      (AI speed select REMOVED)
+    #step-deck -> #deck-select (deck options)
+  game-container
+    control buttons: #btn-next-phase, #btn-attack, #btn-confirm,
+      #btn-end-turn, #btn-concede
+    #action-log > .log-entries
+    #player-zone / #ai-zone (battlefields, hands, mana, deck-count, life)
+    #mulligan-screen, #end-game-modal, #blocker-screen, #response-modal,
+    #card-modal
+
+--- style.css (all styling) ---
+  .log-entries / .log-entry color classes                      ~line 486
+  .phase.past                                                    ~line 10796 (search)
+  .mull-panel / .mull-hand-preview                              (search)
+  #end-game-modal / .end-game-panel                             (search)
+  #blocker-screen                                               (search)
+  Colors: panel bg #16213e, accent/active #f0c040.
+
+--- recall_ominous_test.js (123-test harness) ---
+  Node test suite. Extend here for Goal 2 new rule tests.
+  MUST stay green: `node recall_ominous_test.js`.
+
+--- verify.ps1 (7-step verification suite) ---
+  Run: powershell -ExecutionPolicy Bypass -File verify.ps1
+
+--- backups\create-checkpoint.ps1 / verify-checkpoint.ps1 / restore-checkpoint.ps1 ---
+  Snapshot tools. Full-project. Checkpoint = LAST step, only on approval.
+
+--- Cards: keywords (string abilities, runtime via getKeywords) ---
+  Swiftstrike, Quickdraw, Keen Eye, Overrun, Deathshroud, Siphon, Flying,
+  Intimidate, Guard, Bastion, Recall N, Ominous.
+  (Note: these are user-authored keyword strings; search them literally.)
+
+================================================================================
+SECTION 4 — CONTEXT-PROTECTION (difficulties when reading data)
+================================================================================
+- Large static files are BLOCKED from full reads:
+    card_database*.json, cards.json, decks.json, tcgtake1/, backups/,
+    unity/Assets/StreamingAssets/, *.csv.
+- To INSPECT: use grep with a specific pattern OR node -e with a filter OR read
+  with offset/limit.
+- To EDIT such a file you MUST name the file explicitly in your request
+  (edit intent) to unblock it.
+- Recommended for card/deck data queries: start from build-cards.js
+  transformCards() (compact, authoritative) rather than the generated JSON.
+
+================================================================================
+SECTION 5 — HARD RULES TO PREVENT DRIFT / HALLUCINATION (FOLLOW ALWAYS)
+================================================================================
+- DO NOT hand-edit generated card data (card_database*.json, cards.json,
+  decks.json). Edit cards.json (source) or build-cards.js transforms, rebuild.
+- DO NOT modify the engine bytes in game.js that differ from rules_engine.js
+  transformCards(); keep the 3 copies byte-identical.
+- After ANY change run: syntax gate (node --check), recall_ominous_test.js
+  (123/123), both sims, and verify.ps1 full. Never skip.
+- Snapshot / checkpoint: ALWAYS the very last step of any plan/workflow, and
+  ONLY when user approves. Do not create checkpoints unprompted.
+- AGENTS.md: update ONLY when user instructs; coincides with the next approved
+  checkpoint. Do not edit proactively.
+- Never create .md or README files proactively; notes go here / into notesfc.txt.
+- Keyboard shortcuts Space/Enter/C already wired; do not re-add arrow-key nav
+  (postponed).
+- AI speed toggle: do NOT re-implement (postponed to final-touches).
+- Rarity tooltips: postponed; do not add.
+- Keep responses concise; use the file-locator hierarchy above to jump to
+  anchors instead of full-parsing large files.
+
+================================================================================
+SECTION 6 — SECONDARY AGENT (HERMES) HANDOFF
+================================================================================
+ONBOARDING FILE ORDER (read in this exact order for full context):
+  1. AGENTS.md  (project context, build/verify commands, card rules, formats)
+  2. notesfc.txt  (this file: agenda + file map + rules + goals)
+  3. schema_definitions.json  (canonical schema; compact)
+  4. build-cards.js  transformCards() (source of truth for card data)
+  5. rules_engine.js  (architecture + Goal-2-relevant lines, use line anchors)
+  6. verify.ps1  (the 6-step gate you must pass after any change)
+  7. recall_ominous_test.js  (test style to mirror for new Goal-2 tests)
+  8. index.html + style.css  (for Goal-3 UI work)
+  Do NOT open the generated data JSON (card_database*.json, cards.json,
+  decks.json) in full; use the anchors / grep / node filters.
+
+FIRST TASK (recommendation): Work on GOAL 1 — Card Data Integrity + format/deck
+validation audit (the file-locator + steps in Section 1). It is the safest
+foundation to start on, is fully data-led, and gets you acclimated to the
+transform/build/verify loop with the fewest side effects. Then go GOAL 2, then
+GOAL 3.
+
+IMPORTANT: When you finish any goal, run the full verification gate (Section 1
+top). Do not create a checkpoint or touch AGENT.md. Report back to the primary
+terminal.
+
+================================================================================
+END OF NOTESFC.TXT
+================================================================================

@@ -1,0 +1,377 @@
+[
+{
+"id": 1021,
+"source_id": "CT21",
+"name": "Supper Unending",
+"type": "Omen",
+"cost": 5,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "end_of_turn",
+"effect": "custom",
+"text": "Omen - At end of your turn, if an ally died this turn, return that ally to play with 1 life."
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1022,
+"source_id": "CT22",
+"name": "Sepulcher Ballroom",
+"type": "Domain",
+"cost": 7,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_sacrifice",
+"effect": "create_token",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Rare"
+},
+{
+"id": 1023,
+"source_id": "CT23",
+"name": "Count Serevan",
+"type": "Champion",
+"cost": 3,
+"power": 3,
+"toughness": 5,
+"color": "Crimson",
+"abilities": [
+"Siphon",
+{
+"trigger": "static",
+"effect": "buff_crimson_attack",
+"value": 1,
+"target": "ally_with_siphon"
+}
+],
+"rarity": "Legendary"
+},
+{
+"id": 1024,
+"source_id": "CT24",
+"name": "Duchess Vhalora",
+"type": "Champion",
+"cost": 5,
+"power": 5,
+"toughness": 6,
+"color": "Crimson",
+"abilities": [
+{
+"trigger": "on_ally_dies",
+"effect": "drain_life",
+"value": 1,
+"oncePerTurn": true
+},
+{
+"trigger": "on_ally_dies",
+"effect": "draw_cards",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Legendary"
+},
+{
+"id": 1025,
+"source_id": "LC01",
+"name": "Dawn Procession",
+"type": "Champion",
+"cost": 1,
+"power": 1,
+"toughness": 2,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "enter_battlefield",
+"effect": "reveal_card",
+"target": "hand"
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1026,
+"source_id": "LC02",
+"name": "Pale Torchbearer",
+"type": "Champion",
+"cost": 1,
+"power": 1,
+"toughness": 1,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "attacks",
+"effect": "custom",
+"text": "When this attacks, target enemy unit gets -1 life this turn."
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1027,
+"source_id": "LC03",
+"name": "Wicker Psalm",
+"type": "Decree",
+"cost": 2,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "reveal_hidden"
+},
+{
+"trigger": "on_cast",
+"effect": "custom",
+"text": "If it is a Omen, draw a card."
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1028,
+"source_id": "LC04",
+"name": "Silver Reliquary",
+"type": "Relic",
+"cost": 2,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_reveal",
+"effect": "drain_life",
+"value": 1,
+"oncePerTurn": true
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1029,
+"source_id": "LC05",
+"name": "Lantern Acolyte",
+"type": "Champion",
+"cost": 2,
+"power": 2,
+"toughness": 2,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "static",
+"effect": "pump_self_stats",
+"value": 1,
+"text": "When you purge a curse or omen, this gets +1/+1 this turn."
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1030,
+"source_id": "LC06",
+"name": "Sanctify",
+"type": "Decree",
+"cost": 3,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "purge_target",
+"target": "curse"
+},
+{
+"trigger": "on_cast",
+"effect": "create_token",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1031,
+"source_id": "LC07",
+"name": "Ash-Watch Hunter",
+"type": "Champion",
+"cost": 3,
+"power": 3,
+"toughness": 2,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_reveal",
+"effect": "pump_self_stats",
+"value": 1
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1032,
+"source_id": "LC08",
+"name": "Veil of Saffron",
+"type": "Omen",
+"cost": 3,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "static",
+"effect": "reduce_combat_damage_all",
+"value": 2,
+"target": "ally"
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1033,
+"source_id": "LC09",
+"name": "Candleguard",
+"type": "Champion",
+"cost": 4,
+"power": 3,
+"toughness": 4,
+"color": "Lantern",
+"abilities": [
+"Guard",
+{
+"trigger": "enter_battlefield",
+"effect": "reveal_top_deck"
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1034,
+"source_id": "LC10",
+"name": "Processional Gate",
+"type": "Domain",
+"cost": 5,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "static",
+"effect": "custom",
+"text": "Your first purge each turn costs 1 less.",
+"oncePerTurn": true
+}
+],
+"rarity": "Common"
+},
+{
+"id": 1035,
+"source_id": "LC11",
+"name": "Watcher's Litany",
+"type": "Decree",
+"cost": 1,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "reveal_card"
+},
+{
+"trigger": "on_cast",
+"effect": "custom",
+"text": "Draw a card if it costs 2 or less."
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1036,
+"source_id": "LC12",
+"name": "Bramble-Eyed Sentinel",
+"type": "Champion",
+"cost": 2,
+"power": 2,
+"toughness": 3,
+"color": "Lantern",
+"abilities": [
+"Guard",
+{
+"trigger": "on_reveal",
+"effect": "pump_self_stats",
+"value": 1,
+"target": "enemy_hidden"
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1037,
+"source_id": "LC13",
+"name": "Halo Step",
+"type": "Relic",
+"cost": 3,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_reveal",
+"effect": "next_card_costs_less",
+"value": 1,
+"target": "decree",
+"oncePerTurn": true
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1038,
+"source_id": "LC14",
+"name": "Rite of Unmasking",
+"type": "Decree",
+"cost": 4,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_cast",
+"effect": "reveal_hidden"
+},
+{
+"trigger": "on_cast",
+"effect": "damage_hidden",
+"value": 2,
+"target": "enemy_unit"
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1039,
+"source_id": "LC15",
+"name": "Hound of the First Light",
+"type": "Champion",
+"cost": 4,
+"power": 4,
+"toughness": 3,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "attacks",
+"effect": "draw_cards",
+"value": 1,
+"target": "revealed_unit"
+}
+],
+"rarity": "Uncommon"
+},
+{
+"id": 1040,
+"source_id": "LC16",
+"name": "Abbey Bell Omen",
+"type": "Omen",
+"cost": 6,
+"color": "Lantern",
+"abilities": [
+{
+"trigger": "on_enemy_attack",
+"effect": "purge_target",
+"target": "attacking_unit"
+}
+],
+"rarity": "Uncommon"
+}
+]

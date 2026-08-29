@@ -1,0 +1,376 @@
+[
+  {
+    "id": 1061,
+    "source_id": "SD13",
+    "name": "Sunforged Captain",
+    "type": "Champion",
+    "cost": 3,
+    "power": 3,
+    "toughness": 4,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "attacks",
+        "effect": "buff_all_allies",
+        "value": 1,
+        "target": "other_champions"
+      }
+    ],
+    "rarity": "Uncommon"
+  },
+  {
+    "id": 1062,
+    "source_id": "SD14",
+    "name": "Press the Advance",
+    "type": "Decree",
+    "cost": 4,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "on_cast",
+        "effect": "ready_two_champions"
+      },
+      {
+        "trigger": "on_cast",
+        "effect": "pump_stats_target",
+        "value": 1,
+        "target": "ready_champions"
+      }
+    ],
+    "rarity": "Uncommon"
+  },
+  {
+    "id": 1063,
+    "source_id": "SD15",
+    "name": "Field of Spears",
+    "type": "Domain",
+    "cost": 4,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "attacks",
+        "effect": "damage_any_target",
+        "value": 1,
+        "target": "enemy_leader",
+        "oncePerTurn": true
+      }
+    ],
+    "rarity": "Uncommon"
+  },
+  {
+    "id": 1064,
+    "source_id": "SD16",
+    "name": "Solar Omen",
+    "type": "Omen",
+    "cost": 6,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "attacks",
+        "effect": "create_token",
+        "value": 1,
+        "text": "Omen - When three or more allies attack, create a 3/3 Sunguard."
+      }
+    ],
+    "rarity": "Uncommon"
+  },
+  {
+    "id": 1065,
+    "source_id": "SD17",
+    "name": "Alexander the Great",
+    "type": "Champion",
+    "cost": 1,
+    "power": 3,
+    "toughness": 2,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "attacks",
+        "effect": "pump_stats_target",
+        "value": 1,
+        "target": "another_champion"
+      }
+    ],
+    "rarity": "Rare"
+  },
+  {
+    "id": 1066,
+    "source_id": "SD18",
+    "name": "Siege Anthem",
+    "type": "Decree",
+    "cost": 2,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "on_cast",
+        "effect": "buff_all_allies",
+        "value": 1,
+        "target": "champions"
+      },
+      {
+        "trigger": "on_cast",
+        "effect": "custom",
+        "text": "Your Champions gain Guard this turn."
+      }
+    ],
+    "rarity": "Rare"
+  },
+  {
+    "id": 1067,
+    "source_id": "SD19",
+    "name": "Phalanx Outrider",
+    "type": "Champion",
+    "cost": 3,
+    "power": 4,
+    "toughness": 3,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "attacks",
+        "effect": "draw_cards",
+        "value": 1,
+        "text": "When this attacks with another Champion, draw a card."
+      }
+    ],
+    "rarity": "Rare"
+  },
+  {
+    "id": 1068,
+    "source_id": "SD20",
+    "name": "Crest of the Unbroken Line",
+    "type": "Relic",
+    "cost": 4,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "attacks",
+        "effect": "drain_life",
+        "value": 1,
+        "oncePerTurn": true
+      }
+    ],
+    "rarity": "Rare"
+  },
+  {
+    "id": 1069,
+    "source_id": "SD21",
+    "name": "Imperial Breakthrough",
+    "type": "Decree",
+    "cost": 4,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "on_cast",
+        "effect": "buff_all_allies",
+        "value": 1,
+        "target": "attacking_champions"
+      },
+      {
+        "trigger": "on_cast",
+        "effect": "custom",
+        "text": "If one dies, create a 1/1 Recruit."
+      }
+    ],
+    "rarity": "Rare"
+  },
+  {
+    "id": 1070,
+    "source_id": "SD22",
+    "name": "Sunforged Warcamp",
+    "type": "Domain",
+    "cost": 7,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "attacks",
+        "effect": "create_token",
+        "value": 1,
+        "oncePerTurn": true,
+        "text": "Once each turn, when you attack with three or more allies, create a 2/2 Recruit."
+      }
+    ],
+    "rarity": "Rare"
+  },
+  {
+    "id": 1071,
+    "source_id": "SD23",
+    "name": "King Mansa Musa",
+    "type": "Champion",
+    "cost": 2,
+    "power": 2,
+    "toughness": 4,
+    "color": "Sunforged",
+    "abilities": [
+      {
+        "trigger": "on_gain_life",
+        "effect": "create_token",
+        "value": 1
+      }
+    ],
+    "rarity": "Legendary"
+  },
+  {
+    "id": 1072,
+    "source_id": "SD24",
+    "name": "General Lysander",
+    "type": "Champion",
+    "cost": 4,
+    "power": 5,
+    "toughness": 5,
+    "color": "Sunforged",
+    "abilities": [
+      "Guard",
+      {
+        "trigger": "attacks",
+        "effect": "ready_champion",
+        "target": "another_champion"
+      }
+    ],
+    "rarity": "Legendary"
+  },
+  {
+    "id": 1073,
+    "source_id": "GA01",
+    "name": "Ledger of Delays",
+    "type": "Decree",
+    "cost": 1,
+    "color": "Gilded",
+    "abilities": [
+      {
+        "trigger": "on_cast",
+        "effect": "custom",
+        "text": "Target unit gets -1 attack this turn."
+      },
+      {
+        "trigger": "on_cast",
+        "effect": "custom",
+        "text": "Draw a card if it was already damaged."
+      }
+    ],
+    "rarity": "Common"
+  },
+  {
+    "id": 1074,
+    "source_id": "GA02",
+    "name": "Clockwork Pupil",
+    "type": "Champion",
+    "cost": 1,
+    "power": 1,
+    "toughness": 2,
+    "color": "Gilded",
+    "abilities": [
+      {
+        "trigger": "enter_battlefield",
+        "effect": "scry_1"
+      }
+    ],
+    "rarity": "Common"
+  },
+  {
+    "id": 1075,
+    "source_id": "GA03",
+    "name": "Archivist's Mule",
+    "type": "Champion",
+    "cost": 2,
+    "power": 2,
+    "toughness": 2,
+    "color": "Gilded",
+    "abilities": [
+      {
+        "trigger": "on_decree_played",
+        "effect": "buff_ally_toughness",
+        "value": 1
+      }
+    ],
+    "rarity": "Common"
+  },
+  {
+    "id": 1076,
+    "source_id": "GA04",
+    "name": "Refine the Sequence",
+    "type": "Decree",
+    "cost": 2,
+    "color": "Gilded",
+    "abilities": [
+      {
+        "trigger": "on_cast",
+        "effect": "draw_then_discard"
+      },
+      {
+        "trigger": "on_cast",
+        "effect": "custom",
+        "text": "If you discarded a card costing 4 or more, gain 1 life."
+      }
+    ],
+    "rarity": "Common"
+  },
+  {
+    "id": 1077,
+    "source_id": "GA05",
+    "name": "Numerator Adept",
+    "type": "Champion",
+    "cost": 3,
+    "power": 2,
+    "toughness": 4,
+    "color": "Gilded",
+    "abilities": [
+      {
+        "trigger": "on_second_card_played",
+        "effect": "pump_self_stats",
+        "value": 1
+      }
+    ],
+    "rarity": "Common"
+  },
+  {
+    "id": 1078,
+    "source_id": "GA06",
+    "name": "Stall the Moment",
+    "type": "Decree",
+    "cost": 3,
+    "color": "Gilded",
+    "abilities": [
+      {
+        "trigger": "on_cast",
+        "effect": "bounce_champion",
+        "target": "cost_2_or_less"
+      }
+    ],
+    "rarity": "Common"
+  },
+  {
+    "id": 1079,
+    "source_id": "GA07",
+    "name": "Prism Ledger",
+    "type": "Relic",
+    "cost": 3,
+    "color": "Gilded",
+    "abilities": [
+      {
+        "trigger": "on_draw",
+        "effect": "scry_1",
+        "oncePerTurn": true,
+        "text": "Once each turn, after you draw your second card, scry 1."
+      }
+    ],
+    "rarity": "Common"
+  },
+  {
+    "id": 1080,
+    "source_id": "GA08",
+    "name": "Calculating Savant",
+    "type": "Champion",
+    "cost": 4,
+    "power": 3,
+    "toughness": 4,
+    "color": "Gilded",
+    "abilities": [
+      {
+        "trigger": "enter_battlefield",
+        "effect": "draw_then_discard_gain_life",
+        "text": "When this enters play, you may discard a card. If you do, draw 2 cards."
+      }
+    ],
+    "rarity": "Common"
+  }
+]

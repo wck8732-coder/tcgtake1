@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCG Prototype</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- START SCREEN -->
+  <div id="start-screen">
+    <h1>TCG Prototype</h1>
+    <div id="step-difficulty">
+      <p>Select Format</p>
+      <div id="format-select">
+        <button data-format="Classic">Classic (4x copies)</button>
+        <button data-format="Standard">Standard (rarity limits)</button>
+      </div>
+      <p>Select AI Difficulty</p>
+      <div id="difficulty-select">
+        <button data-difficulty="easy">Easy</button>
+        <button data-difficulty="medium">Medium</button>
+        <button data-difficulty="hard">Hard</button>
+      </div>
+    </div>
+    <div id="step-deck" class="hidden">
+      <p>Choose Your Deck</p>
+      <div id="deck-select"></div>
+    </div>
+  </div>
+
+  <!-- GAME BOARD -->
+  <div id="game-container" class="hidden">
+
+    <!-- AI ZONE - compact: stats bar + face-down hand + battlefield -->
+    <div id="ai-zone">
+      <div id="ai-info" class="zone-header compact-header">
+        <span class="player-name">Opponent</span>
+        <span class="life-display">Life: <span id="ai-life">20</span></span>
+        <div id="ai-mana" class="mana-pool"></div>
+        <span class="deck-count">Deck: <span id="ai-deck-count">0</span></span>
+        <div id="ai-exile" class="zone-stack-inline">
+          <span class="zone-label-inline">Exile</span>
+          <div class="zone-stack-cards"></div>
+        </div>
+        <div id="ai-graveyard" class="zone-stack-inline">
+          <span class="zone-label-inline">Grave</span>
+          <div class="zone-stack-cards"></div>
+        </div>
+      </div>
+      </div>
+      <div id="ai-hand-row">
+        <div id="ai-hand" class="hand ai-hand"></div>
+      </div>
+      <div id="ai-battlefield" class="battlefield">
+        <div id="ai-lands" class="battlefield-row">
+          <span class="zone-label">Lands</span>
+          <div class="card-row"></div>
+        </div>
+        <div id="ai-relics" class="battlefield-row">
+          <span class="zone-label">Relics</span>
+          <div class="card-row"></div>
+        </div>
+        <div id="ai-domains" class="battlefield-row">
+          <span class="zone-label">Domains</span>
+          <div class="card-row"></div>
+        </div>
+        <div id="ai-omens" class="battlefield-row">
+          <span class="zone-label">Omens</span>
+          <div class="card-row"></div>
+        </div>
+        <div id="ai-champions" class="battlefield-row">
+          <span class="zone-label">Champions</span>
+          <div class="card-row"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER BAR -->
+    <div id="center-bar">
+      <div id="turn-info">
+        <span id="turn-player">Player's Turn</span>
+        <span id="turn-number">Turn 1</span>
+      </div>
+      <div id="phase-indicator">
+        <span class="phase" data-phase="untap">Untap</span>
+        <span class="phase" data-phase="draw">Draw</span>
+        <span class="phase active" data-phase="main1">Main 1</span>
+        <span class="phase" data-phase="combat">Combat</span>
+        <span class="phase" data-phase="main2">Main 2</span>
+        <span class="phase" data-phase="end">End</span>
+      </div>
+      <div id="controls">
+        <button id="btn-next-phase" class="control-btn">Next Phase</button>
+        <button id="btn-attack" class="control-btn hidden">Attack</button>
+        <button id="btn-confirm" class="control-btn hidden">Confirm</button>
+        <button id="btn-end-turn" class="control-btn">End Turn</button>
+        <button id="btn-concede" class="control-btn danger-btn">Concede</button>
+      </div>
+      <div id="action-log">
+        <div class="log-entries"></div>
+      </div>
+    </div>
+
+    <!-- PLAYER ZONE -->
+    <div id="player-zone">
+      <div id="player-battlefield" class="battlefield">
+        <div id="player-champions" class="battlefield-row">
+          <span class="zone-label">Champions</span>
+          <div class="card-row"></div>
+        </div>
+        <div id="player-relics" class="battlefield-row">
+          <span class="zone-label">Relics</span>
+          <div class="card-row"></div>
+        </div>
+        <div id="player-domains" class="battlefield-row">
+          <span class="zone-label">Domains</span>
+          <div class="card-row"></div>
+        </div>
+        <div id="player-omens" class="battlefield-row">
+          <span class="zone-label">Omens</span>
+          <div class="card-row"></div>
+        </div>
+        <div id="player-lands" class="battlefield-row">
+          <span class="zone-label">Lands</span>
+          <div class="card-row"></div>
+        </div>
+      </div>
+      <div id="player-hand-row">
+        <div id="player-hand" class="hand player-hand"></div>
+      </div>
+      <div id="player-info" class="zone-header compact-header">
+        <span class="player-name">Player</span>
+        <span class="life-display">Life: <span id="player-life">20</span></span>
+        <div id="player-mana" class="mana-pool"></div>
+        <span class="deck-count">Deck: <span id="player-deck-count">0</span></span>
+        <div id="player-exile" class="zone-stack-inline">
+          <span class="zone-label-inline">Exile</span>
+          <div class="zone-stack-cards"></div>
+        </div>
+        <div id="player-graveyard" class="zone-stack-inline">
+          <span class="zone-label-inline">Grave</span>
+          <div class="zone-stack-cards"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COIN TOSS -->
+  <div id="coin-toss-screen" class="hidden">
+    <h2>Coin Toss</h2>
+    <div id="coin-display">?</div>
+    <p id="coin-prompt">Choose a side:</p>
+    <div id="coin-choices">
+      <button id="coin-heads" class="control-btn">Heads</button>
+      <button id="coin-tails" class="control-btn">Tails</button>
+    </div>
+    <p id="coin-result" class="hidden"></p>
+    <button id="coin-continue" class="control-btn hidden">Continue</button>
+  </div>
+
+  <!-- MULLIGAN -->
+  <div id="mulligan-screen" class="hidden">
+    <div class="mull-panel">
+      <h2 id="mull-title">Your Opening Hand</h2>
+      <p>Keep this hand, or mulligan for one fewer card?</p>
+      <div id="mull-hand-preview"></div>
+      <p class="mull-stats"><span id="mull-count">Cards: 7</span> &nbsp;|&nbsp; <span id="mull-lands">Lands: 0</span></p>
+      <div class="mull-actions">
+        <button id="mull-keep-btn" class="control-btn">Keep Hand</button>
+        <button id="mull-toss-btn" class="control-btn">Mulligan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMBAT BANNER -->
+  <div id="combat-banner" class="hidden"></div>
+
+  <!-- BLOCKER SELECTION SCREEN -->
+  <div id="blocker-screen" class="hidden">
+    <div class="end-game-panel">
+      <h2>Declare Blockers</h2>
+      <p id="blocker-attacker"></p>
+      <div id="blocker-defenders" class="card-row"></div>
+      <div class="end-game-actions">
+        <button id="blocker-done-btn" class="control-btn">Done Blocking</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- END GAME MODAL -->
+  <div id="end-game-modal" class="hidden">
+    <div class="end-game-panel">
+      <h2 id="end-game-title">Game Over</h2>
+      <p id="end-game-subtitle"></p>
+      <div class="end-game-actions">
+        <button id="end-play-again-btn" class="control-btn">Play Again</button>
+        <button id="end-new-game-btn" class="control-btn">New Game</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESPONSE / PRIORITY WINDOW -->
+  <div id="response-modal" class="hidden">
+    <p id="response-subtitle"></p>
+    <div id="response-actions" class="end-game-actions"></div>
+    <div class="end-game-actions">
+      <button id="response-no-btn" class="control-btn">Decline</button>
+    </div>
+  </div>
+
+  <!-- CARD MODAL -->
+  <div id="card-modal" class="hidden">
+    <div id="card-modal-content"></div>
+    <button id="card-modal-close">X</button>
+  </div>
+
+  <!-- CARD TEMPLATE (hidden, cloned by JS) -->
+  <template id="card-template">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-cost"></span>
+        <span class="card-name"></span>
+        <span class="card-rarity-badge hidden"></span>
+      </div>
+      <div class="card-art"></div>
+      <div class="card-type-line"></div>
+      <div class="card-text"></div>
+      <div class="card-flavor hidden"></div>
+      <div class="card-keywords"></div>
+      <div class="card-footer">
+        <span class="card-color-badge"></span>
+        <span class="card-stats"></span>
+      </div>
+    </div>
+  </template>
+
+  <script src="shared/utils.js"></script>
+  <script src="shared/keywords.js"></script>
+  <script src="shared/phases.js"></script>
+  <script src="shared/cost-utils.js"></script>
+  <script src="shared/factions.js"></script>
+  <script src="shared/effects.js"></script>
+  <script src="shared/card-schema.js"></script>
+  <script src="rules_engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

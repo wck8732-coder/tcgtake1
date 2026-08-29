@@ -1,0 +1,300 @@
+import pandas as pd
+import json
+import os
+
+MASTER_CSV = "tcgtake1_master_card_database.csv"
+OUT_DIR = "runtime_package"
+
+os.makedirs(OUT_DIR, exist_ok=True)
+
+master = pd.read_csv(MASTER_CSV)
+
+records = []
+for _, row in master.iterrows():
+    rec = {}
+    for col, val in row.items():
+        if pd.isna(val):
+            rec[col] = ""
+        elif col == "version":
+            rec[col] = str(val)
+        elif col in ["card_uid", "cost", "set_number", "max_copies_per_deck"]:
+            rec[col] = int(val)
+        elif col in ["is_legendary", "is_token"]:
+            rec[col] = bool(val)
+        elif col in ["attack", "life"]:
+            if val == "":
+                rec[col] = ""
+            elif isinstance(val, float) and float(val).is_integer():
+                rec[col] = int(val)
+            else:
+                rec[col] = val
+        else:
+            rec[col] = val
+    records.append(rec)
+
+with open(os.path.join(OUT_DIR, "tcgtake1_master_card_database.master.json"), "w", encoding="utf-8") as f:
+    json.dump(records, f, indent=2)
+
+cards = records
+
+keywords = [
+    {
+        "keyword": "Drain",
+        "rules_text": "When this unit deals combat damage, gain that much life.",
+        "applies_to": ["Champion"],
+        "reminder_short": "Combat damage heals you."
+    },
+    {
+        "keyword": "Guard",
+        "rules_text": "This unit must be attacked before non-Guard allies if it can be attacked.",
+        "applies_to": ["Champion"],
+        "reminder_short": "Protects your other units."
+    },
+    {
+        "keyword": "Recall X",
+        "rules_text": "When this unit dies, return it to your hand at end of turn if its cost is X or less.",
+        "applies_to": ["Champion"],
+        "reminder_short": "Returns to hand under the stated cost limit."
+    },
+    {
+        "keyword": "Omen",
+        "rules_text": "You may set this card face down. Reveal it when its trigger condition happens.",
+        "applies_to": ["Omen"],
+        "reminder_short": "Set face down, reveal on trigger."
+    }
+]
+
+factions = [
+    {
+        "code": "CT",
+        "name": "Crimson Thrones",
+        "identity": "Drain, sacrifice, recursion, aristocratic undead value.",
+        "archetypes": [
+            {"tag": "A1", "name": "Bloodcourt Attrition"},
+            {"tag": "A2", "name": "Last Supper Sacrifice"}
+        ],
+        "playstyle": "Midrange attrition",
+        "keywords_focus": ["Drain", "Recall X"],
+        "starter_deck_id": "SD-CT-001"
+    },
+    {
+        "code": "LC",
+        "name": "Lantern Covenant",
+        "identity": "Reveal, purge, holy discipline, marked pursuit.",
+        "archetypes": [
+            {"tag": "A1", "name": "Sanctified Control"},
+            {"tag": "A2", "name": "Pursuit Tempo"}
+        ],
+        "playstyle": "Tempo-control",
+        "keywords_focus": ["Guard", "Omen"],
+        "starter_deck_id": "SD-LC-001"
+    },
+    {
+        "code": "SD",
+        "name": "Sunforged Dominion",
+        "identity": "Rally, formation, battlefield pressure, disciplined conquest.",
+        "archetypes": [
+            {"tag": "A1", "name": "Golden March"},
+            {"tag": "A2", "name": "Imperial Formation"}
+        ],
+        "playstyle": "Aggro-midrange",
+        "keywords_focus": ["Guard"],
+        "starter_deck_id": "SD-SD-001"
+    },
+    {
+        "code": "GA",
+        "name": "Gilded Axiom",
+        "identity": "Denial, sequencing, card flow, prediction and intellect.",
+        "archetypes": [
+            {"tag": "A1", "name": "Paradox Control"},
+            {"tag": "A2", "name": "Golden Equation Tempo"}
+        ],
+        "playstyle": "Control-tempo",
+        "keywords_focus": ["Omen"],
+        "starter_deck_id": "SD-GA-001"
+    },
+    {
+        "code": "N",
+        "name": "Neutral",
+        "identity": "Flexible support, utility, mercenaries, cross-faction glue.",
+        "archetypes": [
+            {"tag": "NX1", "name": "Aggro/Tempo Support"},
+            {"tag": "NX2", "name": "Control/Value Support"},
+            {"tag": "NX3", "name": "Universal Glue"},
+            {"tag": "NX4", "name": "Niche Tech / Build-around"}
+        ],
+        "playstyle": "Support package",
+        "keywords_focus": ["Guard", "Drain", "Omen"],
+        "starter_deck_id": None
+    }
+]
+
+def ids_for(faction):
+    df = master[master["faction"] == faction].copy()
+    df = df.sort_values(["cost", "id"])
+    return df["id"].tolist()
+
+starter_decks = [
+    {
+        "deck_id": "SD-CT-001",
+        "name": "Crimson Thrones Starter",
+        "faction": "Crimson Thrones",
+        "format": "launch_starter",
+        "max_deck_size": 40,
+        "max_hand_size": 6,
+        "leader": "CT23",
+        "featured_cards": ids_for("Crimson Thrones")[:12],
+        "card_counts": [{"id": cid, "count": 1 if cid in ["CT23", "CT24"] else 2} for cid in ids_for("Crimson Thrones")[:22]]
+    },
+    {
+        "deck_id": "SD-LC-001",
+        "name": "Lantern Covenant Starter",
+        "faction": "Lantern Covenant",
+        "format": "launch_starter",
+        "max_deck_size": 40,
+        "max_hand_size": 6,
+        "leader": "LC23",
+        "featured_cards": ids_for("Lantern Covenant")[:12],
+        "card_counts": [{"id": cid, "count": 1 if cid in ["LC23", "LC24"] else 2} for cid in ids_for("Lantern Covenant")[:22]]
+    },
+    {
+        "deck_id": "SD-SD-001",
+        "name": "Sunforged Dominion Starter",
+        "faction": "Sunforged Dominion",
+        "format": "launch_starter",
+        "max_deck_size": 40,
+        "max_hand_size": 6,
+        "leader": "SD23",
+        "featured_cards": ids_for("Sunforged Dominion")[:12],
+        "card_counts": [{"id": cid, "count": 1 if cid in ["SD23", "SD24"] else 2} for cid in ids_for("Sunforged Dominion")[:22]]
+    },
+    {
+        "deck_id": "SD-GA-001",
+        "name": "Gilded Axiom Starter",
+        "faction": "Gilded Axiom",
+        "format": "launch_starter",
+        "max_deck_size": 40,
+        "max_hand_size": 6,
+        "leader": "GA23",
+        "featured_cards": ids_for("Gilded Axiom")[:12],
+        "card_counts": [{"id": cid, "count": 1 if cid in ["GA23", "GA24"] else 2} for cid in ids_for("Gilded Axiom")[:22]]
+    }
+]
+
+for deck in starter_decks:
+    total = sum(x["count"] for x in deck["card_counts"])
+    pool = [x for x in deck["card_counts"]]
+    i = 0
+    while total < 40 and pool:
+        item = pool[i % len(pool)]
+        if item["count"] < 3:
+            item["count"] += 1
+            total += 1
+        i += 1
+
+set_manifest = [{
+    "set_code": "TCGTAKE1-CORE",
+    "name": "TCGTake1 Core Set",
+    "release_stage": "prototype",
+    "card_count": len(records),
+    "factions": sorted(master["faction"].dropna().unique().tolist()),
+    "rules_version": "0.1"
+}]
+
+archetypes = [
+    {"tag":"A1","faction":"Crimson Thrones","name":"Bloodcourt Attrition","gameplan":"Drain, sacrifice, recursion."},
+    {"tag":"A2","faction":"Crimson Thrones","name":"Last Supper Sacrifice","gameplan":"Death triggers and life pressure."},
+    {"tag":"A1","faction":"Lantern Covenant","name":"Sanctified Control","gameplan":"Reveal, purge, denial."},
+    {"tag":"A2","faction":"Lantern Covenant","name":"Pursuit Tempo","gameplan":"Marked pressure and tactical trades."},
+    {"tag":"A1","faction":"Sunforged Dominion","name":"Golden March","gameplan":"Board flood and combat pressure."},
+    {"tag":"A2","faction":"Sunforged Dominion","name":"Imperial Formation","gameplan":"Formation buffs and disciplined attacks."},
+    {"tag":"A1","faction":"Gilded Axiom","name":"Paradox Control","gameplan":"Prediction, denial, card flow."},
+    {"tag":"A2","faction":"Gilded Axiom","name":"Golden Equation Tempo","gameplan":"Efficient sequencing and knowledge advantage."},
+    {"tag":"NX1","faction":"Neutral","name":"Aggro/Tempo Support","gameplan":"Low-cost flexible support."},
+    {"tag":"NX2","faction":"Neutral","name":"Control/Value Support","gameplan":"Utility and card advantage support."},
+    {"tag":"NX3","faction":"Neutral","name":"Universal Glue","gameplan":"Faction bridge and consistency tools."},
+    {"tag":"NX4","faction":"Neutral","name":"Niche Tech / Build-around","gameplan":"Meta answers and special engines."}
+]
+
+keyword_index = [
+    {"keyword":"Drain","reminder":"When this unit deals combat damage, its controller gains that much life.","primary_card_type":"Champion"},
+    {"keyword":"Guard","reminder":"Opponents must attack this first when legal.","primary_card_type":"Champion"},
+    {"keyword":"Recall X","reminder":"When this dies, return it to hand later if its cost is X or less.","primary_card_type":"Champion"},
+    {"keyword":"Omen","reminder":"May be set face down and revealed when its trigger condition occurs.","primary_card_type":"Omen"}
+]
+
+effect_registry_seed = []
+for rec in records:
+    txt = str(rec.get("rules_text", "")).strip()
+    effects = []
+    lower = txt.lower()
+    if "dies" in lower and "each player loses 1 life" in lower:
+        effects = ["EFF_BOTH_PLAYERS_LOSE_1_ON_DEATH"]
+    elif "draw" in lower:
+        effects = ["EFF_DRAW_GENERIC"]
+    elif ("heal" in lower) or ("gain" in lower and "life" in lower):
+        effects = ["EFF_HEAL_GENERIC"]
+    elif "destroy" in lower:
+        effects = ["EFF_DESTROY_GENERIC"]
+    elif "sacrifice" in lower:
+        effects = ["EFF_SACRIFICE_GENERIC"]
+    elif "purge" in lower:
+        effects = ["EFF_PURGE_GENERIC"]
+    elif "create" in lower and "token" in lower:
+        effects = ["EFF_CREATE_TOKEN_GENERIC"]
+
+    if rec.get("keywords", ""):
+        for k in str(rec["keywords"]).split(","):
+            k = k.strip()
+            if k:
+                effects.append(f"KW_{k.upper().replace(' ', '_')}")
+
+    effect_registry_seed.append({
+        "card_id": rec["id"],
+        "rules_text": txt,
+        "effect_ids": effects
+    })
+
+localization_en = {
+    "locale": "en-US",
+    "cards": {r["id"]: {"name": r["name"], "rules_text": r["rules_text"]} for r in records},
+    "keywords": {k["keyword"]: {"name": k["keyword"], "reminder": k["reminder"]} for k in keyword_index},
+    "factions": {f: {"name": f} for f in sorted(master["faction"].dropna().unique().tolist())}
+}
+
+build_manifest = {
+    "package_name": "tcgtake1_runtime_package",
+    "rules_version": "0.1",
+    "generated_files": [
+        "tcgtake1_master_card_database.master.json",
+        "cards.json",
+        "keywords.json",
+        "factions.json",
+        "starter_decks.json",
+        "set_manifest.json",
+        "archetypes.json",
+        "keyword_index.json",
+        "effect_registry_seed.json",
+        "localization.en-US.json",
+        "build_manifest.json"
+    ]
+}
+
+outputs = {
+    "cards.json": cards,
+    "keywords.json": keywords,
+    "factions.json": factions,
+    "starter_decks.json": starter_decks,
+    "set_manifest.json": set_manifest,
+    "archetypes.json": archetypes,
+    "keyword_index.json": keyword_index,
+    "effect_registry_seed.json": effect_registry_seed,
+    "localization.en-US.json": localization_en,
+    "build_manifest.json": build_manifest
+}
+
+for filename, payload in outputs.items():
+    with open(os.path.join(OUT_DIR, filename), "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+
+print(f"Done. Wrote files to ./{OUT_DIR}/")

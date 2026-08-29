@@ -1,0 +1,9 @@
+# tcg-unity-engine/
+
+Future home for the standalone Unity engine port of the TCG.
+
+The current Unity template lives at `tcg-web-prototype/unity/` (Assets/ layout with engine stubs,
+gated on `decks.json` rebuild). This repo folder is reserved for a full Unity solution/project
+separate from the web prototype.
+
+Placeholder so the folder is tracked by git. Delete this file once the engine project lands here.
