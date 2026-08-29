@@ -864,7 +864,10 @@ undefineAttacker(player, champion) {
       case 'damage_any_target': {
         const dmg = ability.value;
         log(`${source.name}: ${ability.name} deals ${dmg} damage!`, 'play');
-        if (context.target && !context.target.isFace) {
+        if (ability.target === 'enemy_leader' || ability.target === 'leader') {
+          opponent.life -= dmg;
+          log(`${opponent.name} takes ${dmg} damage.`, 'damage');
+        } else if (context.target && !context.target.isFace) {
           context.target.toughness -= dmg;
           log(`${context.target.name} takes ${dmg} damage.`, 'damage');
           if (context.target.toughness <= 0) this.destroyChampion(opponent, context.target);

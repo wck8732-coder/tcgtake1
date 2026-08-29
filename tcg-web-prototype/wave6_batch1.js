@@ -1,5 +1,6 @@
 const fs = require('fs');
-const cards = JSON.parse(fs.readFileSync('C:/Users/Blayne/Documents/Default Project/cards.json', 'utf8'));
+const path = require('path');
+const cards = JSON.parse(fs.readFileSync(path.join(__dirname, 'cards.json'), 'utf8'));
 
 const instantAbilities = {
   281:[{name:'Lava Dart',trigger:'on_cast',effect:'damage_any_target',value:1}],

@@ -1059,7 +1059,10 @@ class GameState {
       }
       case 'damage_any_target': {
         const dmg = ability.value;
-        if (enemyChampions.length > 0) {
+        // ability.target is honored: enemy_leader/leader → hit the player directly.
+        if (ability.target === 'enemy_leader' || ability.target === 'leader') {
+          opponent.life -= dmg;
+        } else if (enemyChampions.length > 0) {
           const target = enemyChampions[Math.floor(Math.random() * enemyChampions.length)];
           target.toughness -= dmg;
           if (target.toughness <= 0) this.destroyChampion(opponent, target);
@@ -1070,6 +1073,7 @@ class GameState {
       }
       case 'damage_random_enemy': {
         const dmg = ability.value;
+        // Random opposing champion; hits the opposing player only when no eligible champions.
         if (enemyChampions.length > 0) {
           const target = enemyChampions[Math.floor(Math.random() * enemyChampions.length)];
           target.toughness -= dmg;

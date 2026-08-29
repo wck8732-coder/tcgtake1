@@ -224,7 +224,7 @@
     "name": "Goldsworn Recruit",
     "type": "Champion",
     "cost": 1,
-    "power": 1,
+    "power": 2,
     "toughness": 1,
     "providesMana": null,
     "color": "Crimson",
@@ -255,7 +255,7 @@
     "name": "Minted Sentry",
     "type": "Champion",
     "cost": 1,
-    "power": 1,
+    "power": 2,
     "toughness": 2,
     "providesMana": null,
     "color": "Crimson",
@@ -270,7 +270,7 @@
     "name": "Penny Ante Scout",
     "type": "Champion",
     "cost": 1,
-    "power": 1,
+    "power": 2,
     "toughness": 1,
     "providesMana": null,
     "color": "Crimson",
@@ -314,10 +314,11 @@
         "oncePerTurn": false,
         "activationCost": null
       },
-      "Quickdraw"
+      "Quickdraw",
+      "Overrun"
     ],
     "rarity": "Uncommon",
-    "text": "When you cast this, deal 2 damage to target relic.\nQuickdraw",
+    "text": "When you cast this, deal 2 damage to target relic.\nQuickdraw\nOverrun",
     "flavor": "Back alley bravado backed by a chariot of fire."
   },
   {
@@ -330,7 +331,8 @@
     "providesMana": null,
     "color": "Crimson",
     "abilities": [
-      "Swiftstrike"
+      "Swiftstrike",
+      "Intimidate"
     ],
     "rarity": "Common",
     "flavor": "Heads, mayhem. Tails, worse."
@@ -353,7 +355,8 @@
         "oncePerTurn": false,
         "activationCost": null
       },
-      "Swiftstrike"
+      "Swiftstrike",
+      "Overrun"
     ],
     "rarity": "Rare"
   },
@@ -2824,13 +2827,13 @@
         "name": "Eruption",
         "trigger": "on_cast",
         "effect": "damage_random_enemy",
-        "value": 2,
+        "value": 3,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
     "rarity": "Common",
-    "text": "Deal 2 damage to a random enemy champion.",
+    "text": "Deal 3 damage to a random enemy champion.",
     "flavor": "The earth cracks; fire answers."
   },
   {
@@ -2870,13 +2873,13 @@
         "name": "Ashfall",
         "trigger": "on_cast",
         "effect": "damage_any_target",
-        "value": 1,
+        "value": 2,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
     "rarity": "Common",
-    "text": "Deal 1 damage to any target.",
+    "text": "Deal 2 damage to any target.",
     "flavor": "Ash falls where the ember kissed."
   },
   {
@@ -2893,13 +2896,13 @@
         "name": "Caldera Blast",
         "trigger": "on_cast",
         "effect": "damage_all_enemies",
-        "value": 3,
+        "value": 4,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
     "rarity": "Rare",
-    "text": "Deal 3 damage to all enemy champions.",
+    "text": "Deal 4 damage to all enemy champions.",
     "flavor": "The caldera opens; the valley fills with fire."
   },
   {
@@ -3426,13 +3429,13 @@
         "name": "Magma Forge",
         "trigger": "end_of_turn",
         "effect": "damage_random_enemy",
-        "value": 1,
+        "value": 2,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
     "rarity": "Common",
-    "text": "At the end of your turn, deal 1 damage to a random enemy.",
+    "text": "At the end of your turn, deal 2 damage to a random enemy.",
     "flavor": "Bars of fire, coined in the foundry’s heart."
   },
   {
@@ -3449,13 +3452,13 @@
         "name": "Lava Lake",
         "trigger": "end_of_turn",
         "effect": "damage_all_enemies",
-        "value": 1,
+        "value": 2,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
     "rarity": "Uncommon",
-    "text": "At the end of your turn, deal 1 damage to all enemy champions.",
+    "text": "At the end of your turn, deal 2 damage to all enemy champions.",
     "flavor": "What the lake keeps, it keeps boiling."
   },
   {
@@ -3472,13 +3475,13 @@
         "name": "Ember Heart",
         "trigger": "end_of_turn",
         "effect": "damage_random_enemy",
-        "value": 1,
+        "value": 2,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
     "rarity": "Uncommon",
-    "text": "At the end of your turn, deal 1 damage to a random enemy.",
+    "text": "At the end of your turn, deal 2 damage to a random enemy.",
     "flavor": "The furnace never cools; it only waits."
   },
   {
@@ -3541,13 +3544,13 @@
         "name": "Pyroclasm Veil",
         "trigger": "end_of_turn",
         "effect": "damage_all_enemies",
-        "value": 1,
+        "value": 2,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
     "rarity": "Uncommon",
-    "text": "At the end of your turn, deal 1 damage to all enemy champions.",
+    "text": "At the end of your turn, deal 2 damage to all enemy champions.",
     "flavor": "The final curtain is fire."
   },
   {
@@ -3587,13 +3590,13 @@
         "name": "Magma Chamber",
         "trigger": "end_of_turn",
         "effect": "damage_random_enemy",
-        "value": 1,
+        "value": 2,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
     "rarity": "Uncommon",
-    "text": "At the end of your turn, deal 1 damage to a random enemy.",
+    "text": "At the end of your turn, deal 2 damage to a random enemy.",
     "flavor": "Pressure builds; the mountain answers."
   },
   {
@@ -4358,13 +4361,13 @@
         "name": "Lava Dart",
         "trigger": "on_cast",
         "effect": "damage_any_target",
-        "value": 1,
+        "value": 2,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
     "rarity": "Uncommon",
-    "text": "Deal 1 damage to any target.",
+    "text": "Deal 2 damage to any target.",
     "flavor": "A dart of molten glass; small, sharp, final."
   },
   {
@@ -4404,13 +4407,13 @@
         "name": "Magma Spray",
         "trigger": "on_cast",
         "effect": "damage_random_enemy",
-        "value": 2,
+        "value": 3,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
     "rarity": "Uncommon",
-    "text": "Deal 2 damage to a random enemy champion.",
+    "text": "Deal 3 damage to a random enemy champion.",
     "flavor": "Spray the forge; the metal remembers."
   },
   {
@@ -7887,14 +7890,14 @@
     "abilities": [
       {
         "name": "Obsidian Forge",
-        "trigger": "end_of_turn",
-        "effect": "ramp_extra_land",
+        "trigger": "static",
+        "effect": "double_fire_damage",
         "value": 1,
         "oncePerTurn": false,
         "activationCost": null
       }
     ],
-    "text": "At the end of your turn, you may play an additional land this turn.",
+    "text": "Your Crimson champions deal double combat damage.",
     "flavor": "Glass worked in darkness, burning bright."
   },
   {
@@ -8235,7 +8238,8 @@
         "value": 2,
         "oncePerTurn": false,
         "activationCost": null
-      }
+      },
+      "Overrun"
     ],
     "faceDownCost": {
       "generic": 2
@@ -8509,7 +8513,8 @@
     "abilities": [
       "Swiftstrike"
     ],
-    "flavor": "The pilgrimage ends at the blade’s point."
+    "text": "Swiftstrike",
+    "flavor": "A sword that outlives every oath it serves."
   },
   {
     "id": 493,
@@ -8530,7 +8535,9 @@
         "oncePerTurn": true,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "When this attacks, deal 2 damage to a random enemy.",
+    "flavor": "War and liturgy, delivered in the same breath."
   },
   {
     "id": 494,
@@ -8568,7 +8575,9 @@
     "abilities": [
       "Overrun",
       "Quickdraw"
-    ]
+    ],
+    "text": "Overrun\nQuickdraw",
+    "flavor": "The charge bellows louder than the choir."
   },
   {
     "id": 496,
@@ -8589,7 +8598,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "When this dies, deal 2 damage to all enemy champions.",
+    "flavor": "The candle that spends itself lighting the way."
   },
   {
     "id": 497,
@@ -8610,7 +8621,8 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "All combat damage to your side is reduced by 3 this turn."
   },
   {
     "id": 498,
@@ -8632,7 +8644,9 @@
         "oncePerTurn": true,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Guard\nWhen this attacks, ready target friendly champion.",
+    "flavor": "One host, one heartbeat, one wall of gold."
   },
   {
     "id": 499,
@@ -8678,7 +8692,9 @@
         "oncePerTurn": true,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Bastion\nSiphon\nAt the end of your turn, gain 3 life.",
+    "flavor": "She is the cathedral; the faithful are her columns."
   },
   {
     "id": 503,
@@ -8700,7 +8716,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Guard\nWhen this attacks, drain 2 life from target enemy.",
+    "flavor": "The Order answers with a closed fist and an open book."
   },
   {
     "id": 504,
@@ -8721,7 +8739,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Destroy all enemy champions.",
+    "flavor": "What fire does not refine, it forgives."
   },
   {
     "id": 505,
@@ -8750,7 +8770,9 @@
         "oncePerTurn": true,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Whenever you gain life, all your champions get +1/+1.\nAt the end of your turn, gain 2 life.",
+    "flavor": "Every hymn is a ledger; she balances it nightly."
   },
   {
     "id": 506,
@@ -8803,7 +8825,9 @@
         "oncePerTurn": true,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Keen Eye\nWhen this enters, ready all friendly champions.\nWhen this attacks, all your champions get +2/+2.",
+    "flavor": "He wins the battle before it is offered."
   },
   {
     "id": 508,
@@ -8834,7 +8858,9 @@
         "oncePerTurn": true,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Overrun\nDeathshroud\nWhen this enters, deal 4 damage to all enemy champions.\nWhen this attacks, purge the weakest enemy champion.",
+    "flavor": "The sun, given a sword and a grievance."
   },
   {
     "id": 509,
@@ -8849,7 +8875,8 @@
     "abilities": [
       "Swiftstrike"
     ],
-    "flavor": "Repentance has a sharp edge."
+    "text": "Swiftstrike",
+    "flavor": "Repentance is a doorway; this sword is the hinge."
   },
   {
     "id": 510,
@@ -8863,7 +8890,9 @@
     "rarity": "Common",
     "abilities": [
       "Guard"
-    ]
+    ],
+    "text": "Guard",
+    "flavor": "The smoke rises; the flock sleeps on."
   },
   {
     "id": 514,
@@ -8885,7 +8914,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Siphon\nWhenever you gain life, this gets +1/+1.",
+    "flavor": "He has stopped counting what the flame takes."
   },
   {
     "id": 515,
@@ -8907,7 +8938,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Keen Eye\nWhen this attacks, deal 2 damage to a random enemy.",
+    "flavor": "The verdict is writ in light, not ink."
   },
   {
     "id": 516,
@@ -8921,7 +8954,9 @@
     "rarity": "Uncommon",
     "abilities": [
       "Overrun"
-    ]
+    ],
+    "text": "Overrun",
+    "flavor": "Night is a heresy she rides to correct."
   },
   {
     "id": 517,
@@ -8943,7 +8978,9 @@
         "oncePerTurn": true,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Guard\nWhen this attacks, all your champions get +1/+1.",
+    "flavor": "Where the banner stands, the line holds."
   },
   {
     "id": 518,
@@ -8964,7 +9001,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "When this enters, purge the weakest enemy champion.",
+    "flavor": "He does not judge; he only hears the scales."
   },
   {
     "id": 519,
@@ -8986,7 +9025,9 @@
         "oncePerTurn": true,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Intimidate\nWhen this attacks, deal 3 damage to any target.",
+    "flavor": "Mercy is not a sentence; it is a reprieve."
   },
   {
     "id": 521,
@@ -9191,7 +9232,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Purge the weakest enemy champion.",
+    "flavor": "Alloys of doubt burn at the first holy touch."
   },
   {
     "id": 534,
@@ -9212,7 +9255,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Draw 2 cards.",
+    "flavor": "The light returns before the faithful rise."
   },
   {
     "id": 535,
@@ -9233,7 +9278,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Deal 5 damage to any target.",
+    "flavor": "A column of judgment poured from the sky."
   },
   {
     "id": 536,
@@ -9254,7 +9301,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Deal 3 damage to all enemy champions.",
+    "flavor": "Righteousness, given a war to spend itself on."
   },
   {
     "id": 537,
@@ -9275,7 +9324,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Return a card from your graveyard to your hand.",
+    "flavor": "The divine remembers what mortals bury."
   },
   {
     "id": 538,
@@ -9296,7 +9347,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Purge all enemy champions.",
+    "flavor": "One last lantern, kept for those already gone."
   },
   {
     "id": 539,
@@ -9317,7 +9370,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Target champion gets -2 attack this turn.",
+    "flavor": "The light arrives a moment before the truth does."
   },
   {
     "id": 540,
@@ -9339,7 +9394,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Target champion gets +3 toughness this turn.",
+    "flavor": "Faith, forged into a shield that outlasts its bearer."
   },
   {
     "id": 541,
@@ -9360,7 +9417,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "All combat damage to your side is reduced by 2 this turn.",
+    "flavor": "A parry that feeds the attacker their own doubt."
   },
   {
     "id": 542,
@@ -9381,7 +9440,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Destroy target hidden (face-down) card.",
+    "flavor": "Even the shadow knows it is no match for noon."
   },
   {
     "id": 543,
@@ -9402,7 +9463,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Tap target enemy champion.",
+    "flavor": "The heavens open; the ambush closes its eyes."
   },
   {
     "id": 544,
@@ -9423,7 +9486,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Drain 3 life from target champion or player.",
+    "flavor": "The rebuke finds the wound the sin left behind."
   },
   {
     "id": 545,
@@ -9444,7 +9509,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Ready target friendly champion.",
+    "flavor": "The faithful are never lost, only unpaged."
   },
   {
     "id": 546,
@@ -9465,7 +9532,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Sacrifice a champion: deal 4 damage to a random enemy.",
+    "flavor": "Every sacrifice is a sermon."
   },
   {
     "id": 547,
@@ -9486,7 +9555,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "All combat damage to your side is reduced by 5 this turn.",
+    "flavor": "The wall of faith has no hinges."
   },
   {
     "id": 550,
@@ -9507,7 +9578,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "When you play this, purge target enemy champion.",
+    "flavor": "The gates of the church are open; the gates of the faith are not."
   },
   {
     "id": 551,
@@ -9528,7 +9601,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "When you play this, ready all friendly champions.",
+    "flavor": "Peace is a weapon the faithful keep sharp."
   },
   {
     "id": 552,
@@ -9549,7 +9624,9 @@
         "oncePerTurn": false,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "When you play this, each opponent purges 2 champions they control of their choice.",
+    "flavor": "The ledger of retribution is kept in duplicate."
   },
   {
     "id": 553,
@@ -9881,7 +9958,8 @@
     "abilities": [
       "Swiftstrike"
     ],
-    "flavor": "Faith is the first lesson; the sword is the second."
+    "text": "Swiftstrike",
+    "flavor": "Born at the altar, blooded at the gate."
   },
   {
     "id": 577,
@@ -9895,7 +9973,9 @@
     "rarity": "Common",
     "abilities": [
       "Guard"
-    ]
+    ],
+    "text": "Guard",
+    "flavor": "The threshold is sacred; so is the guard."
   },
   {
     "id": 578,
@@ -9909,7 +9989,9 @@
     "rarity": "Common",
     "abilities": [
       "Siphon"
-    ]
+    ],
+    "text": "Siphon",
+    "flavor": "Asceticism is the first lance he ever carried."
   },
   {
     "id": 579,
@@ -9924,7 +10006,9 @@
     "abilities": [
       "Bastion",
       "Guard"
-    ]
+    ],
+    "text": "Bastion\nGuard",
+    "flavor": "The vow outbids the flesh."
   },
   {
     "id": 580,
@@ -9954,7 +10038,9 @@
         "oncePerTurn": true,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Keen Eye\nWhen this enters, purge target enemy champion.\nWhen this attacks, deal 2 damage to any target.",
+    "flavor": "He extracts heresy the way old trees shed bark."
   },
   {
     "id": 581,
@@ -9986,6 +10072,8 @@
         "oncePerTurn": true,
         "activationCost": null
       }
-    ]
+    ],
+    "text": "Flying\nSiphon\nOverrun\nWhen this enters, purge all enemy champions.\nWhen this attacks, all your champions get +2/+2.",
+    "flavor": "The archangel carries the sunrise like a siege tower."
   }
 ]

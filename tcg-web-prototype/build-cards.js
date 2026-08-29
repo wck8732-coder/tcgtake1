@@ -341,7 +341,7 @@ function transformCards(cards) {
   const textPatch = {
     21: 'Swiftstrike',
     28: 'Quickdraw',
-    29: 'When you cast this, deal 2 damage to target relic.\nQuickdraw',
+    29: 'When you cast this, deal 2 damage to target relic.\nQuickdraw\nOverrun',
     35: 'Draw a card.',
     61: 'Overrun',
     64: 'Overrun\nWhen this attacks, create a 1/1 Saproling.\nKeen Eye',
@@ -376,7 +376,7 @@ function transformCards(cards) {
     145: 'Flying\nWhen this enters, search your deck for a basic land and put it into play.',
     353: 'When this enters, search your deck for a basic land and put it into play.',
     38: 'Draw a card.',
-    233: 'At the end of your turn, deal 1 damage to a random enemy.',
+    233: 'At the end of your turn, deal 2 damage to a random enemy.',
     291: 'Create a 1/1 Saproling.',
     361: 'Untap all your champions.',
     117: 'Deathshroud\nRecall 1',
@@ -426,12 +426,12 @@ function transformCards(cards) {
     1101: 'Once each turn, when you reveal a card, scry 1.',
     1109: 'Once each turn, the first card you discard costs 1 less to play.',
     1114: 'Once each turn, when you gain life, search your deck for a basic land and put it into play.',
-    231: 'At the end of your turn, deal 1 damage to a random enemy.',
-    232: 'At the end of your turn, deal 1 damage to all enemy champions.',
+    231: 'At the end of your turn, deal 2 damage to a random enemy.',
+    232: 'At the end of your turn, deal 2 damage to all enemy champions.',
     234: 'Your champions get +2/+2.',
     236: 'When this enters, deal 2 damage to a random enemy.',
     239: 'Your champions get +1/+1.',
-    350: 'At the end of your turn, you may play an additional land this turn.',
+    350: 'Your Crimson champions deal double combat damage.',
     1012: 'Your drain effects heal 1 extra life.',
     262: 'At the end of your turn, draw a card.',
     263: 'Your champions get +2/+2.',
@@ -445,8 +445,8 @@ function transformCards(cards) {
     242: 'At the end of your turn, create a 1/1 Saproling.',
     243: 'When this enters, create a 1/1 Saproling.',
     245: 'When this enters, search your deck for a basic land and put it into play.',
-    238: 'At the end of your turn, deal 1 damage to all enemy champions.',
-    240: 'At the end of your turn, deal 1 damage to a random enemy.',
+    238: 'At the end of your turn, deal 2 damage to all enemy champions.',
+    240: 'At the end of your turn, deal 2 damage to a random enemy.',
     241: 'Your champions get +1/+1.',
     246: 'Your champions get +1/+1.',
     247: 'At the end of your turn, create a 1/1 Saproling.',
@@ -580,22 +580,66 @@ function transformCards(cards) {
     36: 'Search your deck for a basic land and put it into play. Then shuffle your deck.',
     37: 'Deal 3 damage to a random enemy champion.',
     39: 'Deal 2 damage to all enemy champions.',
-    201: 'Deal 2 damage to a random enemy champion.',
+    201: 'Deal 3 damage to a random enemy champion.',
     202: 'Deal 3 damage to a random enemy champion.',
     203: 'Deal 2 damage to two target champions.',
-    204: 'Deal 1 damage to any target.',
-    205: 'Deal 3 damage to all enemy champions.',
+    204: 'Deal 2 damage to any target.',
+    205: 'Deal 4 damage to all enemy champions.',
     206: 'Deal 3 damage to a random enemy champion.',
-    281: 'Deal 1 damage to any target.',
+    281: 'Deal 2 damage to any target.',
     282: 'Deal 4 damage to a random enemy champion.',
-    283: 'Deal 2 damage to a random enemy champion.',
+    283: 'Deal 3 damage to a random enemy champion.',
     284: 'Deal 4 damage to a random enemy champion.',
     285: 'Deal 2 damage to all enemy champions.',
     286: 'Deal 3 damage to a random enemy champion.',
     287: 'Deal 1 damage to all enemy champions.',
     288: 'Deal 3 damage to all enemy champions.',
     289: 'Deal 2 damage to two target champions.',
-    290: 'Deal 3 damage to all enemy champions.'
+    290: 'Deal 3 damage to all enemy champions.',
+    487: 'Swiftstrike',
+    493: 'When this attacks, deal 2 damage to a random enemy.',
+    495: 'Overrun\nQuickdraw',
+    496: 'When this dies, deal 2 damage to all enemy champions.',
+    497: 'All combat damage to your side is reduced by 3 this turn.',
+    498: 'Guard\nWhen this attacks, ready target friendly champion.',
+    501: 'Bastion\nSiphon\nAt the end of your turn, gain 3 life.',
+    503: 'Guard\nWhen this attacks, drain 2 life from target enemy.',
+    504: 'Destroy all enemy champions.',
+    505: 'Whenever you gain life, all your champions get +1/+1.\nAt the end of your turn, gain 2 life.',
+    507: 'Keen Eye\nWhen this enters, ready all friendly champions.\nWhen this attacks, all your champions get +2/+2.',
+    508: 'Overrun\nDeathshroud\nWhen this enters, deal 4 damage to all enemy champions.\nWhen this attacks, purge the weakest enemy champion.',
+    509: 'Swiftstrike',
+    510: 'Guard',
+    514: 'Siphon\nWhenever you gain life, this gets +1/+1.',
+    515: 'Keen Eye\nWhen this attacks, deal 2 damage to a random enemy.',
+    516: 'Overrun',
+    517: 'Guard\nWhen this attacks, all your champions get +1/+1.',
+    518: 'When this enters, purge the weakest enemy champion.',
+    519: 'Intimidate\nWhen this attacks, deal 3 damage to any target.',
+    533: 'Purge the weakest enemy champion.',
+    534: 'Draw 2 cards.',
+    535: 'Deal 5 damage to any target.',
+    536: 'Deal 3 damage to all enemy champions.',
+    537: 'Return a card from your graveyard to your hand.',
+    538: 'Purge all enemy champions.',
+    539: 'Target champion gets -2 attack this turn.',
+    540: 'Target champion gets +3 toughness this turn.',
+    541: 'All combat damage to your side is reduced by 2 this turn.',
+    542: 'Destroy target hidden (face-down) card.',
+    543: 'Tap target enemy champion.',
+    544: 'Drain 3 life from target champion or player.',
+    545: 'Ready target friendly champion.',
+    546: 'Sacrifice a champion: deal 4 damage to a random enemy.',
+    547: 'All combat damage to your side is reduced by 5 this turn.',
+    550: 'When you play this, purge target enemy champion.',
+    551: 'When you play this, ready all friendly champions.',
+    552: 'When you play this, each opponent purges 2 champions they control of their choice.',
+    576: 'Swiftstrike',
+    577: 'Guard',
+    578: 'Siphon',
+    579: 'Bastion\nGuard',
+    580: 'Keen Eye\nWhen this enters, purge target enemy champion.\nWhen this attacks, deal 2 damage to any target.',
+    581: 'Flying\nSiphon\nOverrun\nWhen this enters, purge all enemy champions.\nWhen this attacks, all your champions get +2/+2.'
   };
   const flavorPatch = {
     21: 'Every coin has two sides; this one has a sword.',
@@ -862,7 +906,85 @@ function transformCards(cards) {
     287: 'Ash chokes the sky; the living choke faster.',
     288: 'The quake splits the line; fire fills the gap.',
     289: 'Two brands; one forge.',
-    290: 'The storm is cinder; the forecast is ruin.'
+    290: 'The storm is cinder; the forecast is ruin.',
+    487: 'A sword that outlives every oath it serves.',
+    493: 'War and liturgy, delivered in the same breath.',
+    495: 'The charge bellows louder than the choir.',
+    496: 'The candle that spends itself lighting the way.',
+    498: 'One host, one heartbeat, one wall of gold.',
+    501: 'She is the cathedral; the faithful are her columns.',
+    503: 'The Order answers with a closed fist and an open book.',
+    504: 'What fire does not refine, it forgives.',
+    505: 'Every hymn is a ledger; she balances it nightly.',
+    507: 'He wins the battle before it is offered.',
+    508: 'The sun, given a sword and a grievance.',
+    509: 'Repentance is a doorway; this sword is the hinge.',
+    510: 'The smoke rises; the flock sleeps on.',
+    514: 'He has stopped counting what the flame takes.',
+    515: 'The verdict is writ in light, not ink.',
+    516: 'Night is a heresy she rides to correct.',
+    517: 'Where the banner stands, the line holds.',
+    518: 'He does not judge; he only hears the scales.',
+    519: 'Mercy is not a sentence; it is a reprieve.',
+    533: 'Alloys of doubt burn at the first holy touch.',
+    534: 'The light returns before the faithful rise.',
+    535: 'A column of judgment poured from the sky.',
+    536: 'Righteousness, given a war to spend itself on.',
+    537: 'The divine remembers what mortals bury.',
+    538: 'One last lantern, kept for those already gone.',
+    539: 'The light arrives a moment before the truth does.',
+    540: 'Faith, forged into a shield that outlasts its bearer.',
+    541: 'A parry that feeds the attacker their own doubt.',
+    542: 'Even the shadow knows it is no match for noon.',
+    543: 'The heavens open; the ambush closes its eyes.',
+    544: 'The rebuke finds the wound the sin left behind.',
+    545: 'The faithful are never lost, only unpaged.',
+    546: 'Every sacrifice is a sermon.',
+    547: 'The wall of faith has no hinges.',
+    550: 'The gates of the church are open; the gates of the faith are not.',
+    551: 'Peace is a weapon the faithful keep sharp.',
+    552: 'The ledger of retribution is kept in duplicate.',
+    576: 'Born at the altar, blooded at the gate.',
+    577: 'The threshold is sacred; so is the guard.',
+    578: 'Asceticism is the first lance he ever carried.',
+    579: 'The vow outbids the flesh.',
+    580: 'He extracts heresy the way old trees shed bark.',
+    581: 'The archangel carries the sunrise like a siege tower.'
+  };
+
+  // -------------------------------------------------------------------------
+  // Rebalance deltas (v0.1050) — Crimson bolster only. Engine vocabulary
+  // unchanged; rarity/type/identity frozen by the passes above. Values and
+  // keywords here are the canonical end state (display text re-authored below).
+  // Crimson identity: cheap aggression + combat reach (Overrun/Intimidate) +
+  // the dormant red-exclusive double_fire_damage engine hook (Obsidian Forge).
+  // Drain stays Lantern-aligned — not used as a primary Crimson mechanic.
+  // -------------------------------------------------------------------------
+  const rebalancePatch = {
+    21:  { power: 2 },
+    23:  { power: 2 },
+    27:  { power: 2 },
+    29:  { abilities: [
+      {name: 'Scorch', trigger: 'on_cast', effect: 'damage_relic', value: 2, oncePerTurn: false, activationCost: null},
+      'Quickdraw', 'Overrun'
+    ]},
+    30:  { abilities: ['Swiftstrike', 'Intimidate'] },
+    31:  { abilities: [
+      {name: 'Scorch', trigger: 'on_cast', effect: 'damage_relic', value: 2, oncePerTurn: false, activationCost: null},
+      'Swiftstrike', 'Overrun'
+    ]},
+    201: { abilities: [{name: 'Eruption', trigger: 'on_cast', effect: 'damage_random_enemy', value: 3, oncePerTurn: false, activationCost: null}] },
+    204: { abilities: [{name: 'Ashfall', trigger: 'on_cast', effect: 'damage_any_target', value: 2, oncePerTurn: false, activationCost: null}] },
+    205: { abilities: [{name: 'Caldera Blast', trigger: 'on_cast', effect: 'damage_all_enemies', value: 4, oncePerTurn: false, activationCost: null}] },
+    231: { abilities: [{name: 'Magma Forge', trigger: 'end_of_turn', effect: 'damage_random_enemy', value: 2, oncePerTurn: false, activationCost: null}] },
+    232: { abilities: [{name: 'Lava Lake', trigger: 'end_of_turn', effect: 'damage_all_enemies', value: 2, oncePerTurn: false, activationCost: null}] },
+    233: { abilities: [{name: 'Ember Heart', trigger: 'end_of_turn', effect: 'damage_random_enemy', value: 2, oncePerTurn: false, activationCost: null}] },
+    238: { abilities: [{name: 'Pyroclasm Veil', trigger: 'end_of_turn', effect: 'damage_all_enemies', value: 2, oncePerTurn: false, activationCost: null}] },
+    240: { abilities: [{name: 'Magma Chamber', trigger: 'end_of_turn', effect: 'damage_random_enemy', value: 2, oncePerTurn: false, activationCost: null}] },
+    281: { abilities: [{name: 'Lava Dart', trigger: 'on_cast', effect: 'damage_any_target', value: 2, oncePerTurn: false, activationCost: null}] },
+    283: { abilities: [{name: 'Magma Spray', trigger: 'on_cast', effect: 'damage_random_enemy', value: 3, oncePerTurn: false, activationCost: null}] },
+    350: { abilities: [{name: 'Obsidian Forge', trigger: 'static', effect: 'double_fire_damage', value: 1, oncePerTurn: false, activationCost: null}] },
+    366: { abilities: ['Ominous', {name: 'Wild Rampage', trigger: 'ON_COMBAT_DAMAGE', effect: 'pump_self_stats', value: 2, oncePerTurn: false, activationCost: null}, 'Overrun'] }
   };
 
   cards = cards.map(c => {
@@ -915,6 +1037,18 @@ function transformCards(cards) {
       if (rareSpells.has(c.id)) rarity = 'Rare';
     }
     return {...c, rarity};
+  });
+
+  // v0.1050 rebalance (after rarity freeze: rarity/type/identity preserved).
+  cards = cards.map(c => {
+    if (Object.prototype.hasOwnProperty.call(rebalancePatch, c.id)) {
+      const p = rebalancePatch[c.id];
+      c = {...c};
+      if (p.power !== undefined) c.power = p.power;
+      if (p.toughness !== undefined) c.toughness = p.toughness;
+      if (p.abilities) c.abilities = p.abilities;
+    }
+    return c;
   });
 
   // Authored text/flavor (display-only; engine uses `abilities`).

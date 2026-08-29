@@ -9,14 +9,23 @@ complete map of the file hierarchy with line anchors, (3) what has been done,
 (4) what needs to be done, how, and why, and (5) hard rules to prevent drift.
 
 ================================================================================
-SECTION 0 — TRUTH OF CURRENT STATE (as of snapshot v0.1048)
+SECTION 0 — TRUTH OF CURRENT STATE (as of snapshot v0.1050)
 ===============================================================================
-Current version label: v0.1048 (card text/flavor finalization Waves 1-2 +
-UI scale pass; foundations complete; 3-goal roadmap still active).
+PROJECT ROOT (CANONICAL, v0.1050): C:\Users\Blayne\Desktop\tcg_master_project
+  - The TCG Prototype moved here from C:\Users\Blayne\Documents\Default Project
+    (effective 2026-08-28). The Documents folder is the OLD/legacy root — do NOT
+    point builds, tests, or docs at it.
+  - Canonical project dir: C:\Users\Blayne\Desktop\tcg_master_project\tcg-web-prototype
+    (web game + engine + card DB + build pipeline).
+  - Unity template:  C:\Users\Blayne\Desktop\tcg_master_project\tcg-unity-engine
+  - Git: repo root is tcg_master_project, remote origin = github.com/wck8732-coder/tcgtake1 (main). Keep it mirrored.
+  - Path rule: scripts resolve relative to __dirname (recall_ominous_test.js, wave6_batch*.js). No hardcoded C:/Users/Blayne/Documents/... paths anywhere.
+ 
+Current version label: v0.1050 (2026-08-29) — set rebalance LIVE (Crimson bolster + engine-target fix).
 
 Latest verified snapshot:
-  backups\v0.1048_2026-08-27_1816
-  Status: INTACT (verified with verify-checkpoint.ps1).
+  backups\v0.1050_engine_target_deckbuilder_pre_2026-08-29_1103
+  Status: pre-edit baseline for current session work (verify with verify-checkpoint.ps1).
 
 LIVE data files at root (generated, DO NOT hand-edit):
   card_database.json            — LIVE card DB the game/sim reads (480 cards). **Colorless = neutral/artifact (not a faction).**
@@ -309,21 +318,67 @@ SECTION 5 — HARD RULES TO PREVENT DRIFT / HALLUCINATION (FOLLOW ALWAYS)
 ================================================================================
 - DO NOT hand-edit generated card data (card_database*.json, cards.json,
   decks.json). Edit cards.json (source) or build-cards.js transforms, rebuild.
-- DO NOT modify the engine bytes in game.js that differ from rules_engine.js
-  transformCards(); keep the 3 copies byte-identical.
+- transformCards() lives ONLY in build-cards.js (since v0.1039 refactor); do NOT
+  duplicate it into simulate.js/game.js (they read the generated DB directly).
 - After ANY change run: syntax gate (node --check), recall_ominous_test.js
   (123/123), both sims, and verify.ps1 full. Never skip.
 - Snapshot / checkpoint: ALWAYS the very last step of any plan/workflow, and
   ONLY when user approves. Do not create checkpoints unprompted.
 - AGENTS.md: update ONLY when user instructs; coincides with the next approved
   checkpoint. Do not edit proactively.
-- Never create .md or README files proactively; notes go here / into notesfc.txt.
+- tcg-unity-engine rebalance patch (rebalance_patch_v1.json/apply-patch.js,
+  Unity-schema patch) is ABANDONED — do not reapply or port to the web DB.
 - Keyboard shortcuts Space/Enter/C already wired; do not re-add arrow-key nav
   (postponed).
 - AI speed toggle: do NOT re-implement (postponed to final-touches).
 - Rarity tooltips: postponed; do not add.
 - Keep responses concise; use the file-locator hierarchy above to jump to
   anchors instead of full-parsing large files.
+
+================================================================================
+V0.1050 SESSION PROGRESS (2026-08-29) — SET REBALANCE LIVE + ENGINE-TARGET FIX
+================================================================================
+GOAL: per-user v0.1050 — execute the written set rebalance (web set only),
+fix the engine damage-targeting bug, document the root move, mirror to GitHub.
+Deck builder is EXPLICITLY DEFERRED by the user (research/plan pending).
+
+1. CANONICAL ROOT MOVE (2026-08-28): project lives at
+   C:\Users\Blayne\Desktop\tcg_master_project (repo root, branch main, remote
+   github.com/wck8732-coder/tcgtake1.git). Old Documents\Default Project is
+   obsolete. All scripts resolve via __dirname; no stale absolute paths remain.
+
+2. SET REBALANCE (LIVE in card_database.json, build-cards.js `rebalancePatch`):
+   - Only Crimson was rebalanced (the 10%-win-rate archetype). Applied AFTER the
+     rarity freeze so quotas/identity are untouched (verified: no type/faction/
+     rarity moved; build identical to master; 104 data checks; 123 engine tests).
+   - New Crimson mechanic: Obsidian Forge (350) now static `double_fire_damage`
+     ("Your Crimson champions deal double combat damage") — the previously
+     dormant engine-exclusive Crimson hook, now LIVE. Drain stays Lantern-only.
+   - Reach added: Overrun (trample) on 29/31/366; Intimidate (menace) on 30;
+     1/1 aggro dudes 21/23/27 → 2-power.
+   - Burn values up: Ashfall/Lava Dart 1→2, Eruption/Magma Spray 2→3,
+     Caldera Blast 3→4; all five Crimson EOT-burn relics 1→2. textPatch updated
+     in lockstep so displayed text matches engine values.
+   - Sim result (medium, 60 games): Crimson Classic 1/10 → 7/10; Crimson
+     Standard 1/10 → 7/10. Field now 30-80% in both formats.
+
+3. ENGINE-TARGET FIX (rules_engine.js + game.js, v0.1050):
+   - damage_any_target now honors ability.target: with target
+     'enemy_leader'/'leader' it hits the opposing player DIRECTLY even when
+     champions are on board (1013/1020/1063 finally work as written).
+   - damage_random_enemy remains random enemy champion, falling to the player
+     only when no eligible champions exist. Distinct from any-target burn.
+
+4. DOC PATH FIXES: recall_ominous_test.js + wave6_batch1-4.js now resolve via
+   __dirname (no hardcoded C:/Users/Blayne/Documents/... paths).
+
+5. DECK BUILDER: DEFERRED by user. gen_decks.js unchanged (cheapest-first
+   fill still floods 1-drops — known issue to address with the research-backed
+   plan). DO NOT modify until the MTGA-method plan is approved.
+
+6. NOT PUSHED YET (this session): commit v0.1050 + push to GitHub is the
+   remaining step. Unity-engine Hermes-rebalance files stay unchanged/untracked
+   (abandoned artifacts, not part of the web build).
 
 ================================================================================
 SECTION 6 — SECONDARY AGENT (HERMES) HANDOFF

@@ -1,10 +1,18 @@
-# TCG Prototype — Agent Context (v0.1048)
+# TCG Prototype — Agent Context (v0.1050)
 
-**Current version:** v0.1048 (2026-08-27) — card text/flavor finalization waves + UI scale; foundations complete; 3-goal roadmap active (data integrity, engine correctness, UI stabilization).  
-**Current snapshot:** `backups/v0.1048_2026-08-27_1816` (verified intact).  
-**Active snapshot:** `backups/v0.1044_module_isolate_final_2026-08-13_1740`
+**Current version:** v0.1050 (2026-08-29) — Set rebalance LIVE (Crimson bolster, engine-target fix), canonical root at `Desktop\tcg_master_project` (Documents root obsolete), 284/380 non-land authored, 123/123 tests, verify 7/7 green.  
+**Current snapshot:** `backups/v0.1050_engine_target_deckbuilder_pre_2026-08-29_1103` (pre-edit baseline for current work).  
+**Active snapshot:** desktop root `C:\Users\Blayne\Desktop\tcg_master_project\tcg-web-prototype` (mirrors GitHub; old `Documents\Default Project` is obsolete).  
+**Rebalance prompt:** `gemini_rebalance_prompt.md` — sit rep (guiding data only), card ratio chart, champion-centric spine (no type-size mandates — creative freedom within reason), faction→type affinities (Crimson=Instant, Sunforged=Relic, Lantern=Decree, Gilded=Omen, Zealot=Champion, Colorless=none), rarity driven by mana curve + set-wide, 49 protected Legendary/Mythic named cards, and a reward-rarity principle (Legendary = rewarding engine, Mythic = game-changing, both with strategic importance).
 
 > **READ FIRST:** `notesfc.txt` (root) is the master project handoff — full agenda, 3-goal roadmap with steps/why, the file-locator hierarchy with line anchors, hard anti-drift rules, and the Hermes (secondary agent) onboarding order. Read it before touching any code.  
+
+## Project Root & Repo (canonical, v0.1050)
+- **Canonical root:** `C:\Users\Blayne\Desktop\tcg_master_project` — the TCG Prototype moved here from `C:\Users\Blayne\Documents\Default Project` (2026-08-28). The Documents folder is the **legacy/obsolete** root; never point builds, tests, handlers, or docs at old absolute paths.
+- **Canonical project dir:** `tcg-web-prototype\` (web game, canonical rules engine `rules_engine.js`, `card_database.json`, build pipeline).
+- **Unity template:** `tcg-unity-engine\` (engine ports + StreamingAssets data, generated via build pipeline).
+- **Git:** repo root = `tcg_master_project`, branch `main`, remote `origin` = `https://github.com/wck8732-coder/tcgtake1.git`. Keep the working tree mirrored to GitHub: commit/rebalance + snapshot + docs together, then push.
+- **Path rule:** scripts resolve relative to `__dirname` (e.g., `recall_ominous_test.js`, `wave6_batch*.js`). No hardcoded `C:/Users/Blayne/Documents/...` paths anywhere.  
 
 ## Live Files (root)
 | File | Purpose |
@@ -14,8 +22,8 @@
 | `schema_definitions.json` | Canonical card schema (types, rarities, factions, trigger/effect vocabularies, field schema). Regenerates `shared/card-schema.js`; validated on every build. |
 | `cards.json` | SOURCE input for `build-cards.js` (base definitions + newCards patches). Edit here for new/modified cards, then rebuild. |
 | `build-cards.js` | Card materializer. Loads `cards.json`, runs embedded `transformCards()` (the ONLY source of truth for card data), writes `card_database.*` + `shared/card-schema.js` + validates against `schema_definitions.json`. **v0.1048:** contains `textPatch`/`flavorPatch` maps (authored display text + italic flavor by card id). |
-| `rules_engine.js` | **CANONICAL rules engine** (strict module). Pure engine (no DOM/fs/I/O). Consumed by `simulate.js` (require), `game.js` (extends `RULES_ENGINE.GameState`), `recall_ominous_test.js` (via simulate.js re-export). |
-| `game.js` | Browser UI layer. `class GameState extends RULES_ENGINE.GameState` — keeps only UI/async-AI/combat overrides; pure rules inherited. Reads `card_database.json` via `fetch`. Card renderer (v0.1048): `textOverride` via `cardData.text` (keyword tooltips still scanned), `.card-flavor` italic line, pluralization cleaned. |
+| `rules_engine.js` | **CANONICAL rules engine** (strict module). Pure engine (no DOM/fs/I/O). Consumed by `simulate.js` (require), `game.js` (extends `RULES_ENGINE.GameState`), `recall_ominous_test.js` (via simulate.js re-export). **v0.1050:** damage targeting fixed — `damage_any_target` honors `ability.target` (`enemy_leader`/`leader` → hits the opposing player directly even with champions on board); `damage_random_enemy` hits a random enemy champion, falling to the player only when no eligible champions exist. |
+| `game.js` | Browser UI layer. `class GameState extends RULES_ENGINE.GameState` — keeps only UI/async-AI/combat overrides; pure rules inherited. Reads `card_database.json` via `fetch`. Card renderer (v0.1048): `textOverride` via `cardData.text` (keyword tooltips still scanned), `.card-flavor` italic line, pluralization cleaned. **v0.1050:** mirrors the engine's `damage_any_target` leader-target honor for human-targetable casts. |
 | `simulate.js` | Headless harness over `rules_engine.js` (AI vs AI). Usage: `node simulate.js [games] [difficulty] [format]`. |
 | `slug_mappings.js` | Canonical deck-slug map (faction→slug, strategy blurbs, `slugToFaction`/`factionToSlug`). Consumed by gen_decks.js; deck slug keys must match decks.json. |
 | `decks.json` | 70-card format-split decks — **Classic** and **Standard** both max 4 copies/card (no rarity caps). 12 decks (6 Classic + 6 Standard), each exactly 70 cards (24 lands + 46 non-land). gen_decks.js generates format-split decks; rules_engine.js enforces min 70 cards + 4-copy limit. | |
@@ -41,7 +49,7 @@ node simulate.js 10 medium Standard                # Standard format sim
 node build-unity-cards.js                          # regenerate Unity StreamingAssets data
 
 # OR run the whole suite at once — 7-step gate:
-powershell -ExecutionPolicy Bypass -File verify.ps1   # syntax + build identity + 123 tests + validate-data (116) + Classic sim + Standard sim + Unity data
+powershell -ExecutionPolicy Bypass -File verify.ps1   # syntax + build identity + 123 tests + validate-data (104) + Classic sim + Standard sim + Unity data
 
 # Snapshot the ENTIRE project before major work:
 powershell -ExecutionPolicy Bypass -File backups\create-checkpoint.ps1 -Name v0.XXXX
@@ -57,7 +65,8 @@ powershell -ExecutionPolicy Bypass -File backups\restore-checkpoint.ps1 [-Snapsh
 - **Types:** Champion, Spell, Instant, Decree, Relic, Domain, Omen, Land. (Champion = Creature; renamed everywhere in v0.1038.)
 - **Mana costs** use `{color, generic}` object format. Lands provide 1 colored mana. `normalizeCost`/`totalCostValue`/`canPayCost`/`payMana` in shared/cost-utils.js (COST.*).
 - **transformCards patches:** `spellPatch`/`enchantPatch`/`instantPatch` assign abilities by card id; `kw` adds keyword strings; `championRampPatch`, `recallPatch`, `ominousPatch`, `rareSpells`, `rarityOverride` (NEW v0.1042), `TRIM_IDS` (NEW v0.1042) modify cards. Legendary sets: `legendaryChampionIds` + `legendaryKit`.
-- **Authored card text/flavor (v0.1048):** `textPatch`/`flavorPatch` (in build-cards.js transformCards) write optional `text` (final rules text — renderer uses it verbatim; keyword spans/footnotes still scanned) + `flavor` (italic flavor line on the card). Fields declared in `schema_definitions.json`. Engine behavior is UNCHANGED (`abilities` remain canonical for rules). Display-only fixes in `shared/effects.js`: `STRING_EFFECTS` (destroy/bounce enchantment) + pluralization cleanup. **Authoring flow:** add entries to the maps → `node build-cards.js build` + `init` + `verify`. Waves 1-5 shipped (24 + 30 + 30 + 30 + 35); ~239 non-land cards remain on generated text.
+- **Authored card text/flavor (v0.1048+):** `textPatch`/`flavorPatch` (in build-cards.js transformCards) write optional `text` (final rules text — renderer uses it verbatim; keyword spans/footnotes still scanned) + `flavor` (italic flavor line on the card). Fields declared in `schema_definitions.json`. Engine behavior is UNCHANGED (`abilities` remain canonical for rules). Display-only fixes in `shared/effects.js`: `STRING_EFFECTS` (destroy/bounce enchantment) + pluralization cleanup. **Authoring flow:** add entries to the maps → `node build-cards.js build` + `init` + `verify`. Waves 1-6 shipped (24 + 30 + 30 + 30 + 35 + 44 Zealot); **284/380 non-land authored** (v0.1049). Zealot non-land fully authored (59/59). Remaining by faction (non-land): Crimson 14, Sunforged 17, Lantern 21, Gilded 17, Colorless 27.
+- **Rebalance prompt (v0.1049):** `gemini_rebalance_prompt.md` — never lose/rename/retype the 49 protected showcase cards (25 Legendary + 24 Mythic, listed in the file); Colorless = neutral/artifact with NO type affinity; per-faction floors remain 8 Rare + 4 Mythic. Type ratios are creative-freedom guidance, NOT mandates (no "Domain/Omen must stay smallest" rule).
 - **Keywords** (string abilities, interpreted at runtime by `getKeywords`): Swiftstrike, Quickdraw, Keen Eye, Overrun, Deathshroud, Siphon, Flying, Intimidate, Guard, Bastion, Recall N, Ominous.
 - **Omens:** face-down play → flip on trigger (`flipTrigger`); `flipCost` enforced; non-champ omens go to graveyard after firing; champion-omens flip + execute ability. Triggers: END_OF_TURN, ON_COMBAT_DAMAGE, ON_ALLY_DIES, ON_OPPONENT_SPELL, START_OF_TURN.
 - **Engine rules (enforced v0.1042):** min deck 70 cards, max 4 copies per card, max hand 7 (capped in draw logic). `buildDeckFromDef` lives in `rules_engine.js` and enforces deck-size + 4-copy limit.

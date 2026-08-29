@@ -5,6 +5,29 @@
 
 ## Session Log
 
+### 2026-08-29 (v0.1050) — Set rebalance LIVE + engine-target fix + root move
+- **Canonical root move (2026-08-28):** project relocated to `C:\Users\Blayne\Desktop\tcg_master_project`
+  (repo root, branch `main`, remote `origin` = `github.com/wck8732-coder/tcgtake1.git`). Old
+  `Documents\Default Project` is obsolete. `recall_ominous_test.js` + `wave6_batch1-4.js` now resolve
+  files via `__dirname` (no hardcoded absolute paths remain; `rg` clean).
+- **Set rebalance (web set only, `build-cards.js` `rebalancePatch`):** only Crimson rebalanced (was the
+  10%-win-rate archetype). Obsidian Forge (350) → static `double_fire_damage` (new live Crimson mechanic:
+  "Your Crimson champions deal double combat damage"); Overrun added on 29/31/366, Intimidate on 30,
+  aggro P/T bumps (21/23/27 to 2-power), burn values raised (Ashfall/Lava Dart 1→2, Eruption/Magma Spray
+  2→3, Caldera Blast 3→4, 5 EOT-burn relics 1→2). Display text (`textPatch`) matched in lockstep.
+  Rarity/type/faction untouched (verified); build IDENTICAL; 104 data checks; 123 engine tests.
+  **Sims (medium 60):** Crimson Classic 1/10 → **7/10**, Crimson Standard 1/10 → **7/10**; field 30-80%.
+- **Engine-target fix:** `damage_any_target` now honors `ability.target` — `enemy_leader`/`leader`
+  hits the opposing player directly even with champions on board (1013/1020/1063). `damage_random_enemy`
+  stays random-enemy-champion, leader only when no eligible champions. Applied identically in
+  `rules_engine.js` + `game.js`. 123/123 pass.
+- **Deck builder:** explicitly DEFERRED by user; research on MTGA deck-construction methods → plan
+  (see `DECKBUILDER_PLAN.md` once approved). `gen_decks.js` unchanged.
+- **Docs:** AGENTS.md → v0.1050 (header/version, engine rows, target-fix + rebalance notes); notesfc.txt
+  section 0 v0.1050 + session-progress section; shared/effects + stale "3 byte-identical copies" notes
+  cleaned.
+- **Snapshots:** `backups/v0.1049_rebalance_pre_edit_2026-08-29_1049`, `backups/v0.1050_engine_target_deckbuilder_pre_2026-08-29_1103`.
+
 ### 2026-08-11 (v0.1040) — 120-card merge + Gemini config
 - Verified Gemini API key works via `GET https://generativelanguage.googleapis.com/v1beta/models?key=...`.
   Added `google` provider (npm `@ai-sdk/google`) to `opencode.json` with the key; default model

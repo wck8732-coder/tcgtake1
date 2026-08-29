@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 
-const DIR = 'C:/Users/Blayne/Documents/Default Project';
+const DIR = __dirname;
 const src = fs.readFileSync(path.join(DIR, 'simulate.js'), 'utf8');
 const stripped = src.replace(/\nrun\(\);?\s*$/, '\n') + '\nthis.__ex = { GameState, shuffle, deepClone };';
 const sandbox = { console, require, process, __dirname: DIR };
