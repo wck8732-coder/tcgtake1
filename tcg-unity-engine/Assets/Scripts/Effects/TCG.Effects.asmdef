@@ -1,0 +1,11 @@
+{
+  "name": "TCG.Effects",
+  "references": ["TCG.Data", "TCG.Core"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": []
+}

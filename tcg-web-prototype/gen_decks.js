@@ -31,41 +31,26 @@ function sortPool(col) {
 }
 
 // Build a faction's non-land deck for a given format's copy cap.
-// For Standard the rarityCaps are DECK-TOTAL limits (e.g. Rare: 3 means at
-// most 3 Rare copies across the whole deck, not 3 copies per card).
-function buildDeck(col, formatName) {
-  const pool = sortPool(col);
-  const fmt  = SLUGS.FORMATS[formatName];
-  const caps = fmt && fmt.rarityCaps ? Object.assign({}, fmt.rarityCaps) : null;
+ // Both Classic and Standard now use max 4 copies per card (no rarity caps).
+ function buildDeck(col, formatName) {
+   const pool = sortPool(col);
+   const fmt  = SLUGS.FORMATS[formatName];
 
-  const deck = [];
-  let nonland = 0;
-  const rarityUsed = {}; // track cumulative copies per rarity (Standard only)
+   const deck = [];
+   let nonland = 0;
 
-  pool.forEach(card => {
-    if (nonland >= NONLAND_TARGET) return;
+   pool.forEach(card => {
+     if (nonland >= NONLAND_TARGET) return;
 
-    // Per-card maximum: Classic = 4, Standard = 4 (cap is deck-total, not per-card)
-    let copies = 4;
+     // Both formats: max 4 copies per card
+     let copies = Math.min(4, NONLAND_TARGET - nonland);
+     if (copies <= 0) return;
 
-    // Standard: clamp so we don't exceed the remaining rarity budget
-    if (caps && caps[card.rarity] != null) {
-      const used = rarityUsed[card.rarity] || 0;
-      const budget = caps[card.rarity] - used;
-      if (budget <= 0) return; // rarity budget exhausted — skip this card
-      copies = Math.min(copies, budget);
-    }
-
-    const room = NONLAND_TARGET - nonland;
-    copies = Math.min(copies, room);
-    if (copies <= 0) return;
-
-    rarityUsed[card.rarity] = (rarityUsed[card.rarity] || 0) + copies;
-    deck.push({ id: card.id, count: copies });
-    nonland += copies;
-  });
-  return deck;
-}
+     deck.push({ id: card.id, count: copies });
+     nonland += copies;
+   });
+   return deck;
+ }
 
 function buildLands(col) {
   let pool = cards.filter(x => x.type === 'Land' && x.color === col);

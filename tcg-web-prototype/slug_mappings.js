@@ -26,10 +26,10 @@
     Zealot: 'zealot_holy_inquisition'
   };
 
-  // Classic permits four copies of every card. Standard preserves rarity caps.
+  // Both Classic and Standard now permit four copies of every card (no rarity caps).
   const FORMATS = {
     Classic: { key: 'Classic', maxCopies: 4, rarityCaps: null },
-    Standard: { key: 'Standard', maxCopies: 4, rarityCaps: { Legendary: 1, Mythic: 2, Rare: 3 } }
+    Standard: { key: 'Standard', maxCopies: 4, rarityCaps: null }
   };
   const FORMAT_KEYS = Object.keys(FORMATS);
 
@@ -39,7 +39,7 @@
     Sunforged: 'Stompy ramp and overrun. Big creatures and token swarms.',
     Lantern: 'Death and decay. Sacrifice value, drain life, recursive threats.',
     Gilded: 'Control and card draw. Bounce, counters, outcard opponents.',
-    Colorless: 'Artifact midrange. Efficient colorless threats and utility.',
+    Colorless: 'Neutral/artifact splash. Efficient colorless threats and utility for any deck.',
     Zealot: 'Anti-heresy. Buffs, lifegain, and purge the unworthy.'
   };
 

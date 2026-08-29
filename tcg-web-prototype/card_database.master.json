@@ -413,7 +413,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Search your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "Gold fuels the march; the mountain provides."
   },
   {
     "id": 38,
@@ -457,7 +459,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 2 damage to all enemy champions.",
+    "flavor": "Hostile takeovers are settled in ash."
   },
   {
     "id": 40,
@@ -1026,7 +1030,9 @@
         "tokenName": "Saproling"
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Create two 1/1 Saprolings.",
+    "flavor": "The forest answers every prayer with a thousand seedlings."
   },
   {
     "id": 76,
@@ -1047,7 +1053,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 4 damage to a random enemy champion.",
+    "flavor": "Rage is a season; it blooms and burns in a single turn."
   },
   {
     "id": 77,
@@ -1076,7 +1084,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Destroy the weakest enemy champion.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "Nature does not negotiate. It reclaims."
   },
   {
     "id": 78,
@@ -1097,7 +1107,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "text": "Draw three cards.",
+    "flavor": "Growth is the only ledger the wild keeps."
   },
   {
     "id": 79,
@@ -1121,7 +1133,9 @@
         "tokenName": "Beast"
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Create a 3/3 Beast.",
+    "flavor": "Instinct needs no teacher; the woods provide the lesson."
   },
   {
     "id": 80,
@@ -1142,7 +1156,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 3 damage to all enemy champions.",
+    "flavor": "The mycelium remembers every footfall. It collects."
   },
   {
     "id": 81,
@@ -1672,7 +1688,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Drain 3 life from target champion or player.",
+    "flavor": "Life is a debt; death collects with interest."
   },
   {
     "id": 121,
@@ -2166,7 +2184,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Return up to two enemy champions to their owners’ hands.",
+    "flavor": "The tide takes what the shore forgets."
   },
   {
     "id": 159,
@@ -2187,7 +2207,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 2 damage to all enemy champions.",
+    "flavor": "The abyss rises; the surface drowns."
   },
   {
     "id": 160,
@@ -2208,7 +2230,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "text": "Return all enemy champions to their owners’ hands.",
+    "flavor": "No anchor holds against the crushing deep."
   },
   {
     "id": 161,
@@ -2509,7 +2533,9 @@
         "tokenName": "Golem"
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Create a 2/2 Golem.",
+    "flavor": "Iron obeys the hand that forged it."
   },
   {
     "id": 187,
@@ -2530,7 +2556,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Return a card from your graveyard to your hand.",
+    "flavor": "Scrap remembers the shape it once held."
   },
   {
     "id": 189,
@@ -2551,7 +2579,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Destroy target relic.",
+    "flavor": "Every construct has a seam; the right tool finds it."
   },
   {
     "id": 190,
@@ -2572,7 +2602,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 2 damage to two target champions.",
+    "flavor": "One spark jumps the gap; the second completes the circuit."
   },
   {
     "id": 191,
@@ -2596,7 +2628,9 @@
         "tokenName": "Golem"
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Create a 1/1 Golem.",
+    "flavor": "Iron answers the call; the foundry never sleeps."
   },
   {
     "id": 192,
@@ -2617,7 +2651,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Return up to two enemy champions to their owners’ hands.",
+    "flavor": "The signal recalls what the front forgot."
   },
   {
     "id": 193,
@@ -2664,7 +2700,9 @@
         "tokenName": "Golem"
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Create two 1/1 Golems.",
+    "flavor": "Twice forged, twice bound — the shield wall holds."
   },
   {
     "id": 196,
@@ -2685,7 +2723,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Return target champion to its owner’s hand.",
+    "flavor": "Neutralize the threat; the equation balances to zero."
   },
   {
     "id": 198,
@@ -2706,7 +2746,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Destroy the weakest enemy champion.",
+    "flavor": "Rust claims the weak; the furnace sorts the rest."
   },
   {
     "id": 199,
@@ -2727,7 +2769,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "text": "Deal 5 damage to all enemy champions.",
+    "flavor": "Chaos is a machine; wind it tight and watch it break."
   },
   {
     "id": 200,
@@ -2785,7 +2829,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 2 damage to a random enemy champion.",
+    "flavor": "The earth cracks; fire answers."
   },
   {
     "id": 203,
@@ -2806,7 +2852,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 2 damage to two target champions.",
+    "flavor": "Twin volleys; the mountain speaks twice."
   },
   {
     "id": 204,
@@ -2827,7 +2875,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 1 damage to any target.",
+    "flavor": "Ash falls where the ember kissed."
   },
   {
     "id": 205,
@@ -2848,7 +2898,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "text": "Deal 3 damage to all enemy champions.",
+    "flavor": "The caldera opens; the valley fills with fire."
   },
   {
     "id": 207,
@@ -2872,7 +2924,9 @@
         "tokenName": "Saproling"
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Create two 1/1 Saprolings.",
+    "flavor": "A harvest sown in patience, reaped in armies."
   },
   {
     "id": 208,
@@ -2893,7 +2947,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Search your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "Roots know the way; the traveler need only follow."
   },
   {
     "id": 209,
@@ -2914,7 +2970,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 3 damage to a random enemy champion.",
+    "flavor": "Old timber snaps loudest when the wind turns."
   },
   {
     "id": 210,
@@ -2935,7 +2993,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 2 damage to all enemy champions.",
+    "flavor": "Wildfire does not ask permission to bloom."
   },
   {
     "id": 211,
@@ -2964,7 +3024,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 3 damage to a random enemy champion.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "The canopy crashes down; the forest floor rises."
   },
   {
     "id": 212,
@@ -2985,7 +3047,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Destroy target relic.",
+    "flavor": "Even iron rusts when the vines decide it’s time."
   },
   {
     "id": 213,
@@ -3006,7 +3070,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Search your deck for two basic lands and put them into play. Then shuffle your deck.",
+    "flavor": "Blood waters the roots of forbidden knowledge."
   },
   {
     "id": 214,
@@ -3027,7 +3093,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "text": "Destroy all enemy champions.",
+    "flavor": "The pact is signed in silence; the witness is dust."
   },
   {
     "id": 215,
@@ -3071,7 +3139,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Destroy the weakest enemy champion.",
+    "flavor": "A touch that turns vigor to rot in a heartbeat."
   },
   {
     "id": 218,
@@ -3092,7 +3162,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Drain 2 life from target champion or player.",
+    "flavor": "The lantern drinks what the living spill."
   },
   {
     "id": 219,
@@ -3113,7 +3185,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Tap target enemy champion.",
+    "flavor": "The current decides who moves."
   },
   {
     "id": 220,
@@ -3134,7 +3208,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Return target champion to its owner’s hand.",
+    "flavor": "What the wave brings, the wave takes back."
   },
   {
     "id": 221,
@@ -3155,7 +3231,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Return up to two enemy champions to their owners’ hands.",
+    "flavor": "The undertow respects no allegiance."
   },
   {
     "id": 222,
@@ -3184,7 +3262,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Draw a card.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "Songs of the deep carry maps to buried wealth."
   },
   {
     "id": 223,
@@ -3205,7 +3285,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 4 damage to all enemy champions.",
+    "flavor": "Pressure at depth crushes hulls and armies alike."
   },
   {
     "id": 224,
@@ -3234,7 +3316,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Return target champion to its owner’s hand.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "The pull is gentle; the return is not."
   },
   {
     "id": 225,
@@ -3255,7 +3339,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Search your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "The leyline hums; the path reveals itself."
   },
   {
     "id": 228,
@@ -3276,7 +3362,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Drain 4 life from target champion or player.",
+    "flavor": "The pulse takes from one, gives to the other."
   },
   {
     "id": 229,
@@ -3297,7 +3385,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Destroy all enemy champions.",
+    "flavor": "The world breaks; the artifacts endure."
   },
   {
     "id": 230,
@@ -3318,7 +3408,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Common"
+    "rarity": "Common",
+    "text": "Deal 3 damage to all enemy champions.",
+    "flavor": "The surge cancels the noise; silence remains."
   },
   {
     "id": 231,
@@ -4271,7 +4363,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 1 damage to any target.",
+    "flavor": "A dart of molten glass; small, sharp, final."
   },
   {
     "id": 282,
@@ -4292,7 +4386,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 4 damage to a random enemy champion.",
+    "flavor": "The burst does not ask permission."
   },
   {
     "id": 283,
@@ -4313,7 +4409,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 2 damage to a random enemy champion.",
+    "flavor": "Spray the forge; the metal remembers."
   },
   {
     "id": 284,
@@ -4334,7 +4432,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 4 damage to a random enemy champion.",
+    "flavor": "The hammer falls; the anvil screams."
   },
   {
     "id": 285,
@@ -4355,7 +4455,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 2 damage to all enemy champions.",
+    "flavor": "The gale carries cinders, not mercy."
   },
   {
     "id": 286,
@@ -4376,7 +4478,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 3 damage to a random enemy champion.",
+    "flavor": "The trap springs; the intruder burns."
   },
   {
     "id": 287,
@@ -4397,7 +4501,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 1 damage to all enemy champions.",
+    "flavor": "Ash chokes the sky; the living choke faster."
   },
   {
     "id": 288,
@@ -4418,7 +4524,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 3 damage to all enemy champions.",
+    "flavor": "The quake splits the line; fire fills the gap."
   },
   {
     "id": 289,
@@ -4439,7 +4547,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 2 damage to two target champions.",
+    "flavor": "Two brands; one forge."
   },
   {
     "id": 290,
@@ -4460,7 +4570,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 3 damage to all enemy champions.",
+    "flavor": "The storm is cinder; the forecast is ruin."
   },
   {
     "id": 291,
@@ -4507,7 +4619,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Return target champion to its owner’s hand.",
+    "flavor": "The vine does not chase; it waits where the path must cross."
   },
   {
     "id": 293,
@@ -4536,7 +4650,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Draw a card.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "Every fruit carries a seed; every seed, a map."
   },
   {
     "id": 294,
@@ -4557,7 +4673,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 3 damage to a random enemy champion.",
+    "flavor": "Thorns strike where the bark is thinnest."
   },
   {
     "id": 295,
@@ -4581,7 +4699,9 @@
         "tokenName": "Saproling"
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Create two 1/1 Saprolings.",
+    "flavor": "Roots rise where the foot falls heaviest."
   },
   {
     "id": 296,
@@ -4602,7 +4722,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 4 damage to a random enemy champion.",
+    "flavor": "The stampede answers the call before the horn sounds."
   },
   {
     "id": 297,
@@ -4626,7 +4748,9 @@
         "tokenName": "Saproling"
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Create a 2/2 Saproling.",
+    "flavor": "Growth is not gentle. It is inevitable."
   },
   {
     "id": 298,
@@ -4647,7 +4771,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 2 damage to all enemy champions.",
+    "flavor": "The forest speaks in falling timber."
   },
   {
     "id": 299,
@@ -4671,7 +4797,9 @@
         "tokenName": "Beast"
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Create a 3/3 Beast.",
+    "flavor": "The beast does not wait for an invitation."
   },
   {
     "id": 300,
@@ -4700,7 +4828,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Draw two cards.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "Resolve is a seed; the harvest is certainty."
   },
   {
     "id": 301,
@@ -4721,7 +4851,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Destroy the weakest enemy champion.",
+    "flavor": "The smallest push topples the tallest corpse."
   },
   {
     "id": 302,
@@ -4742,7 +4874,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Destroy the weakest enemy champion.",
+    "flavor": "The blade finds the frailest neck."
   },
   {
     "id": 303,
@@ -4763,7 +4897,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Draw two cards.",
+    "flavor": "Knowledge costs blood; the ledger balances itself."
   },
   {
     "id": 304,
@@ -4784,7 +4920,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Destroy the weakest enemy champion.",
+    "flavor": "Reap what the grave has sown."
   },
   {
     "id": 305,
@@ -4805,7 +4943,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 2 damage to a random enemy champion.",
+    "flavor": "A glance that withers steel and flesh alike."
   },
   {
     "id": 306,
@@ -4826,7 +4966,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Destroy the weakest enemy champion.",
+    "flavor": "Darkness grips tightest where the light is weakest."
   },
   {
     "id": 307,
@@ -4847,7 +4989,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Drain 3 life from target champion or player.",
+    "flavor": "Life flows where the lantern points."
   },
   {
     "id": 308,
@@ -4871,7 +5015,9 @@
         "tokenName": "Zombie"
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Create a 2/2 Zombie.",
+    "flavor": "The dead answer every summons."
   },
   {
     "id": 309,
@@ -4892,7 +5038,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Each opponent loses 3 life and you gain 3 life.",
+    "flavor": "The plague does not discriminate; it collects."
   },
   {
     "id": 310,
@@ -4913,7 +5061,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 2 damage to a random enemy champion.",
+    "flavor": "Even feathers grow heavy when the mire claims them."
   },
   {
     "id": 311,
@@ -4934,7 +5084,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Return target champion to its owner’s hand.",
+    "flavor": "A toy that always comes back — until it doesn’t."
   },
   {
     "id": 312,
@@ -4955,7 +5107,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Return target champion to its owner’s hand.",
+    "flavor": "The oil-slick path leads only one way: back."
   },
   {
     "id": 313,
@@ -4976,7 +5130,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Return up to one enemy champion to its owner’s hand.",
+    "flavor": "The counter-spell is a ripple that unravels the cast."
   },
   {
     "id": 314,
@@ -5005,7 +5161,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Return target champion to its owner’s hand.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "Snag the thread; the tapestry unravels."
   },
   {
     "id": 315,
@@ -5026,7 +5184,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Return target champion to its owner’s hand.",
+    "flavor": "The flood recedes; the stranded remain."
   },
   {
     "id": 316,
@@ -5055,7 +5215,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Draw two cards.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "Melodies from the deep chart roads to forgotten riches."
   },
   {
     "id": 317,
@@ -5076,7 +5238,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 3 damage to a random enemy champion.",
+    "flavor": "The serpent strikes where the water is darkest."
   },
   {
     "id": 318,
@@ -5097,7 +5261,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Return up to two enemy champions to their owners’ hands.",
+    "flavor": "Tides turn; enemies return to sender."
   },
   {
     "id": 319,
@@ -5118,7 +5284,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 2 damage to a random enemy champion.",
+    "flavor": "A bolt that splits the sky and the defense."
   },
   {
     "id": 320,
@@ -5139,7 +5307,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 2 damage to two target champions.",
+    "flavor": "Two targets, one current — neither escapes."
   },
   {
     "id": 321,
@@ -5160,7 +5330,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 2 damage to a random enemy champion.",
+    "flavor": "The leak springs where the pressure is highest."
   },
   {
     "id": 322,
@@ -5181,7 +5353,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Return target champion to its owner’s hand.",
+    "flavor": "Repulse the advance; the line holds."
   },
   {
     "id": 323,
@@ -5202,7 +5376,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Destroy target relic.",
+    "flavor": "The enchantment unravels; the thread is cut."
   },
   {
     "id": 324,
@@ -5223,7 +5399,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Destroy target relic.",
+    "flavor": "Nature reclaims what artifice built."
   },
   {
     "id": 325,
@@ -5244,7 +5422,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 3 damage to any target.",
+    "flavor": "The bolt finds its mark before the thunder speaks."
   },
   {
     "id": 326,
@@ -5265,7 +5445,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 1 damage to a random enemy champion.",
+    "flavor": "A moment’s haze; the strike misses its mark."
   },
   {
     "id": 328,
@@ -5286,7 +5468,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Destroy the weakest enemy champion.",
+    "flavor": "Chaos rewrites the rules; the weakest falls first."
   },
   {
     "id": 329,
@@ -5307,7 +5491,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 3 damage to a random enemy champion.",
+    "flavor": "Adrenaline burns hot; the enemy burns hotter."
   },
   {
     "id": 330,
@@ -5328,7 +5514,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Drain 3 life from target champion or player.",
+    "flavor": "Immortality is a loan; the collector comes calling."
   },
   {
     "id": 331,
@@ -5349,7 +5537,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Search your deck for a basic land and put it into play. Then shuffle your deck.",
+    "flavor": "The leyline surges; the traveler finds the gate."
   },
   {
     "id": 333,
@@ -5370,7 +5560,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Return a card from your graveyard to your hand.",
+    "flavor": "The soul echoes; the grave answers."
   },
   {
     "id": 334,
@@ -5486,7 +5678,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 3 damage to a random enemy champion.",
+    "flavor": "The mana flares; the caster pays in kind."
   },
   {
     "id": 339,
@@ -5507,7 +5701,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Deal 2 damage to two target champions.",
+    "flavor": "Two wounds, one echo."
   },
   {
     "id": 340,
@@ -5528,7 +5724,9 @@
         "activationCost": null
       }
     ],
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "text": "Destroy target relic.",
+    "flavor": "Acid finds the seam in every ward."
   },
   {
     "id": 354,

@@ -1,0 +1,11 @@
+{
+  "name": "TCG.Data",
+  "references": ["Newtonsoft.Json"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": []
+}

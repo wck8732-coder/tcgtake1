@@ -1,0 +1,61 @@
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emory[Cc]aptures/
+
+# VS Code / Rider / Visual Studio
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.unityproj
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build outputs
+*.apk
+*.aab
+*.ipa
+*.app
+*.exe
+*.dll
+*.pdb
+*.mdb
+
+# Local settings
+LocalSettings.asset
+ProjectSettings/ProjectVersion.txt
+
+# Addressables
+Assets/AddressableAssetsData/
+Library/com.unity.addressables/
+
+# Input System
+Assets/InputSystem_Actions.asset
+
+# Shader cache
+Library/ShaderCache/
+
+# Burst
+Library/BurstCache/
+
+# Test results
+TestResults/
+
+# Node modules (for build scripts)
+node_modules/
+package-lock.json
+
+# Environment
+.env
+*.local

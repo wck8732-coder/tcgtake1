@@ -32,6 +32,13 @@
     "Sunforged",
     "Lantern",
     "Gilded",
+    "Zealot"
+  ],
+  "colors": [
+    "Crimson",
+    "Sunforged",
+    "Lantern",
+    "Gilded",
     "Zealot",
     "Colorless"
   ],
@@ -213,7 +220,7 @@
         "Zealot",
         "Colorless"
       ],
-      "description": "Faction color"
+      "description": "Faction color (Colorless = neutral/artifact, not a faction). Valid colors: Crimson, Sunforged, Lantern, Gilded, Zealot, Colorless. Valid factions (for deck building): Crimson, Sunforged, Lantern, Gilded, Zealot."
     },
     "abilities": {
       "type": "mixed[]",

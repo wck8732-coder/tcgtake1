@@ -19,7 +19,7 @@ Latest verified snapshot:
   Status: INTACT (verified with verify-checkpoint.ps1).
 
 LIVE data files at root (generated, DO NOT hand-edit):
-  card_database.json            — LIVE card DB the game/sim reads (480 cards).
+  card_database.json            — LIVE card DB the game/sim reads (480 cards). **Colorless = neutral/artifact (not a faction).**
   card_database.master.json     — frozen authoritative reference.
   card_database.backup.json     — backup of master.
   card_database.tentative.json  — editable working copy (promote to master
@@ -47,9 +47,10 @@ to schema_definitions.json. shared/effects.js: STRING_EFFECTS for
 destroy_enchantment/bounce_enchantment + pluralization cleanup (a card / N cards,
 a Saproling / N Saprolings). Wave 1 = 24 cards, Wave 2 = 30 (all deck-pool), Wave 3 = 30 (all 11 Domains,
 10 Omens, showcase leaders), Wave 4 = 30 (Relics across all factions),
-Wave 5 = 35 (final 29 Relics — Relic type fully authored — plus 6 Decrees) —
-141/380 authored; ~239 non-land cards still on generated text → continue in
-review waves.
+Wave 5 = 35 (final 29 Relics — Relic type fully authored — plus 6 Decrees),
+Wave 6 = up to Batches 1-4 (Sunforged/Lantern/Gilded/Colorless/Crimson
+Instants+Spells) — 261/380 authored; 119 non-land cards remain (all Zealot) →
+continue in review waves.
 
 ================================================================================
 SECTION 1 — THE THREE MAIN GOALS (verbatim, reprioritized agenda)
@@ -60,7 +61,7 @@ Run consistently after any change:
   node recall_ominous_test.js                            (MUST stay green)
   node simulate.js 10 medium Classic / Standard         (clean games, no stalls)
   powershell -ExecutionPolicy Bypass -File verify.ps1   (7-step suite: syntax +
-    build identity + schema 0 violations + 123 tests + validate-data (116) +
+    build identity + schema 0 violations + 123 tests + validate-data (104) +
     Classic sim + Standard sim + Unity data regen)
 Snapshot rule: create-checkpoint / verify-checkpoint / restore-checkpoint are
 the ONLY tools for project snapshots. A checkpoint is ALWAYS the very LAST step
@@ -80,29 +81,31 @@ lifts the hold):
 
 -------------------------------------------------------------------------------
 GOAL 1 — Card Data Integrity + Format/Deck Validation Audit
-WHY FIRST: Data correctness is foundational. If the 480-card DB, the 12
-format-split decks, or Standard rarity caps are wrong, every downstream system
-(engine, sims, UI) inherits the defect. verify.ps1 only reports identity-level
-drift, not semantic validity, so a dedicated validation pass is needed.
+WHY FIRST: Data correctness is foundational. If the 480-card DB or the 12
+format-split decks are wrong, every downstream system (engine, sims, UI)
+inherits the defect. verify.ps1 only reports identity-level drift, not semantic
+validity, so a dedicated validation pass is needed. (v0.1048+: Standard rarity
+caps REMOVED — both Classic and Standard now max 4 copies/card.)
 Minor steps:
   1. Audit cards.json / build-cards.js transformCards() for orphan defs:
      TRIM_IDS entries that don't exist; spellPatch/enchantPatch/instantPatch/kw
      keys referencing missing IDs; legendaryKit ids not in
      legendaryChampionIds.
-  2. Verify all 480 cards: color is one of the 6 faction enum values; rarity is
-     one of the 5 schema rarities. Use a node filter (context protection blocks
-     full reads of card_database*.json / cards.json / decks.json).
-  3. Validate each of the 12 decks in decks.json: exactly 70 cards (24 lands +
-     46 non-land); all card ids resolve to live card_database.json; Standard
-     rarity caps hold (Legendary x1, Mythic x2, Rare x3).
+2. Verify all 480 cards: color is one of the 5 faction enum values + Colorless (neutral/artifact); rarity is
+      one of the 5 schema rarities. Use a node filter (context protection blocks
+      full reads of card_database*.json / cards.json / decks.json).
+   3. Validate each of the 12 decks in decks.json: exactly 70 cards (24 lands +
+      46 non-land); all card ids resolve to live card_database.json; Standard
+      rarity caps removed — both formats now max 4 copies/card.
   4. Add a semantic data-validation script (e.g. validate-data.js) that reports
      violations so it can be run and/or folded into verify.ps1.
   5. Fix any violations in build-cards.js transformCards() ONLY, rebuild via
      `node build-cards.js build`, confirm build IDENTICAL + schema 0 violations.
 FILES TO READ:  cards.json, build-cards.js, decks.json, schema_definitions.json,
-                shared/card-schema.js, verify.ps1
+                 shared/card-schema.js, verify.ps1
 FILES TO EDIT:  build-cards.js (only if a transform bug). DO NOT hand-edit
-                card_database*.json / cards.json / decks.json (generated).
+                 card_database*.json / cards.json / decks.json (generated).
+**FORMAT RULES UPDATED (v0.1048+): Colorless = neutral/artifact (not a faction). Standard rarity caps REMOVED — both Classic and Standard now max 4 copies/card.**
 -------------------------------------------------------------------------------
 GOAL 2 — Engine Correctness: Stack/Priority Edge Cases + Combat Logic Audit
 WHY: The full stack/priority system (A3) is the newest, most complex logic.
@@ -215,7 +218,7 @@ it is the source of truth and more compact than the generated JSON.
   aiMainPhase() targeting/stack resolve                         ~line 1831
   playerMainPhase() stack resolve                               ~line 2030
   confirmBlockers / assignBlocker / removeBlocker               ~line 2062
-  buildDeckFromDef (deck size 70 + 4-copy + Standard caps)      (search if needed)
+  buildDeckFromDef (deck size 70 + 4-copy cap, both formats)   (search if needed)
 
 --- game.js (browser UI layer; extends RULES_ENGINE.GameState) ---
   constructor(difficulty, deckKey, format)                      ~line 187

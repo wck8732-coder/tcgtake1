@@ -1,0 +1,74 @@
+{
+  "textPatch": {
+    // LANTERN INSTANTS (9)
+    302: "Destroy the weakest enemy champion.",
+    303: "Draw two cards.",
+    304: "Destroy the weakest enemy champion.",
+    305: "Deal 2 damage to a random enemy champion.",
+    306: "Destroy the weakest enemy champion.",
+    307: "Drain 3 life from target champion or player.",
+    308: "Create a 2/2 Zombie.",
+    309: "Each opponent loses 3 life and you gain 3 life.",
+    310: "Deal 2 damage to a random enemy champion.",
+    // GILDED SPELLS (3)
+    158: "Return up to two enemy champions to their owners' hands.",
+    159: "Deal 2 damage to all enemy champions.",
+    160: "Return all enemy champions to their owners' hands.",
+    // GILDED INSTANTS (9)
+    219: "Tap target enemy champion.",
+    220: "Return target champion to its owner's hand.",
+    221: "Return up to two enemy champions to their owners' hands.",
+    222: "Draw a card.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    223: "Deal 4 damage to all enemy champions.",
+    224: "Return target champion to its owner's hand.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    311: "Return target champion to its owner's hand.",
+    312: "Return target champion to its owner's hand.",
+    313: "Return up to one enemy champion to its owner's hand.",
+    314: "Return target champion to its owner's hand.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    315: "Return target champion to its owner's hand.",
+    316: "Draw two cards.\nSearch your deck for a basic land and put it into play. Then shuffle your deck.",
+    317: "Deal 3 damage to a random enemy champion.",
+    318: "Return up to two enemy champions to their owners' hands.",
+    319: "Deal 2 damage to a random enemy champion.",
+    320: "Deal 2 damage to two target champions.",
+    // COLORLESS SPELLS (2)
+    186: "Create a 2/2 Golem.",
+    187: "Return a card from your graveyard to your hand."
+  },
+  "flavorPatch": {
+    // LANTERN INSTANTS
+    302: "The blade finds the frailest neck.",
+    303: "Knowledge costs blood; the ledger balances itself.",
+    304: "Reap what the grave has sown.",
+    305: "A glance that withers steel and flesh alike.",
+    306: "Darkness grips tightest where the light is weakest.",
+    307: "Life flows where the lantern points.",
+    308: "The dead answer every summons.",
+    309: "The plague does not discriminate; it collects.",
+    310: "Even feathers grow heavy when the mire claims them.",
+    // GILDED SPELLS
+    158: "The tide takes what the shore forgets.",
+    159: "The abyss rises; the surface drowns.",
+    160: "No anchor holds against the crushing deep.",
+    // GILDED INSTANTS
+    219: "The current decides who moves.",
+    220: "What the wave brings, the wave takes back.",
+    221: "The undertow respects no allegiance.",
+    222: "Songs of the deep carry maps to buried wealth.",
+    223: "Pressure at depth crushes hulls and armies alike.",
+    224: "The pull is gentle; the return is not.",
+    311: "A toy that always comes back — until it doesn't.",
+    312: "The oil-slick path leads only one way: back.",
+    313: "The counter-spell is a ripple that unravels the cast.",
+    314: "Snag the thread; the tapestry unravels.",
+    315: "The flood recedes; the stranded remain.",
+    316: "Melodies from the deep chart roads to forgotten riches.",
+    317: "The serpent strikes where the water is darkest.",
+    318: "Tides turn; enemies return to sender.",
+    319: "A bolt that splits the sky and the defense.",
+    320: "Two targets, one current — neither escapes.",
+    // COLORLESS SPELLS
+    186: "Iron obeys the hand that forged it.",
+    187: "Scrap remembers the shape it once held."
+  }
+}

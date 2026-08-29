@@ -22,6 +22,9 @@ tcg-web-prototype/backups/*
 backups/*
 !backups/README.md
 
+# opencode tooling (.opencode) - state, plugins, node_modules - not project data
+**/.opencode/
+
 # opencode.json configs (provider setup) - not uploaded
 **/opencode.json
 

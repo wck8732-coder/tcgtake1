@@ -1,6 +1,6 @@
 # create-checkpoint.ps1
-# Creates a versioned snapshot of the entire project (except the backups folder)
-# with a SHA256 manifest for corruption detection.
+# Creates a versioned snapshot of the project (excluding the backups folder and
+# .opencode — tool state, secrets, node_modules) with a SHA256 manifest.
 #
 # Usage:
 #   powershell -ExecutionPolicy Bypass -File backups\create-checkpoint.ps1 -Name v0.1040
@@ -31,8 +31,9 @@ New-Item -ItemType Directory -Path $SnapshotDir | Out-Null
 
 $copied = 0
 Get-ChildItem -LiteralPath $ProjectRoot -Force | ForEach-Object {
-    # Skip the backups folder itself
+    # Skip the backups folder itself and .opencode (tool state / secrets / node_modules)
     if ($_.FullName -eq $BackupsRoot) { return }
+    if ($_.Name -eq '.opencode') { return }
 
     $dest = Join-Path $SnapshotDir $_.Name
     if ($_.PSIsContainer) {

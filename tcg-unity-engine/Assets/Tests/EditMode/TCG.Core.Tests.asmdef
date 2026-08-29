@@ -1,0 +1,11 @@
+{
+  "name": "TCG.Core.Tests",
+  "references": ["TCG.Core", "TCG.Data"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": []
+}

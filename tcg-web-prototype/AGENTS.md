@@ -9,7 +9,7 @@
 ## Live Files (root)
 | File | Purpose |
 |---|---|
-| `card_database.json` | LIVE card DB — what the game/sim read. **100 Lands + 380 non-land (480 total).** 4 formats: Classic (4x copies), Standard (rarity caps: Legendary x1, Mythic x2, Rare x3), plus v0.1045 format-split decks.json change. Every faction: 8 Rare + 4 Mythic. Generated, DO NOT hand-edit. |
+| `card_database.json` | LIVE card DB — what the game/sim read. **100 Lands + 380 non-land (480 total).** Both Classic and Standard: max 4 copies/card (no rarity caps). Every faction: 8 Rare + 4 Mythic. **Colorless = neutral/artifact (not a faction).** Generated, DO NOT hand-edit. |
 | `card_database.master.json` / `.backup.json` / `.tentative.json` | Frozen master, backup, editable working copy. Keep identical via `init`/`verify`. |
 | `schema_definitions.json` | Canonical card schema (types, rarities, factions, trigger/effect vocabularies, field schema). Regenerates `shared/card-schema.js`; validated on every build. |
 | `cards.json` | SOURCE input for `build-cards.js` (base definitions + newCards patches). Edit here for new/modified cards, then rebuild. |
@@ -18,7 +18,7 @@
 | `game.js` | Browser UI layer. `class GameState extends RULES_ENGINE.GameState` — keeps only UI/async-AI/combat overrides; pure rules inherited. Reads `card_database.json` via `fetch`. Card renderer (v0.1048): `textOverride` via `cardData.text` (keyword tooltips still scanned), `.card-flavor` italic line, pluralization cleaned. |
 | `simulate.js` | Headless harness over `rules_engine.js` (AI vs AI). Usage: `node simulate.js [games] [difficulty] [format]`. |
 | `slug_mappings.js` | Canonical deck-slug map (faction→slug, strategy blurbs, `slugToFaction`/`factionToSlug`). Consumed by gen_decks.js; deck slug keys must match decks.json. |
-| `decks.json` | 70-card format-split decks — **Classic** (max 4 copies/card) and **Standard** (rarity caps: Legendary x1, Mythic x2, Rare x3). 12 decks (6 Classic + 6 Standard), each exactly 70 cards (24 lands + 46 non-land). v0.1045 change from DEFERRED; gen_decks.js generates format-split decks; rules_engine.js enforces min 70 cards + 4-copy limit. | |
+| `decks.json` | 70-card format-split decks — **Classic** and **Standard** both max 4 copies/card (no rarity caps). 12 decks (6 Classic + 6 Standard), each exactly 70 cards (24 lands + 46 non-land). gen_decks.js generates format-split decks; rules_engine.js enforces min 70 cards + 4-copy limit. | |
 | `recall_ominous_test.js` | 123-test harness for Recall/Ominous/Decree + stack/priority/combat/fatigue rules. Run `node recall_ominous_test.js`. MUST stay green. |
 | `tcgtake1/` | 120-card CSV source + Gemini mapping (`mapped_cards.json`, ids 1001-1120) — self-contained provenance bundle. Include `batch01-06.json` (Gemini batch inputs) + `merge_batches.js`/`merge-cards.js` (pipeline) + `INTEGRATION_PLAN.md`. |
 | `unity/` | Unity template (Assets/ — proper Unity project layout). Engine logic stubbed (gated on decks rebuild). Data: `Assets/StreamingAssets/cards.json` (480-card, generated from `card_database.json`). Regenerate via `node build-unity-cards.js` or **TCG → Build Unity Card Data**. Godot port deleted (dropped target). |
@@ -53,7 +53,7 @@ powershell -ExecutionPolicy Bypass -File backups\restore-checkpoint.ps1 [-Snapsh
 **Rule:** snapshots are full-project. Always snapshot before edits; verify after.
 
 ## Card Data Rules (live)
-- **Factions:** Crimson=red/burn, Sunforged=green/ramp, Lantern=black/death, Gilded=blue/control/draw, Colorless=artifacts, Zealot=white/buffs+purge. Deck slugs use OLD names (`volcano_inferno_aggro`, etc.) but `faction` field is new.
+- **Factions:** Crimson=red/burn, Sunforged=green/ramp, Lantern=black/death, Gilded=blue/control/draw, Zealot=white/buffs+purge. **Colorless = neutral/artifact (not a faction).** Deck slugs use OLD names (`volcano_inferno_aggro`, etc.) but `faction` field is new.
 - **Types:** Champion, Spell, Instant, Decree, Relic, Domain, Omen, Land. (Champion = Creature; renamed everywhere in v0.1038.)
 - **Mana costs** use `{color, generic}` object format. Lands provide 1 colored mana. `normalizeCost`/`totalCostValue`/`canPayCost`/`payMana` in shared/cost-utils.js (COST.*).
 - **transformCards patches:** `spellPatch`/`enchantPatch`/`instantPatch` assign abilities by card id; `kw` adds keyword strings; `championRampPatch`, `recallPatch`, `ominousPatch`, `rareSpells`, `rarityOverride` (NEW v0.1042), `TRIM_IDS` (NEW v0.1042) modify cards. Legendary sets: `legendaryChampionIds` + `legendaryKit`.
@@ -61,12 +61,12 @@ powershell -ExecutionPolicy Bypass -File backups\restore-checkpoint.ps1 [-Snapsh
 - **Keywords** (string abilities, interpreted at runtime by `getKeywords`): Swiftstrike, Quickdraw, Keen Eye, Overrun, Deathshroud, Siphon, Flying, Intimidate, Guard, Bastion, Recall N, Ominous.
 - **Omens:** face-down play → flip on trigger (`flipTrigger`); `flipCost` enforced; non-champ omens go to graveyard after firing; champion-omens flip + execute ability. Triggers: END_OF_TURN, ON_COMBAT_DAMAGE, ON_ALLY_DIES, ON_OPPONENT_SPELL, START_OF_TURN.
 - **Engine rules (enforced v0.1042):** min deck 70 cards, max 4 copies per card, max hand 7 (capped in draw logic). `buildDeckFromDef` lives in `rules_engine.js` and enforces deck-size + 4-copy limit.
-- **Format rules (v0.1045):** Classic (max 4 copies/card), Standard (rarity caps: Legendary x1, Mythic x2, Rare x3). 12 decks (6 Classic, 6 Standard), each exactly 70 cards (24 lands + 46 non-land). Format selector in browser start screen; `simulate.js` CLI accepts `[format]` arg. **Verified (v0.1046):** browser format persistence is correct — `selectedFormat` defaults to `'Classic'` (game.js:2376), is set by the format buttons (game.js:2401), and is NOT reset by the difficulty handler (game.js:2391-2398 only sets `selectedDifficulty` + toggles visibility); `launchGame` passes it through (game.js:2475). No localStorage memory by design.
+- **Format rules (v0.1045):** Classic and Standard both max 4 copies/card (no rarity caps). 12 decks (6 Classic, 6 Standard), each exactly 70 cards (24 lands + 46 non-land). Format selector in browser start screen; `simulate.js` CLI accepts `[format]` arg. **Verified (v0.1046):** browser format persistence is correct — `selectedFormat` defaults to `'Classic'` (game.js:2376), is set by the format buttons (game.js:2401), and is NOT reset by the difficulty handler (game.js:2391-2398 only sets `selectedDifficulty` + toggles visibility); `launchGame` passes it through (game.js:2475). No localStorage memory by design.
 - **Shared modules (UMD):** shared/utils.js, keywords.js, cost-utils.js, phases.js, factions.js, effects.js, card-schema.js. Loaded via `<script>` in index.html (browser) / `require()` in simulate.js. `rules_engine.js` wraps the engine the same way (global `RULES_ENGINE` in browser).
 - **Static data protection:** `.opencode/plugins/ignore-static-data.js` blocks full reads/greps/lists of `card_database*.json`, `cards.json`, `decks.json`, `tcgtake1/`, `backups/`, `unity/Assets/StreamingAssets/`, `*.csv`. Unblocked by naming the file in a request (edit intent) or by bounded reads. Use `node -e` filters or grep with a specific pattern instead.
 
 ## Current Set State (v0.1042)
-- 480 cards: 100 Lands (20×5 factions; Colorless has no colored lands — borrow from others), 380 non-land.
+- 480 cards: 100 Lands (20×5 factions; Colorless has no colored lands — borrow from others), 380 non-land. **Colorless = neutral/artifact (not a faction).**
 - Rarity: Common 175 / Uncommon 208 / Rare 48 / Mythic 24 / Legendary 25.
 - Draw pie rebalanced: Colorless draw effects 17→3 (Wanderer's Counsel→scry, Far-Way Merchant→ramp, Hearth of Many Paths→extra land); Gilded is now primary draw color (6 effects).
 - All 123 tests pass; 100-game sim clean.

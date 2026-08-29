@@ -1,0 +1,11 @@
+{
+  "name": "TCG.Rendering.Tests",
+  "references": ["TCG.Rendering", "TCG.Data", "TextMeshPro", "UniTask", "PrimeTween"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": []
+}

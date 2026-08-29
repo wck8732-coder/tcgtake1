@@ -1,0 +1,56 @@
+{
+  "textPatch": {
+    // COLORLESS INSTANTS (3 remaining)
+    338: "Deal 3 damage to a random enemy champion.",
+    339: "Deal 2 damage to two target champions.",
+    340: "Destroy target relic.",
+    // CRIMSON SPELLS (9)
+    36: "Search your deck for a basic land and put it into play. Then shuffle your deck.",
+    37: "Deal 3 damage to a random enemy champion.",
+    39: "Deal 2 damage to all enemy champions.",
+    201: "Deal 2 damage to a random enemy champion.",
+    202: "Deal 3 damage to a random enemy champion.",
+    203: "Deal 2 damage to two target champions.",
+    204: "Deal 1 damage to any target.",
+    205: "Deal 3 damage to all enemy champions.",
+    206: "Deal 3 damage to a random enemy champion.",
+    // CRIMSON INSTANTS (18)
+    281: "Deal 1 damage to any target.",
+    282: "Deal 4 damage to a random enemy champion.",
+    283: "Deal 2 damage to a random enemy champion.",
+    284: "Deal 4 damage to a random enemy champion.",
+    285: "Deal 2 damage to all enemy champions.",
+    286: "Deal 3 damage to a random enemy champion.",
+    287: "Deal 1 damage to all enemy champions.",
+    288: "Deal 3 damage to all enemy champions.",
+    289: "Deal 2 damage to two target champions.",
+    290: "Deal 3 damage to all enemy champions."
+  },
+  "flavorPatch": {
+    // COLORLESS INSTANTS
+    338: "The mana flares; the caster pays in kind.",
+    339: "Two wounds, one echo.",
+    340: "Acid finds the seam in every ward.",
+    // CRIMSON SPELLS
+    36: "Gold fuels the march; the mountain provides.",
+    37: "The market corners itself when the blade sets the price.",
+    39: "Hostile takeovers are settled in ash.",
+    201: "The earth cracks; fire answers.",
+    202: "Lava does not negotiate; it consumes.",
+    203: "Twin volleys; the mountain speaks twice.",
+    204: "Ash falls where the ember kissed.",
+    205: "The caldera opens; the valley fills with fire.",
+    206: "The ground shakes; the enemy breaks.",
+    // CRIMSON INSTANTS
+    281: "A dart of molten glass; small, sharp, final.",
+    282: "The burst does not ask permission.",
+    283: "Spray the forge; the metal remembers.",
+    284: "The hammer falls; the anvil screams.",
+    285: "The gale carries cinders, not mercy.",
+    286: "The trap springs; the intruder burns.",
+    287: "Ash chokes the sky; the living choke faster.",
+    288: "The quake splits the line; fire fills the gap.",
+    289: "Two brands; one forge.",
+    290: "The storm is cinder; the forecast is ruin."
+  }
+}

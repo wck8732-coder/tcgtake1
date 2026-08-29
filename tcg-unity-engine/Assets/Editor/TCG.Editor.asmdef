@@ -1,0 +1,11 @@
+{
+  "name": "TCG.Editor",
+  "references": ["TCG.Data", "UnityEditor"],
+  "includePlatforms": ["Editor"],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": []
+}

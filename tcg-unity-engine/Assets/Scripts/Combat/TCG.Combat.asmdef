@@ -1,0 +1,11 @@
+{
+  "name": "TCG.Combat",
+  "references": ["TCG.Core", "TCG.Effects"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": []
+}

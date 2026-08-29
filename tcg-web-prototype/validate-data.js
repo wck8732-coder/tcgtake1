@@ -49,8 +49,8 @@ const VALID_FACTIONS = ['Crimson', 'Sunforged', 'Lantern', 'Gilded', 'Zealot', '
 const VALID_RARITIES = ['Common', 'Uncommon', 'Rare', 'Legendary', 'Mythic'];
 const VALID_TYPES    = ['Land', 'Champion', 'Spell', 'Instant', 'Decree', 'Relic', 'Domain', 'Omen'];
 
-// Standard rarity caps (deck-total)
-const STANDARD_CAPS  = { Legendary: 1, Mythic: 2, Rare: 3 };
+// Standard rarity caps (deck-total) - REMOVED: both formats now max 4 copies/card
+const STANDARD_CAPS  = null;
 const CLASSIC_MAXCOPY = 4;
 
 // ---------------------------------------------------------------------------
@@ -274,13 +274,12 @@ for (const [formatName, formatData] of Object.entries(deckDB.formats || {})) {
             over4.map(([id, n]) => id + 'x' + n).join(', '));
     }
 
-    // Standard: deck-total rarity caps
+    // Standard: max 4 copies per card (same as Classic)
     if (formatName === 'Standard') {
-      for (const [rarity, cap] of Object.entries(STANDARD_CAPS)) {
-        const total = rarityCounts[rarity] || 0;
-        check('C10.' + slug + '.' + rarity + ' total <= ' + cap + ' (Standard cap)',
-              total <= cap, 'got ' + total);
-      }
+      const over4 = Object.entries(copyCounts).filter(([, n]) => n > CLASSIC_MAXCOPY);
+      check('C10.' + formatName + '.' + slug + ' no card > 4 copies',
+            over4.length === 0,
+            over4.map(([id, n]) => id + 'x' + n).join(', '));
     }
   }
 }
