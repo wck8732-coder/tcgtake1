@@ -19,7 +19,7 @@ PROJECT ROOT (CANONICAL, v0.1050): C:\Users\Blayne\Desktop\tcg_master_project
     (web game + engine + card DB + build pipeline).
   - Unity template:  C:\Users\Blayne\Desktop\tcg_master_project\tcg-unity-engine
   - Git: repo root is tcg_master_project, remote origin = github.com/wck8732-coder/tcgtake1 (main). Keep it mirrored.
-  - Path rule: scripts resolve relative to __dirname (recall_ominous_test.js, wave6_batch*.js). No hardcoded C:/Users/Blayne/Documents/... paths anywhere.
+  - Path rule: scripts resolve relative to __dirname (recall_ominous_test.js, build-cards.js). No hardcoded C:/Users/Blayne/Documents/... paths anywhere. (Consumed Wave 6 batch scripts deleted 2026-08-31 — merged into build-cards.js.)
  
 Current version label: v0.1050 (2026-08-29) — set rebalance LIVE (Crimson bolster + engine-target fix).
 
@@ -370,7 +370,7 @@ Deck builder is EXPLICITLY DEFERRED by the user (research/plan pending).
      only when no eligible champions exist. Distinct from any-target burn.
 
 4. DOC PATH FIXES: recall_ominous_test.js + wave6_batch1-4.js now resolve via
-   __dirname (no hardcoded C:/Users/Blayne/Documents/... paths).
+   __dirname (no hardcoded C:/Users/Blayne/Documents/... paths). [wave6_batch1-4.js deleted 2026-08-31 — content merged into build-cards.js; resolve rule still applies to recall_ominous_test.js etc.]
 
 5. DECK BUILDER: DEFERRED by user. gen_decks.js unchanged (cheapest-first
    fill still floods 1-drops — known issue to address with the research-backed
