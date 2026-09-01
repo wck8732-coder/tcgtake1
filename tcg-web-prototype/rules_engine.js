@@ -305,6 +305,15 @@ class GameState {
     this.payMana(player, this.effectiveCost(player, card.cost));
     this.consumeCostDiscount(player);
     player.hand.splice(cardIndex, 1);
+    // Ominous relics deploy face-down as hidden units (flip on trigger like Omens)
+    if (this.championHasKeyword(card, 'ominous')) {
+      card.faceDown = true;
+      card.turnPlayed = this.turnNumber;
+      player.battlefield.omens.push(card);
+      this.noteCardPlayed(player, card);
+      this.updateUI();
+      return true;
+    }
     player.battlefield.relics.push(card);
     this.processAbilities('on_cast', { player, card });
     this.noteCardPlayed(player, card);
@@ -320,6 +329,15 @@ class GameState {
     this.payMana(player, this.effectiveCost(player, card.cost));
     this.consumeCostDiscount(player);
     player.hand.splice(cardIndex, 1);
+    // Ominous domains deploy face-down as hidden units (flip on trigger like Omens)
+    if (this.championHasKeyword(card, 'ominous')) {
+      card.faceDown = true;
+      card.turnPlayed = this.turnNumber;
+      player.battlefield.omens.push(card);
+      this.noteCardPlayed(player, card);
+      this.updateUI();
+      return true;
+    }
     player.battlefield.domains.push(card);
     this.processAbilities('on_cast', { player, card });
     this.noteCardPlayed(player, card);
@@ -350,6 +368,17 @@ class GameState {
     this.payMana(player, this.effectiveCost(player, card.cost));
     this.consumeCostDiscount(player);
     player.hand.splice(cardIndex, 1);
+    // Ominous spells/instants/decrees (trap-style) deploy face-down as hidden
+    // units instead of resolving immediately; they flip on their trigger.
+    if (this.championHasKeyword(card, 'ominous')) {
+      card.faceDown = true;
+      card.turnPlayed = this.turnNumber;
+      player.battlefield.omens.push(card);
+      log(`${player.name} plays ${card.name} face-down (Ominous).`, 'play');
+      this.noteCardPlayed(player, card);
+      this.updateUI();
+      return true;
+    }
     this.stack.push({ proc: this.players.indexOf(player), type: 'Player Card', sourceCard: card, targets: targets, userId: userId });
     log(`${player.name} casts ${card.name}.`, 'play');
     this.processGameEvent('ON_OPPONENT_SPELL', { spell: card, casterId: this.players.indexOf(player) }, deferResolve);

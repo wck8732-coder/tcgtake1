@@ -7,6 +7,9 @@ $RECYCLE.BIN/
 .env
 .env.local
 *.local
+router.log
+**/router.log
+*.bak_*
 **/.opencode/state/
 
 # Node dependencies
