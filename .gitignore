@@ -9,7 +9,12 @@ $RECYCLE.BIN/
 *.local
 router.log
 **/router.log
+router.pid
 *.bak_*
+
+# Python bytecode cache
+__pycache__/
+**/__pycache__/
 **/.opencode/state/
 
 # Node dependencies

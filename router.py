@@ -228,6 +228,27 @@ CHAINS = {
 }
 
 
+def _assert_cost_ordering() -> None:
+    # Cost guard: a premium (protected) provider must never be tried before an
+    # ordinary provider. If a future edit promotes one, fail fast at startup
+    # with a clear message instead of silently spending premium tokens.
+    for category, chain in CHAINS.items():
+        seen_premium = False
+        for key in chain:
+            entry = PROVIDERS[key]
+            if entry.get("premium"):
+                seen_premium = True
+            elif seen_premium:
+                raise RuntimeError(
+                    "Cost-guard violation: non-premium %r follows premium %r in "
+                    "chain %r. Protected providers must be terminal fallbacks only."
+                    % (key, chain[chain.index(key) - 1], category)
+                )
+
+
+_assert_cost_ordering()
+
+
 def messages_to_responses(messages: list[dict], payload: dict) -> dict:
     instructions = "\n".join(text_from_part(m.get("content", "")) for m in messages if m.get("role") == "system")
     items = [{"role": m.get("role", "user"), "content": m.get("content", "")} for m in messages if m.get("role") != "system"]
