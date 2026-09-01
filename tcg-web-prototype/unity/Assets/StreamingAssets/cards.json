@@ -19,7 +19,7 @@
   },
   "schema_version": "1.0",
   "build_target": "unity",
-  "generated_at": "2026-09-01T20:41:59.803Z"
+  "generated_at": "2026-09-01T21:13:32.202Z"
  },
  "cards": [
   {
@@ -381,7 +381,9 @@
     "Swiftstrike",
     "Overrun"
    ],
-   "rarity": "Rare"
+   "rarity": "Rare",
+   "text": "When you cast this, deal 2 damage to target relic.\\nSwiftstrike\\nOverrun",
+   "flavor": "A vault is only a promise until the winch turns."
   },
   {
    "id": 33,
@@ -395,7 +397,9 @@
    "abilities": [
     "Quickdraw"
    ],
-   "rarity": "Rare"
+   "rarity": "Rare",
+   "text": "Quickdraw",
+   "flavor": "Gold buys loyalty, but a quick blade guarantees it stays bought."
   },
   {
    "id": 35,
@@ -501,7 +505,9 @@
    "abilities": [
     "Quickdraw"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Quickdraw",
+   "flavor": "Count the coins twice, cut the throats once, and always take your rightful share."
   },
   {
    "id": 41,
@@ -752,7 +758,9 @@
     "Keen Eye",
     "Guard"
    ],
-   "rarity": "Rare"
+   "rarity": "Rare",
+   "text": "Keen Eye\\nGuard",
+   "flavor": "The deepest roots hold fast, unbothered by the storms that break the canopy."
   },
   {
    "id": 63,
@@ -766,7 +774,9 @@
    "abilities": [
     "Overrun"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Overrun",
+   "flavor": "No snare can hold the wild when the jungle decides to push back."
   },
   {
    "id": 64,
@@ -822,7 +832,9 @@
    "abilities": [
     "Swiftstrike"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Swiftstrike",
+   "flavor": "It steps without a sound, leaving only the memory of teeth and torn leaves."
   },
   {
    "id": 66,
@@ -844,7 +856,9 @@
      "activationCost": null
     }
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Flying\\nWhen this enters, Spore Trail 1.",
+   "flavor": "Where the drake rests, the undergrowth blooms with a sudden, suffocating vibrancy."
   },
   {
    "id": 67,
@@ -881,7 +895,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "Overrun\\nKeen Eye\\nVerdant Aura 1.",
+   "flavor": "Its footsteps carve new rivers; its roar scatters the oldest storm clouds."
   },
   {
    "id": 68,
@@ -903,7 +919,9 @@
      "activationCost": null
     }
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Keen Eye\\nWhen this enters, Pathfinder 1.",
+   "flavor": "Follow the briars, and you might learn how to walk the forest unseen."
   },
   {
    "id": 69,
@@ -917,7 +935,9 @@
    "abilities": [
     "Swiftstrike"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Swiftstrike",
+   "flavor": "Even in death, the creeping rot serves to feed the ever-hungry soil."
   },
   {
    "id": 70,
@@ -957,7 +977,9 @@
      "activationCost": null
     }
    ],
-   "rarity": "Mythic"
+   "rarity": "Mythic",
+   "text": "Overrun\\nWhen this enters, Alpha Call 1.",
+   "flavor": "When the first howl echoes, the entire canopy shivers in fearful reverence."
   },
   {
    "id": 72,
@@ -994,7 +1016,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "Overrun\\nKeen Eye\\nWhenever this attacks, Vine Lash 2.",
+   "flavor": "Vines choke the unwary, but the serpent teaches them the meaning of true constriction."
   },
   {
    "id": 73,
@@ -1016,7 +1040,9 @@
      "activationCost": null
     }
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Keen Eye\\nWhen this enters, Nature's Gift 1.",
+   "flavor": "Listen to the moss, and the ancient earth will grant you its enduring wisdom."
   },
   {
    "id": 74,
@@ -1456,7 +1482,9 @@
     "Recall 1"
    ],
    "recallCharges": 1,
-   "rarity": "Mythic"
+   "rarity": "Mythic",
+   "text": "Siphon\\nRecall 1",
+   "flavor": "Graves are merely waiting rooms for those who understand the true currency of souls."
   },
   {
    "id": 106,
@@ -1470,7 +1498,9 @@
    "abilities": [
     "Deathshroud"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Deathshroud",
+   "flavor": "It skitters in the dark, weaving a shroud for the soon-to-be forgotten."
   },
   {
    "id": 107,
@@ -1486,7 +1516,9 @@
     "Recall 1"
    ],
    "recallCharges": 1,
-   "rarity": "Mythic"
+   "rarity": "Mythic",
+   "text": "Deathshroud\\nRecall 1",
+   "flavor": "Honor rusted away long ago, leaving only a cold obedience to the crypt."
   },
   {
    "id": 108,
@@ -1500,7 +1532,9 @@
    "abilities": [
     "Siphon"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Siphon",
+   "flavor": "Flesh is fleeting, but the hunger it leaves behind endures for eternity."
   },
   {
    "id": 109,
@@ -1515,7 +1549,9 @@
     "Deathshroud",
     "Guard"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Deathshroud\\nGuard",
+   "flavor": "A tapestry of bone and shadow, waiting patiently for the foolish to stumble."
   },
   {
    "id": 111,
@@ -1552,7 +1588,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "Deathshroud\\nSiphon\\nAt the end of turn, Plague Breath 1.",
+   "flavor": "Its breath wilts the strongest iron and turns courage into coughing ash."
   },
   {
    "id": 112,
@@ -1589,7 +1627,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "Deathshroud\\nSiphon\\nBlight Aura 1.",
+   "flavor": "He sits upon a throne of decay, ruling over subjects who never ask for rest."
   },
   {
    "id": 113,
@@ -1603,7 +1643,9 @@
    "abilities": [
     "Swiftstrike"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Swiftstrike",
+   "flavor": "When the sun dips, the shadows stretch forth to reclaim their stolen inheritance."
   },
   {
    "id": 114,
@@ -1619,7 +1661,9 @@
     "Recall 1"
    ],
    "recallCharges": 1,
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Deathshroud\\nRecall 1",
+   "flavor": "The swamp gives nothing back unless it is paid a tithe of marrow."
   },
   {
    "id": 115,
@@ -1656,7 +1700,9 @@
      "activationCost": null
     }
    ],
-   "rarity": "Legendary"
+   "rarity": "Legendary",
+   "text": "Deathshroud\\nSiphon\\nWhenever this attacks, Devour 5.",
+   "flavor": "Roots drink water, but the elder knot feeds exclusively on the marrow of the fallen."
   },
   {
    "id": 116,
@@ -1675,7 +1721,9 @@
     "generic": 2
    },
    "flipTrigger": "END_OF_TURN",
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Swiftstrike\\nOminous",
+   "flavor": "A pitiful existence, sustained only by a spiteful refusal to finally close its eyes."
   },
   {
    "id": 117,
@@ -1951,7 +1999,9 @@
     "Intimidate",
     "Flying"
    ],
-   "rarity": "Rare"
+   "rarity": "Rare",
+   "text": "Intimidate\\nFlying",
+   "flavor": "The ocean does not negotiate; it simply takes until nothing is left."
   },
   {
    "id": 144,
@@ -1988,7 +2038,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "Flying\\nIntimidate\\nWhen this enters, Abyssal Roar 2.",
+   "flavor": "From the crushing depths, a shadow rises to remind the surface of its insignificance."
   },
   {
    "id": 145,
@@ -2049,7 +2101,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "Flying\\nIntimidate\\nWhenever this attacks, Maelstrom Pull 1.",
+   "flavor": "Tides spiral inward, dragging ships and dreams down into the waiting jaws."
   },
   {
    "id": 149,
@@ -2088,7 +2142,9 @@
    "abilities": [
     "Flying"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Flying",
+   "flavor": "Sleek as a torpedo, it patrols the reef with a cold and calculating hunger."
   },
   {
    "id": 151,
@@ -2104,7 +2160,9 @@
     "Bastion",
     "Flying"
    ],
-   "rarity": "Mythic"
+   "rarity": "Mythic",
+   "text": "Keen Eye\\nBastion\\nFlying",
+   "flavor": "A fortress carved from pearl, drifting lazily upon the currents of time."
   },
   {
    "id": 152,
@@ -2152,7 +2210,9 @@
    "abilities": [
     "Flying"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Flying",
+   "flavor": "Currents twist and break around it, yielding to a master of the tempest."
   },
   {
    "id": 157,
@@ -2189,7 +2249,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "Flying\\nIntimidate\\nWhenever this attacks, Kraken Wake 3.",
+   "flavor": "The spire shook, not from the storm above, but the awakening below."
   },
   {
    "id": 158,
@@ -2272,7 +2334,9 @@
    "abilities": [
     "Swiftstrike"
    ],
-   "rarity": "Common"
+   "rarity": "Common",
+   "text": "Swiftstrike",
+   "flavor": "A perfect gear asks for neither rest nor glory, only to turn the greater wheel."
   },
   {
    "id": 162,
@@ -2286,7 +2350,9 @@
    "abilities": [
     "Swiftstrike"
    ],
-   "rarity": "Common"
+   "rarity": "Common",
+   "text": "Swiftstrike",
+   "flavor": "Stamped from the forge, stepping in flawless rhythm with the grand ledger."
   },
   {
    "id": 163,
@@ -2301,7 +2367,9 @@
     "Keen Eye",
     "Guard"
    ],
-   "rarity": "Rare"
+   "rarity": "Rare",
+   "text": "Keen Eye\\nGuard",
+   "flavor": "Time corrodes the shell, but the directive burns eternally within the brass heart."
   },
   {
    "id": 164,
@@ -2315,7 +2383,9 @@
    "abilities": [
     "Deathshroud"
    ],
-   "rarity": "Common"
+   "rarity": "Common",
+   "text": "Deathshroud",
+   "flavor": "Wound tight and left to scuttle across the margins of the great design."
   },
   {
    "id": 165,
@@ -2336,7 +2406,9 @@
      "activationCost": null
     }
    ],
-   "rarity": "Mythic"
+   "rarity": "Mythic",
+   "text": "When you cast this, Disenchant.",
+   "flavor": "With a precise strike of the hammer, the arcane knot unravels into harmless sparks."
   },
   {
    "id": 166,
@@ -2376,7 +2448,9 @@
      "tokenToughness": 1,
      "tokenName": "Golem"
     }
-   ]
+   ],
+   "text": "Keen Eye\\nOverrun\\nWhen this enters, Fortify 2.",
+   "flavor": "Built to shoulder the sky and ignore the petty squabbles of the flesh."
   },
   {
    "id": 167,
@@ -2390,7 +2464,9 @@
    "abilities": [
     "Quickdraw"
    ],
-   "rarity": "Mythic"
+   "rarity": "Mythic",
+   "text": "Quickdraw",
+   "flavor": "Friction is a flaw to be eliminated through the steady application of oil and force."
   },
   {
    "id": 168,
@@ -2404,7 +2480,9 @@
    "abilities": [
     "Swiftstrike"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Swiftstrike",
+   "flavor": "Marching precisely in line, an endless parade of uniform purpose."
   },
   {
    "id": 169,
@@ -2418,7 +2496,9 @@
    "abilities": [
     "Deathshroud"
    ],
-   "rarity": "Common"
+   "rarity": "Common",
+   "text": "Deathshroud",
+   "flavor": "Sparks fly from its claws, sharpening a purpose that never truly dulls."
   },
   {
    "id": 171,
@@ -2433,7 +2513,9 @@
     "Keen Eye",
     "Bastion"
    ],
-   "rarity": "Mythic"
+   "rarity": "Mythic",
+   "text": "Keen Eye\\nBastion",
+   "flavor": "The road is protected by those who require no sleep and ask no questions."
   },
   {
    "id": 172,
@@ -2447,7 +2529,9 @@
    "abilities": [
     "Swiftstrike"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Swiftstrike",
+   "flavor": "A metallic howl cuts the night, signaling a hunt driven by springs and pistons."
   },
   {
    "id": 174,
@@ -2461,7 +2545,9 @@
    "abilities": [
     "Quickdraw"
    ],
-   "rarity": "Uncommon"
+   "rarity": "Uncommon",
+   "text": "Quickdraw",
+   "flavor": "Every problem is a nail if your swing carries the weight of the forge."
   },
   {
    "id": 179,
@@ -2475,7 +2561,9 @@
    "abilities": [
     "Flying"
    ],
-   "rarity": "Common"
+   "rarity": "Common",
+   "text": "Flying",
+   "flavor": "A fragile lattice of copper and glass, catching the thermal drafts of invention."
   },
   {
    "id": 181,
@@ -2512,7 +2600,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "Overrun\\nKeen Eye\\nWhenever this attacks, Bull Rush 2.",
+   "flavor": "The ledger balances heavy on its back, yet it continues the endless trek forward."
   },
   {
    "id": 185,
@@ -2834,7 +2924,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "Keen Eye\\nOverrun\\nConstrict 1.",
+   "flavor": "Gears turn within gears, tightening the grip until the whole machine comes to a halt."
   },
   {
    "id": 201,
@@ -5883,7 +5975,9 @@
     }
    ],
    "rarity": "Uncommon",
-   "providesMana": null
+   "providesMana": null,
+   "text": "Whenever you gain life, draw 1 card.",
+   "flavor": "Blood is a currency best spent quickly, before the market realizes its true value."
   },
   {
    "id": 1015,
@@ -5925,7 +6019,9 @@
     }
    ],
    "rarity": "Uncommon",
-   "providesMana": null
+   "providesMana": null,
+   "text": "When this enters, return a friendly champion with cost 2 or less from your graveyard.",
+   "flavor": "There is always enough meat left on the bone for those willing to dig."
   },
   {
    "id": 1017,
@@ -5968,7 +6064,9 @@
     }
    ],
    "rarity": "Rare",
-   "providesMana": null
+   "providesMana": null,
+   "text": "Whenever you play a champion, target champion with cost 1 or less gets +0/+1 until end of turn.",
+   "flavor": "Under the pale moon, every drop spilled is a promise of power returned."
   },
   {
    "id": 1019,
@@ -6018,7 +6116,9 @@
     }
    ],
    "rarity": "Rare",
-   "providesMana": null
+   "providesMana": null,
+   "text": "Whenever you gain life, deal 1 damage to target enemy leader.",
+   "flavor": "Raise your glass high, for the poison works fastest on an inflated ego."
   },
   {
    "id": 1021,
@@ -6088,7 +6188,9 @@
     }
    ],
    "rarity": "Legendary",
-   "providesMana": null
+   "providesMana": null,
+   "text": "Siphon\\nFriendly champions with Siphon get +1/+0 until end of turn.",
+   "flavor": "He counts his wealth in heartbeats, taking from the weak to elevate his chosen."
   },
   {
    "id": 1024,
@@ -6116,7 +6218,9 @@
     }
    ],
    "rarity": "Legendary",
-   "providesMana": null
+   "providesMana": null,
+   "text": "Whenever another friendly champion dies, you gain 1 life and target opponent loses 1 life.\\nWhenever another friendly champion dies, draw 1 card.",
+   "flavor": "A beautiful smile masking an appetite that outlasts even the deepest treasuries."
   },
   {
    "id": 1032,
@@ -6169,7 +6273,9 @@
    "rarity": "Uncommon",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, reveal a card. Draw 1 card if the revealed card costs 2 or less.",
+   "flavor": "Read the scripture carefully, for the final verses demand a rather permanent sacrifice."
   },
   {
    "id": 1036,
@@ -6243,7 +6349,9 @@
    "rarity": "Uncommon",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, reveal a face-down Ominous unit. Deal 2 damage to target enemy unit if it is hidden.",
+   "flavor": "Strip away the illusions, and you will find nothing but grinning bone underneath."
   },
   {
    "id": 1040,
@@ -6267,7 +6375,9 @@
    "flipTrigger": "ON_ENEMY_ATTACK",
    "faceDownCost": {
     "generic": 2
-   }
+   },
+   "text": "Omen - Whenever an enemy attacks, Purge the attacking unit.",
+   "flavor": "The bell tolls not for the dead, but to warn the living of their arrival."
   },
   {
    "id": 1041,
@@ -6323,7 +6433,9 @@
    "rarity": "Rare",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, Purge target enemy unit. Draw 2 cards if the purged unit was a face-down Ominous unit.",
+   "flavor": "Judgment is handed down from the crypt, swift and totally devoid of mercy."
   },
   {
    "id": 1043,
@@ -6344,7 +6456,9 @@
     }
    ],
    "rarity": "Rare",
-   "providesMana": null
+   "providesMana": null,
+   "text": "When this is revealed, you gain 1 life and target opponent loses 1 life.",
+   "flavor": "Gold stained by sorrow holds its value, though the coin feels oddly heavy."
   },
   {
    "id": 1044,
@@ -6371,7 +6485,9 @@
    "rarity": "Rare",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, Purge target curse or omen. Deal 3 damage to any target.",
+   "flavor": "The holy texts dictate precisely how to sever a shadow from its lingering host."
   },
   {
    "id": 1045,
@@ -6392,7 +6508,9 @@
     }
    ],
    "rarity": "Rare",
-   "providesMana": null
+   "providesMana": null,
+   "text": "Whenever another friendly champion dies, create a 1/1 Token.",
+   "flavor": "He calls them from the earth, eager hounds fashioned from lingering regrets and mud."
   },
   {
    "id": 1046,
@@ -6461,7 +6579,9 @@
     }
    ],
    "rarity": "Legendary",
-   "providesMana": null
+   "providesMana": null,
+   "text": "When this is revealed, Purge a champion that dealt damage this turn.",
+   "flavor": "Her museum accepts only the finest souls, preserved flawlessly in a state of eternal agony."
   },
   {
    "id": 1059,
@@ -6527,7 +6647,9 @@
     }
    ],
    "rarity": "Uncommon",
-   "providesMana": null
+   "providesMana": null,
+   "text": "Whenever this attacks, other friendly champions get +1/+1 until end of turn.",
+   "flavor": "Stand with the canopy, and you will borrow the strength of a thousand ancient roots."
   },
   {
    "id": 1062,
@@ -6553,7 +6675,9 @@
    "rarity": "Uncommon",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, untap two target champions. Champions untapped this way get +1/+1 until end of turn.",
+   "flavor": "The momentum of the wild cannot be stopped by mere stone and steel."
   },
   {
    "id": 1063,
@@ -6626,7 +6750,9 @@
    "rarity": "Rare",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, champions you control get +1/+1 until end of turn. Champions you control gain Guard until end of turn.",
+   "flavor": "A roar echoed through the deep woods, turning fearful scouts into an unbreakable wall."
   },
   {
    "id": 1067,
@@ -6647,7 +6773,9 @@
     }
    ],
    "rarity": "Rare",
-   "providesMana": null
+   "providesMana": null,
+   "text": "Whenever this attacks, draw 1 card.",
+   "flavor": "Riding ahead of the overgrowth, mapping the routes where the vanguard will strike."
   },
   {
    "id": 1068,
@@ -6698,7 +6826,9 @@
    "rarity": "Rare",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, attacking champions you control get +1/+1 until end of turn. Create a 1/1 Token if an attacking champion died this turn.",
+   "flavor": "The jungle reclaims everything, surging forward over the broken lines of its enemies."
   },
   {
    "id": 1070,
@@ -6765,7 +6895,9 @@
     }
    ],
    "rarity": "Legendary",
-   "providesMana": null
+   "providesMana": null,
+   "text": "Guard\\nWhenever this attacks, untap another friendly champion.",
+   "flavor": "A commander of vines and beasts, leading the charge with unwavering primal authority."
   },
   {
    "id": 1076,
@@ -6791,7 +6923,9 @@
    "rarity": "Common",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, draw a card, then discard a card. You gain 1 life if the discarded card costs 4 or more.",
+   "flavor": "Discard the imperfect drafts; the final calculation demands absolute precision to function."
   },
   {
    "id": 1083,
@@ -6888,7 +7022,9 @@
    "rarity": "Uncommon",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, return any target to its owner's hand. Draw 1 card.",
+   "flavor": "The cycle shatters, dropping all expectations into a swirling vortex of uncertainty."
   },
   {
    "id": 1087,
@@ -6931,7 +7067,9 @@
    "rarity": "Uncommon",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, the next two cards you play cost 1 less each.",
+   "flavor": "Accelerate the mainspring and watch as the timeline folds beautifully in upon itself."
   },
   {
    "id": 1089,
@@ -6983,7 +7121,9 @@
    "rarity": "Rare",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, target damaged champion gets -2/-0 until end of turn. Target damaged champion gets +0/-1 until end of turn.",
+   "flavor": "Every action carries a cost; it is my job to collect the overdue payments."
   },
   {
    "id": 1091,
@@ -7004,7 +7144,9 @@
     }
    ],
    "rarity": "Rare",
-   "providesMana": null
+   "providesMana": null,
+   "text": "When this enters, a chosen card in your hand costs 1 less.",
+   "flavor": "He sorts the probabilities, moving the most favorable outcomes to the front of the queue."
   },
   {
    "id": 1092,
@@ -7029,7 +7171,9 @@
    "rarity": "Rare",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, return target champion to its owner's hand. Target opponent discards 1 card.",
+   "flavor": "The equation is flawed; we must erase it entirely and begin from zero."
   },
   {
    "id": 1093,
@@ -7191,7 +7335,9 @@
     }
    ],
    "rarity": "Common",
-   "providesMana": null
+   "providesMana": null,
+   "text": "Guard\\nWhen this enters, reveal the top 2 cards of your deck.",
+   "flavor": "A silent watcher by the wayside, offering nothing but a clear view of the path."
   },
   {
    "id": 1104,
@@ -7214,7 +7360,9 @@
    "flipTrigger": "END_OF_TURN",
    "faceDownCost": {
     "generic": 2
-   }
+   },
+   "text": "Omen - At the end of turn, draw 1 card and you gain 1 life if you are neutral.",
+   "flavor": "Hidden between the ledger lines, a fortune waits for those without allegiances."
   },
   {
    "id": 1105,
@@ -7263,7 +7411,9 @@
    "rarity": "Uncommon",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, Scry 1. Reveal a card in your hand.",
+   "flavor": "Consult the quiet road, for neutrality offers a clarity no empire can provide."
   },
   {
    "id": 1108,
@@ -7283,7 +7433,9 @@
     }
    ],
    "rarity": "Uncommon",
-   "providesMana": null
+   "providesMana": null,
+   "text": "At the beginning of each non-draw step, this gets +1/+1 until end of turn.",
+   "flavor": "A simple nod across the bustling floor secures a deal written in silent steel."
   },
   {
    "id": 1109,
@@ -7328,7 +7480,9 @@
    "flipTrigger": "END_OF_TURN",
    "faceDownCost": {
     "generic": 2
-   }
+   },
+   "text": "Omen - At the end of turn, choose one: Draw a card, or deal 1 damage to any target.",
+   "flavor": "Every intersection presents a test of will, demanding a choice before the dust settles."
   },
   {
    "id": 1112,
@@ -7418,7 +7572,9 @@
     }
    ],
    "rarity": "Rare",
-   "providesMana": null
+   "providesMana": null,
+   "text": "When this dies, create a 1/1 Token.",
+   "flavor": "You buy the service, but the loyalty is strictly leased by the hour."
   },
   {
    "id": 1116,
@@ -7443,7 +7599,9 @@
    "rarity": "Rare",
    "providesMana": null,
    "power": null,
-   "toughness": null
+   "toughness": null,
+   "text": "When you cast this, untap one target champion. It gets +1/+1 until end of turn.",
+   "flavor": "Take the opening when it appears; hesitation is an inefficiency we cannot afford."
   },
   {
    "id": 1117,
@@ -7468,7 +7626,9 @@
    "flipTrigger": "END_OF_TURN",
    "faceDownCost": {
     "generic": 2
-   }
+   },
+   "text": "Omen - At the end of turn, the next card you play costs 1 less.",
+   "flavor": "The compass spins wildly, pointing toward a destiny unburdened by past mistakes."
   },
   {
    "id": 1118,
@@ -7511,7 +7671,9 @@
     }
    ],
    "rarity": "Legendary",
-   "providesMana": null
+   "providesMana": null,
+   "text": "When this enters, choose a faction. If the defending player is that faction, this gets +1/+0 while attacking.",
+   "flavor": "My sword cares nothing for your banner, only that the contract is paid in full."
   },
   {
    "id": 1120,
@@ -7539,7 +7701,9 @@
     }
    ],
    "rarity": "Legendary",
-   "providesMana": null
+   "providesMana": null,
+   "text": "When this is revealed, you gain 1 life and target opponent loses 1 life.\\nWhenever you draw a card, you gain 1 life and target opponent loses 1 life.",
+   "flavor": "He catalogs every footstep, drawing quiet sustenance from the endless journey of others."
   },
   {
    "id": 341,
@@ -7942,7 +8106,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "When you cast this, Grave Tithe 1.",
+   "flavor": "The toll for passage is never paid in silver; the ferryman prefers memories."
   },
   {
    "id": 352,
@@ -7963,7 +8129,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "When you cast this, Tidal Pool 1.",
+   "flavor": "The waters recede, revealing exactly what the depths intended to leave behind."
   },
   {
    "id": 353,
@@ -8107,7 +8275,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "When you cast this, Arcane Purge.",
+   "flavor": "The equation must balance, even if it means wiping the slate entirely clean."
   },
   {
    "id": 360,
@@ -8128,7 +8298,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "When you cast this, Reveal the Veil.",
+   "flavor": "The fog lifts for a fraction of a second, exposing a chilling, ancient truth."
   },
   {
    "id": 361,
@@ -8172,7 +8344,9 @@
      "oncePerTurn": false,
      "activationCost": null
     }
-   ]
+   ],
+   "text": "When you cast this, Echoing Ward 2.",
+   "flavor": "Sound bounces through the deep caverns, multiplying the protective barrier with every echo."
   },
   {
    "id": 363,
@@ -8266,7 +8440,9 @@
    ],
    "faceDownCost": {
     "generic": 2
-   }
+   },
+   "text": "Ominous\\nOverrun\\nWhenever this deals combat damage, Wild Rampage 2.",
+   "flavor": "The magma boils over, melting down reason and replacing it with pure, chaotic violence."
   },
   {
    "id": 367,
@@ -8330,7 +8506,9 @@
    ],
    "faceDownCost": {
     "generic": 2
-   }
+   },
+   "text": "Ominous\\nWhenever this deals combat damage, Radiant Bastion 1.",
+   "flavor": "The sun grants its fiercest protection to those who weather the longest eclipses."
   },
   {
    "id": 369,
@@ -8452,7 +8630,9 @@
    ],
    "faceDownCost": {
     "generic": 2
-   }
+   },
+   "text": "Ominous\\nAt the end of turn, Assumed Identity 2.",
+   "flavor": "A mirror of brass and saltwater, showing you exactly what you dread to see."
   },
   {
    "id": 373,
@@ -8504,7 +8684,9 @@
    ],
    "faceDownCost": {
     "generic": 2
-   }
+   },
+   "text": "Omen - At the end of turn, exchange the power and toughness of all champions until end of turn.",
+   "flavor": "The clock ticks backward, forcing every known variable to re-evaluate its place in the sequence."
   },
   {
    "id": 485,
