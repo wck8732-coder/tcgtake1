@@ -618,5 +618,68 @@ function freshGame() {
   check('Yield: no viable responses when hand empty + no relaxed zone', none.length === 0);
 }
 
+// T26 — drawCard fires on_draw event (was dropped by game.js's duplicate, restored by Cell 1 dedup)
+{
+  const g = freshGame();
+  const fired = { on_draw: false, on_non_draw_step: false };
+  const original = g.processAbilities.bind(g);
+  g.processAbilities = function(trigger, ctx) {
+    if (trigger === 'on_draw') fired.on_draw = true;
+    if (trigger === 'on_non_draw_step') fired.on_non_draw_step = true;
+    return original(trigger, ctx);
+  };
+  g.phase = 'draw';
+  g.drawCard(g.me);
+  check('drawCard fires on_draw event in draw phase', fired.on_draw === true);
+  check('drawCard does NOT fire on_non_draw_step during draw phase', fired.on_non_draw_step === false);
+}
+
+// T27 — drawCard fires on_non_draw_step when phase is not 'draw'
+{
+  const g = freshGame();
+  const fired = { on_draw: false, on_non_draw_step: false };
+  const original = g.processAbilities.bind(g);
+  g.processAbilities = function(trigger, ctx) {
+    if (trigger === 'on_draw') fired.on_draw = true;
+    if (trigger === 'on_non_draw_step') fired.on_non_draw_step = true;
+    return original(trigger, ctx);
+  };
+  g.phase = 'main1';
+  g.drawCard(g.me);
+  check('drawCard fires on_draw outside draw phase too', fired.on_draw === true);
+  check('drawCard fires on_non_draw_step when not in draw phase', fired.on_non_draw_step === true);
+}
+
+// T28 — drawCard fires on_discard when hand is full
+{
+  const g = freshGame();
+  g.me.hand = new Array(7).fill(null).map((_, i) => ({ id: 'h'+i, name: 'Hand'+i, type: 'Spell', cost: {}, abilities: [] }));
+  let discarded = false;
+  const original = g.processAbilities.bind(g);
+  g.processAbilities = function(trigger, ctx) {
+    if (trigger === 'on_discard') discarded = true;
+    return original(trigger, ctx);
+  };
+  g.phase = 'draw';
+  g.drawCard(g.me);
+  check('drawCard fires on_discard when hand is full', discarded === true);
+}
+
+// T29 — purgeCard uses card.recallCharges (not champion) — engine version, NOT the buggy game.js copy
+{
+  const g = freshGame();
+  const champ = { id: 'c1', name: 'RecallChamp', type: 'Champion', power: 2, toughness: 2, summoned: true, tapped: false, abilities: [], kw: [] };
+  // engine path: card is the same as champion passed in; both should produce same result, but engine reads card.recallCharges
+  const withCardKey = Object.assign({}, champ, { recallCharges: 1 });
+  g.purgeCard(g.me, withCardKey);
+  check('purgeCard with recallCharges on card sends to exile', g.me.exile.some(c => c.id === 'c1') === true);
+  const champKey = { id: 'c2', name: 'RecallChamp2', type: 'Champion', power: 2, toughness: 2, summoned: true, tapped: false, abilities: [], kw: [], recallCharges: 1 };
+  g.me.battlefield.champions = [];
+  g.me.exile = [];
+  // game.js's old path used champion.recallCharges when card was shadowed to champion; engine version reads card.recallCharges
+  g.purgeCard(g.me, champKey);
+  check('purgeCard with recallCharges as direct arg sends to exile', g.me.exile.some(c => c.id === 'c2') === true);
+}
+
 console.log('\n' + pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);
