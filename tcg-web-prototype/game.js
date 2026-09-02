@@ -287,21 +287,6 @@ class GameState extends RULES_ENGINE.GameState {
   }
 
   // --- Playing Cards ---
-  playLand(player, cardIndex) {
-    const canPlayExtra = player.landPlayedThisTurn && this.hasStaticAbility(player, 'extra_land_per_turn');
-    if (player.landPlayedThisTurn && !canPlayExtra) return false;
-    const card = player.hand[cardIndex];
-    if (!card || card.type !== 'Land') return false;
-    player.hand.splice(cardIndex, 1);
-    player.battlefield.lands.push(card);
-    if (!canPlayExtra) player.landPlayedThisTurn = true;
-    else log(`${player.name} plays an extra land via ability.`, 'play');
-    log(`${player.name} plays ${card.name}.`, 'play');
-    bus.emit('landPlayed', { player, card });
-    this.updateUI();
-    return true;
-  }
-
   playChampion(player, cardIndex) {
     const card = player.hand[cardIndex];
     if (!card || card.type !== 'Champion') return false;
@@ -333,24 +318,6 @@ class GameState extends RULES_ENGINE.GameState {
     this.updateUI();
     return true;
   }
-
-  playRelic(player, cardIndex) {
-    const card = player.hand[cardIndex];
-    if (!card || card.type !== 'Relic') return false;
-    if (!this.canPayCost(player, this.effectiveCost(player, card.cost))) return false;
-    this.payMana(player, this.effectiveCost(player, card.cost));
-    this.consumeCostDiscount(player);
-    player.hand.splice(cardIndex, 1);
-    player.battlefield.relics.push(card);
-    log(`${player.name} casts ${card.name} (Relic).`, 'play');
-    bus.emit('relicEntered', { player, card });
-    this.processAbilities('on_cast', { player, card });
-    this.noteCardPlayed(player, card);
-    this.applyStaticAbilities(player);
-    this.updateUI();
-    return true;
-  }
-
   playDomain(player, cardIndex) {
     const card = player.hand[cardIndex];
     if (!card || card.type !== 'Domain') return false;
@@ -367,56 +334,6 @@ class GameState extends RULES_ENGINE.GameState {
     this.updateUI();
     return true;
   }
-
-  playOmen(player, cardIndex) {
-    const card = player.hand[cardIndex];
-    if (!card || card.type !== 'Omen') return false;
-    if (!this.canPayCost(player, this.effectiveCost(player, card.cost))) return false;
-    this.payMana(player, this.effectiveCost(player, card.cost));
-    this.consumeCostDiscount(player);
-    player.hand.splice(cardIndex, 1);
-    card.faceDown = true;
-    card.turnPlayed = this.turnNumber;
-    player.battlefield.omens.push(card);
-    log(`${player.name} plays ${card.name} face-down (Omen).`, 'play');
-    bus.emit('omenPlayed', { player, card });
-    this.noteCardPlayed(player, card);
-    this.updateUI();
-    return true;
-  }
-
-
-  payFlipCost(player, cost) {
-    if (!cost) return;
-    const friendly = player.battlefield.champions;
-    if (cost.selfDamage) {
-      player.life -= cost.selfDamage;
-      log(`${player.name} takes ${cost.selfDamage} damage to flip (flip cost).`, 'damage');
-    }
-    if (cost.tapFriendly) {
-      const pool = friendly.filter(c => !c.tapped);
-      const n = Math.min(cost.tapFriendly, pool.length);
-      for (let i = 0; i < n; i++) pool[i].tapped = true;
-      log(`${player.name} taps ${n} champion(s) to flip (flip cost).`, 'play');
-    }
-    if (cost.sacrificeChampion) {
-      const n = Math.min(cost.sacrificeChampion, friendly.length);
-      for (let i = 0; i < n; i++) this.destroyChampion(player, player.battlefield.champions[0]);
-      log(`${player.name} sacrifices ${n} champion(s) to flip (flip cost).`, 'play');
-      this.processAbilities('on_sacrifice', { player });
-    }
-    if (cost.bounceFriendlyLand) {
-      const lands = player.battlefield.lands || [];
-      const n = Math.min(cost.bounceFriendlyLand, lands.length);
-      for (let i = 0; i < n; i++) {
-        const land = lands[lands.length - 1];
-        player.battlefield.lands.splice(player.battlefield.lands.indexOf(land), 1);
-        player.hand.push(land);
-      }
-      log(`${player.name} returns ${n} land(s) to hand to flip (flip cost).`, 'play');
-    }
-  }
-
 
 
 
@@ -650,27 +567,6 @@ undefineAttacker(player, champion) {
   }
 
   // --- Recall (return from exile at 2x cost) ---
-  activateRecall(player, card, relaxed = false) {
-    if (!player.exile.includes(card)) return false;
-    const cost = this.effectiveCost(player, this.recallCost(card, player));
-    if (!this.canPayCost(player, cost)) return false;
-    if (!['main1', 'main2'].includes(this.phase)) return false;
-    if (relaxed && !this.relaxedTiming(card)) return false;
-    this.payMana(player, cost);
-    this.consumeCostDiscount(player);
-    player.exile = player.exile.filter(c => c !== card);
-    card.summoned = true;
-    card.tapped = false;
-    card.faceDown = false;
-    player.battlefield.champions.push(card);
-    log(`${player.name} recalls ${card.name} from exile for ${this.recallCost(card, player)}.`, 'play');
-    this.processAbilities('enter_battlefield', { player, card });
-    this.processAbilities('on_cast', { player, card });
-    this.applyStaticAbilities(player);
-    this.updateUI();
-    return true;
-  }
-
   // --- Ability System ---
   processAbilities(trigger, context) {
     const { player } = context;
