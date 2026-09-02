@@ -228,20 +228,7 @@ class GameState extends RULES_ENGINE.GameState {
 
   // --- Exile / Purge ---
   purgeCard(player, card) {
-    if (player.graveyard.includes(card)) {
-      player.graveyard = player.graveyard.filter(c => c !== card);
-    } else {
-      player.battlefield.champions = player.battlefield.champions.filter(c => c !== card);
-      player.battlefield.relics = player.battlefield.relics.filter(c => c !== card);
-      player.battlefield.domains = player.battlefield.domains.filter(c => c !== card);
-      player.battlefield.omens = player.battlefield.omens.filter(c => c !== card);
-      player.hand = player.hand.filter(c => c !== card);
-      if (card.type === 'Champion' && this.championHasKeyword(card, 'recall') && (champion.recallCharges || 0) > 0) {
-        card.recallCharges--;
-      }
-    }
-    this._purgedWasHidden = card.faceDown === true;
-    player.exile.push(card);
+    super.purgeCard(player, card);
     log(`${card.name} is purged to exile.`, 'play');
   }
 
