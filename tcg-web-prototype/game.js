@@ -1334,33 +1334,9 @@ defenderEl.appendChild(attackerEl);
   };
   }
   executePhase() {
-    const p = this.active;
-    switch (this.phase) {
-      case 'untap':
-        p.battlefield.champions.forEach(c => { c.tapped = false; c.summoned = false; });
-        p.battlefield.lands.forEach(l => { l.tapped = false; });
-        this.resetMana(p);
-        p.landPlayedThisTurn = false;
-        p.extraLandThisTurn = false;
-        p.cardsPlayedThisTurn = 0;
-        [...p.battlefield.champions, ...p.battlefield.relics].forEach(c => {
-          if (c._usedAbilities) c._usedAbilities.clear();
-        });
-        this.processAbilities('untap', { player: p });
-        this.checkOmenTriggers('START_OF_TURN');
-        break;
-      case 'draw':
-        this.drawCard(p);
-        log(`${p.name} draws a card.`, 'info');
-        break;
-      case 'combat':
-        this.enterCombat();
-        break;
-      case 'end':
-        this.clearEndOfTurnEffects(p);
-        this.processAbilities('end_of_turn', { player: p });
-        this.checkOmenTriggers('END_OF_TURN');
-        break;
+    super.executePhase();
+    if (this.phase === 'draw') {
+      log(`${this.active.name} draws a card.`, 'info');
     }
   }
 
