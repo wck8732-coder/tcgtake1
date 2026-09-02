@@ -198,6 +198,7 @@ class GameState extends RULES_ENGINE.GameState {
 
   startGame() {
     CARD_DB = window.__CARD_DB__;
+    this._clearAiTimeouts();
     super.startGame();
     const decks = this.getFormatDecks();
     const playerDeckDef = decks[this.deckKey];
@@ -212,6 +213,26 @@ class GameState extends RULES_ENGINE.GameState {
     log('Game started! You are playing ' + playerDeckDef.name + '.', 'info');
     log('Opponent is playing ' + decks[this.aiDeckKey].name + ' (' + this.format + ').', 'info');
     bus.emit('gameStart');
+  }
+
+  // AI pacing timeouts are tracked so they can be cleared on concede / new game.
+  // Each runAI pacing step pushes its timeout id to _aiTimeouts and the
+  // callback clears it on fire. Errors during AI pacing surface in the log
+  // instead of silently hanging the chain.
+  _pushAiTimeout(fn, ms) {
+    const id = setTimeout(() => {
+      const i = this._aiTimeouts ? this._aiTimeouts.indexOf(id) : -1;
+      if (i >= 0) this._aiTimeouts.splice(i, 1);
+      try { fn(); } catch (e) { log('AI pacing error: ' + (e && e.message || e), 'error'); }
+    }, ms);
+    if (!this._aiTimeouts) this._aiTimeouts = [];
+    this._aiTimeouts.push(id);
+    return id;
+  }
+  _clearAiTimeouts() {
+    if (!this._aiTimeouts) return;
+    for (const id of this._aiTimeouts) clearTimeout(id);
+    this._aiTimeouts = [];
   }
 
    // --- Mana ---
@@ -307,7 +328,7 @@ class GameState extends RULES_ENGINE.GameState {
       this.resolveStack();
       this.updateUI();
       if (this.currentPlayer === 1 && !this.gameOver) {
-        setTimeout(() => this.runAI(), 400);
+        this._pushAiTimeout(() => this.runAI(), 400);
       }
     };
     for (const r of viable || []) {
@@ -1236,7 +1257,7 @@ defenderEl.appendChild(attackerEl);
   endTurn() {
     super.endTurn();
     if (this.currentPlayer === 1 && !this.gameOver) {
-      setTimeout(() => this.runAI(), 600);
+      this._pushAiTimeout(() => this.runAI(), 600);
     }
   }
 
@@ -1250,6 +1271,7 @@ defenderEl.appendChild(attackerEl);
 
   concede() {
     if (this.gameOver) return;
+    this._clearAiTimeouts();
     this.gameOver = true;
     this.winner = 1;
     log('You conceded.', 'damage');
@@ -1696,12 +1718,12 @@ defenderEl.appendChild(attackerEl);
         this.drawCard(ai);
         log(`${ai.name} draws a card.`, 'info');
         this.updateUI();
-        setTimeout(() => this.runAI(), 400);
+        this._pushAiTimeout(() => this.runAI(), 400);
         return;
       case 'draw':
         this.phase = 'main1';
         this.updateUI();
-        setTimeout(() => this.runAI(), 400);
+        this._pushAiTimeout(() => this.runAI(), 400);
         return;
       case 'main1':
         this.aiMainPhase(ai);
@@ -1717,7 +1739,7 @@ defenderEl.appendChild(attackerEl);
         this.aiCombat(ai);
         this.updateUI();
         if (this.phase === 'main2') {
-          setTimeout(() => this.runAI(), 400);
+          this._pushAiTimeout(() => this.runAI(), 400);
         }
         return;
       case 'main2':
@@ -1725,7 +1747,7 @@ defenderEl.appendChild(attackerEl);
         if (this._awaitingResponse === true) return;
         this.resolveStack();
         this.updateUI();
-        setTimeout(() => this.endTurn(), 400);
+        this._pushAiTimeout(() => this.endTurn(), 400);
         return;
     }
     this.updateUI();
