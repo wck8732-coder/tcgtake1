@@ -1295,29 +1295,20 @@ undefineAttacker(player, champion) {
 
   destroyRelic(player, relic) {
     const idx = player.battlefield.relics.indexOf(relic);
-    if (idx !== -1) {
-      player.battlefield.relics.splice(idx, 1);
-      player.graveyard.push(relic);
-      log(`${relic.name} is destroyed.`, 'damage');
-    }
+    super.destroyRelic(player, relic);
+    if (idx !== -1) log(`${relic.name} is destroyed.`, 'damage');
   }
 
   destroyDomain(player, domain) {
     const idx = player.battlefield.domains.indexOf(domain);
-    if (idx !== -1) {
-      player.battlefield.domains.splice(idx, 1);
-      player.graveyard.push(domain);
-      log(`${domain.name} is destroyed.`, 'damage');
-    }
+    super.destroyDomain(player, domain);
+    if (idx !== -1) log(`${domain.name} is destroyed.`, 'damage');
   }
 
   destroyOmen(player, omen) {
     const idx = player.battlefield.omens.indexOf(omen);
-    if (idx !== -1) {
-      player.battlefield.omens.splice(idx, 1);
-      player.graveyard.push(omen);
-      log(`${omen.name} is destroyed.`, 'damage');
-    }
+    super.destroyOmen(player, omen);
+    if (idx !== -1) log(`${omen.name} is destroyed.`, 'damage');
   }
 
 
