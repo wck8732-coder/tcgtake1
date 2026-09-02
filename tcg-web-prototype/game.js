@@ -18,17 +18,8 @@ const bus = SHARED.bus;
 // --- Utility ---
 function shuffle(arr) { return SHARED.shuffle(arr); }
 function deepClone(obj) { return SHARED.deepClone(obj); }
-function log(msg, type = 'info') {
-  const el = document.querySelector('.log-entries');
-  if (!el) return;
-  const entry = document.createElement('div');
-  entry.className = `log-entry ${type}`;
-  entry.textContent = msg;
-  el.prepend(entry);
-  if (el.children.length > 50) el.lastChild.remove();
-  if (window.__DEBUG) console.log(`[${type}] ${msg}`);
-}
-function debug(...args) { if (window.__DEBUG) console.log('[DEBUG]', ...args); }
+const log = SHARED.log;
+const debug = SHARED.debug;
 
 // --- Card Renderer ---
 const CardRenderer = {

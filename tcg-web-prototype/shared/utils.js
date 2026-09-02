@@ -17,6 +17,27 @@
 
   function deepClone(obj) { return JSON.parse(JSON.stringify(obj)); }
 
+  // log() is environment-aware: writes to .log-entries in the browser,
+  // no-op in Node (no document). Engine code can call log() freely.
+  function log(msg, type) {
+    if (typeof document === 'undefined') return;
+    var el = document.querySelector('.log-entries');
+    if (!el) return;
+    var entry = document.createElement('div');
+    entry.className = 'log-entry ' + (type || 'info');
+    entry.textContent = msg;
+    el.prepend(entry);
+    if (el.children.length > 50) el.lastChild.remove();
+    if (typeof window !== 'undefined' && window.__DEBUG) console.log('[' + (type || 'info') + '] ' + msg);
+  }
+
+  // debug() prints to console only when window.__DEBUG is set; no-op in Node.
+  function debug() {
+    if (typeof window !== 'undefined' && window.__DEBUG) {
+      console.log.apply(console, ['[DEBUG]'].concat(Array.prototype.slice.call(arguments)));
+    }
+  }
+
   class EventBus {
     constructor() { this.listeners = {}; }
     on(event, fn) { (this.listeners[event] = this.listeners[event] || []).push(fn); }
@@ -29,6 +50,8 @@
   return {
     shuffle: shuffle,
     deepClone: deepClone,
+    log: log,
+    debug: debug,
     EventBus: EventBus,
     bus: bus
   };

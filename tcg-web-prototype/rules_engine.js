@@ -29,10 +29,9 @@
 function shuffle(arr) { return SHARED.shuffle(arr); }
 function deepClone(obj) { return SHARED.deepClone(obj); }
 
-// --- Stub log (no-op) ---
-let logEnabled = false;
-function log() {}
-function debug() {}
+// --- log() / debug() provided by shared/utils.js (environment-aware) ---
+const log = SHARED.log;
+const debug = SHARED.debug;
 
 // --- EventBus (shared with game.js via shared/utils.js) ---
 const bus = SHARED.bus;
