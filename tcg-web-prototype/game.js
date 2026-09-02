@@ -292,30 +292,27 @@ class GameState extends RULES_ENGINE.GameState {
     const card = player.hand[cardIndex];
     if (!card || (card.type !== 'Spell' && card.type !== 'Instant' && card.type !== 'Decree')) return false;
     if (!this.canPayCost(player, this.effectiveCost(player, card.cost))) return false;
-    this.payMana(player, this.effectiveCost(player, card.cost));
-    this.consumeCostDiscount(player);
-    player.hand.splice(cardIndex, 1);
     const proc = this.players.indexOf(player);
     const userId = card.id + ':' + proc + ':' + (Date.now() % 100000) + ':' + Math.floor(Math.random() * 1000);
-    this.stack.push({ proc, type: 'Player Card', sourceCard: card, targets: targets, userId });
-    log(`${player.name} casts ${card.name}.`, 'play');
-    bus.emit('spellCast', { player, card, targets });
-    // Player responding during an open window: close it — this spell landed on top of the
-    // pending AI card, so LIFO resolution plays the response first, then the original.
-    if (proc === 0 && this._responding) {
-      const openModal = document.getElementById('response-modal');
-      if (openModal) openModal.classList.add('hidden');
-      const actionsEl = document.getElementById('response-actions');
-      if (actionsEl) actionsEl.innerHTML = '';
-      this._responding = false;
-      this._awaitingResponse = false;
-    }
     const viable = proc !== 0 ? this.getViableResponses(this.me).filter(r => r.legalNow()) : [];
-    const defer = proc !== 0 && viable.length > 0;
-    this.processGameEvent('ON_OPPONENT_SPELL', { spell: card, casterId: proc }, defer);
-    this.updateUI();
-    if (defer) {
-      this.promptForResponse(player, card, viable);
+    const deferResolve = proc !== 0 && viable.length > 0;
+    const result = super.playSpell(player, cardIndex, targets, userId, deferResolve);
+    if (!result) return false;
+    if (!card.faceDown) {
+      bus.emit('spellCast', { player, card, targets });
+      // Player responding during an open window: close it — this spell landed on top of the
+      // pending AI card, so LIFO resolution plays the response first, then the original.
+      if (proc === 0 && this._responding) {
+        const openModal = document.getElementById('response-modal');
+        if (openModal) openModal.classList.add('hidden');
+        const actionsEl = document.getElementById('response-actions');
+        if (actionsEl) actionsEl.innerHTML = '';
+        this._responding = false;
+        this._awaitingResponse = false;
+      }
+      if (deferResolve) {
+        this.promptForResponse(player, card, viable);
+      }
     }
     return true;
   }
