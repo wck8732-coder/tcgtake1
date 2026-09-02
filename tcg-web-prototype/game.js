@@ -1365,16 +1365,7 @@ defenderEl.appendChild(attackerEl);
   }
 
   endTurn() {
-    const active = this.players[this.currentPlayer];
-    // Ominous champions flip face-up at the end of their controller's turn
-    [...active.battlefield.omens]
-      .filter(o => o.type === 'Champion' && o.faceDown && (o.flipTrigger === 'END_OF_TURN' || !o.flipTrigger))
-      .forEach(o => this.flipOmen(active, o, 'END_OF_TURN'));
-    this.phase = 'untap';
-    this.currentPlayer = 1 - this.currentPlayer;
-    if (this.currentPlayer === 0) this.turnNumber++;
-    this.executePhase();
-    this.updateUI();
+    super.endTurn();
     if (this.currentPlayer === 1 && !this.gameOver) {
       setTimeout(() => this.runAI(), 600);
     }
