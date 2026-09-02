@@ -12,15 +12,8 @@
 // --- Card Database ---
 let CARD_DB = [];
 
-// --- EventBus ---
-class EventBus {
-  constructor() { this.listeners = {}; }
-  on(event, fn) { (this.listeners[event] = this.listeners[event] || []).push(fn); }
-  off(event, fn) { this.listeners[event] = (this.listeners[event] || []).filter(f => f !== fn); }
-  emit(event, data) { (this.listeners[event] || []).forEach(fn => fn(data)); }
-}
-
-const bus = new EventBus();
+// --- EventBus (shared with rules_engine.js via shared/utils.js) ---
+const bus = SHARED.bus;
 
 // --- Utility ---
 function shuffle(arr) { return SHARED.shuffle(arr); }

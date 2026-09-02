@@ -17,9 +17,20 @@
 
   function deepClone(obj) { return JSON.parse(JSON.stringify(obj)); }
 
+  class EventBus {
+    constructor() { this.listeners = {}; }
+    on(event, fn) { (this.listeners[event] = this.listeners[event] || []).push(fn); }
+    off(event, fn) { this.listeners[event] = (this.listeners[event] || []).filter(f => f !== fn); }
+    emit(event, data) { (this.listeners[event] || []).forEach(fn => fn(data)); }
+  }
+
+  const bus = new EventBus();
+
   return {
     shuffle: shuffle,
-    deepClone: deepClone
+    deepClone: deepClone,
+    EventBus: EventBus,
+    bus: bus
   };
 
 });

@@ -34,14 +34,8 @@ let logEnabled = false;
 function log() {}
 function debug() {}
 
-// --- EventBus (real, mirrors game.js) ---
-class EventBus {
-  constructor() { this.listeners = {}; }
-  on(event, fn) { (this.listeners[event] = this.listeners[event] || []).push(fn); }
-  off(event, fn) { this.listeners[event] = (this.listeners[event] || []).filter(f => f !== fn); }
-  emit(event, data) { (this.listeners[event] || []).forEach(fn => fn(data)); }
-}
-const bus = new EventBus();
+// --- EventBus (shared with game.js via shared/utils.js) ---
+const bus = SHARED.bus;
 
 // --- Card Renderer stub ---
 const CardRenderer = { colorHex: function(c) { return FACTIONS.HEX[c] || '#555'; } };
@@ -2147,5 +2141,5 @@ class GameState {
   playerHasKeyword(player, keyword) { return KEYWORDS.playerHasKeyword(player, keyword); }
 }
 
-  return { GameState: GameState, createPlayer: createPlayer, EventBus: EventBus, bus: bus, shuffle: shuffle, deepClone: deepClone };
+  return { GameState: GameState, createPlayer: createPlayer, EventBus: SHARED.EventBus, bus: bus, shuffle: shuffle, deepClone: deepClone };
 });
