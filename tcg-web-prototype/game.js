@@ -496,33 +496,16 @@ undefineAttacker(player, champion) {
 
   destroyChampion(player, champion) {
     const idx = player.battlefield.champions.indexOf(champion);
-    if (idx !== -1) {
-      player.battlefield.champions.splice(idx, 1);
-      if (this.championHasKeyword(champion, 'recall') && (champion.recallCharges || 0) > 0) {
-        champion.recallCharges--;
-        player.exile.push(champion);
-        log(`${champion.name} is recalled to exile (Recall ${champion.recallCharges} left).`, 'damage');
-      } else {
-        player.graveyard.push(champion);
-        log(`${champion.name} is destroyed.`, 'damage');
-      }
-      this._unitDiedThisTurn = true;
-      if (champion.attacking) this._attackerDiedThisTurn = true;
-      bus.emit('championDestroyed', { player, card: champion });
-      this.processGameEvent('ON_ALLY_DIES', { victim: champion, ownerId: this.players.indexOf(player) });
-      const opponent = player === this.me ? this.ai : this.me;
-      this.processGameEvent('ON_ENEMY_DIES', { victim: champion, ownerId: this.players.indexOf(player) });
-      this.processAbilities('dies', { player, card: champion });
-      this.processAbilities('on_ally_dies', { player, victim: champion });
-      if (player._returnFirstAllyDeath && !player._firstAllyDiedReturned && !player._returnFirstAllyDeathCard) {
-        player._returnFirstAllyDeathCard = champion;
-        player._firstAllyDiedReturned = true;
-        log(`${champion.name} marked for return from first ally death.`, 'play');
-      }
-      if (opponent && opponent.battlefield.champions) {
-        this.processAbilities('on_enemy_dies', { player: opponent, victim: champion });
-      }
-      this.applyStaticAbilities(player);
+    super.destroyChampion(player, champion);
+    if (idx === -1) return;
+    if (player.exile.includes(champion)) {
+      log(`${champion.name} is recalled to exile (Recall ${champion.recallCharges} left).`, 'damage');
+    } else {
+      log(`${champion.name} is destroyed.`, 'damage');
+    }
+    bus.emit('championDestroyed', { player, card: champion });
+    if (player._returnFirstAllyDeath && player._returnFirstAllyDeathCard === champion) {
+      log(`${champion.name} marked for return from first ally death.`, 'play');
     }
   }
 
