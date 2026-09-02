@@ -2,6 +2,15 @@
 
 Generated 2026-09-01 by inspection of `game.js` (2,774 lines) vs `rules_engine.js` (2,151 lines). Goal: collapse the `class GameState extends RULES_ENGINE.GameState` overrides in `game.js` so the engine has a single canonical home and the browser layer holds only what truly belongs there.
 
+## Final status (v0.1053 shipped)
+
+- game.js: 2,774 → 1,975 lines (-799, -28.8%)
+- rules_engine.js: 2,151 → 2,156 lines (+5, +0.2% — minor from re-export tweak)
+- 19 methods fully deleted (Cell 1)
+- 11 methods refactored to `super.X(...)` + UI tail (Cell 2)
+- 1 method retained with documented reason (executeAbility: behavioral divergence + 88 log calls require event-subscription refactor first)
+- 7-step verify gate green at every commit; 130/130 tests passing
+
 ## Census
 
 - game.js declares ~579 method-like constructs (includes helpers outside the class); rules_engine.js declares ~477.
