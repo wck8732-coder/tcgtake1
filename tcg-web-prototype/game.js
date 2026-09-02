@@ -269,30 +269,15 @@ class GameState extends RULES_ENGINE.GameState {
     if (!card || card.type !== 'Champion') return false;
     if (!this.canPayCost(player, this.effectiveCost(player, card.cost))) return false;
     debug(`playChampion: ${player.name} plays ${card.name} cost=${card.cost}`);
-    this.payMana(player, this.effectiveCost(player, card.cost));
-    this.consumeCostDiscount(player);
-    player.hand.splice(cardIndex, 1);
-    // Ominous champions deploy face-down as hidden units
-    if (this.championHasKeyword(card, 'ominous')) {
-      card.faceDown = true;
-      card.turnPlayed = this.turnNumber;
-      player.battlefield.omens.push(card);
+    const result = super.playChampion(player, cardIndex);
+    if (!result) return false;
+    if (card.faceDown) {
       log(`${player.name} plays ${card.name} face-down (Ominous).`, 'play');
       bus.emit('omenPlayed', { player, card });
-      this.updateUI();
-      return true;
+    } else {
+      log(`${player.name} summons ${card.name} (${card.power}/${card.toughness}).`, 'play');
+      bus.emit('championEntered', { player, card });
     }
-    card.summoned = true;
-    card.tapped = false;
-    player.battlefield.champions.push(card);
-    log(`${player.name} summons ${card.name} (${card.power}/${card.toughness}).`, 'play');
-    bus.emit('championEntered', { player, card });
-    this.processAbilities('enter_battlefield', { player, card });
-    this.processAbilities('on_cast', { player, card });
-    this.processAbilities('on_champion_played', { player, card });
-    this.noteCardPlayed(player, card);
-    this.applyStaticAbilities(player);
-    this.updateUI();
     return true;
   }
 
