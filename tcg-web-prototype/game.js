@@ -318,23 +318,6 @@ class GameState extends RULES_ENGINE.GameState {
     this.updateUI();
     return true;
   }
-  playDomain(player, cardIndex) {
-    const card = player.hand[cardIndex];
-    if (!card || card.type !== 'Domain') return false;
-    if (!this.canPayCost(player, this.effectiveCost(player, card.cost))) return false;
-    this.payMana(player, this.effectiveCost(player, card.cost));
-    this.consumeCostDiscount(player);
-    player.hand.splice(cardIndex, 1);
-    player.battlefield.domains.push(card);
-    log(`${player.name} plays ${card.name} (Domain).`, 'play');
-    bus.emit('domainEntered', { player, card });
-    this.processAbilities('on_cast', { player, card });
-    this.noteCardPlayed(player, card);
-    this.applyStaticAbilities(player);
-    this.updateUI();
-    return true;
-  }
-
 
 
 
@@ -568,56 +551,6 @@ undefineAttacker(player, champion) {
 
   // --- Recall (return from exile at 2x cost) ---
   // --- Ability System ---
-  processAbilities(trigger, context) {
-    const { player } = context;
-    const opponent = player === this.me ? this.ai : this.me;
-    const allPlayerChampions = player.battlefield.champions;
-    const allOpponentChampions = opponent.battlefield.champions;
-
-    // Process abilities on all permanents for this player
-    const allPermanents = [
-      ...allPlayerChampions,
-      ...player.battlefield.relics,
-      ...player.battlefield.omens,
-      ...player.battlefield.domains
-    ];
-
-    // Also process the cast card itself (spells/instants go to graveyard, not battlefield)
-    if (context.card && context.card.abilities && !allPermanents.includes(context.card)) {
-      allPermanents.push(context.card);
-    }
-
-    for (const permanent of allPermanents) {
-      if (!permanent.abilities) continue;
-      // Face-down Omens flip when their trigger fires
-      if (permanent.type === 'Omen' && permanent.faceDown) {
-        const flipAbility = permanent.abilities.find(a => a.trigger === trigger);
-        if (flipAbility) {
-          this.flipOmen(player, permanent, trigger, context);
-        }
-        continue;
-      }
-      for (const ability of permanent.abilities) {
-        if (ability.trigger !== trigger) continue;
-        if (!this.isAbilityAllowedInPhase(ability)) continue;
-        if (ability.oncePerTurn && permanent._usedAbilities && permanent._usedAbilities.has(ability.name)) continue;
-        if (!this.checkCondition(ability, context, player, opponent)) continue;
-
-        this.executeAbility(ability, permanent, player, opponent, context);
-
-        if (ability.oncePerTurn) {
-          if (!permanent._usedAbilities) permanent._usedAbilities = new Set();
-          permanent._usedAbilities.add(ability.name);
-        }
-      }
-    }
-
-    // Process static abilities continuously
-    if (trigger === 'enter_battlefield' || trigger === 'untap') {
-      this.applyStaticAbilities(player);
-    }
-  }
-
 
   executeAbility(ability, source, player, opponent, context) {
     const enemyChampions = opponent.battlefield.champions;
@@ -1495,85 +1428,6 @@ defenderEl.appendChild(attackerEl);
     this.confirmBlockers();
   };
   }
-
-  playerAssignBlockers() {
-    const attacker = this.ai;
-    const defenders = this.me.battlefield.champions.filter(c => !c.tapped);
-
-    for (const atk of attacker.battlefield.champions.filter(c => c.attacking)) {
-      const validBlockers = defenders.filter(b =>
-        this.canBlock(atk, b, attacker) &&
-        (!this.declaredBlockers[atk.id] || !this.declaredBlockers[atk.id].includes(b.id)) &&
-        this.getCurrentBlockCount(b.id) < this.getMaxBlocks(b)
-      );
-
-      if (this.championHasKeyword(atk, 'menace') && validBlockers.length < 2) continue;
-
-      if (validBlockers.length > 0) {
-        const bestBlocker = validBlockers.reduce((best, b) =>
-          (b.toughness > best.toughness || (b.power >= atk.power && b.toughness >= atk.toughness)) ? b : best
-        , validBlockers[0]);
-
-        this.assignBlocker(atk.id, bestBlocker.id);
-
-        if (this.championHasKeyword(atk, 'menace')) {
-          const remaining = validBlockers.filter(b => b.id !== bestBlocker.id);
-          if (remaining.length > 0) {
-            this.assignBlocker(atk.id, remaining[0].id);
-          }
-        }
-      }
-    }
-  }
-
-  aiAssignBlockers() {
-    const attacker = this.me;
-    const defenders = this.ai.battlefield.champions.filter(c => !c.tapped);
-    const attackers = attacker.battlefield.champions.filter(c => c.attacking);
-
-    for (const atk of attackers) {
-      const validBlockers = defenders.filter(b =>
-        this.canBlock(atk, b, attacker) &&
-        (!this.declaredBlockers[atk.id] || !this.declaredBlockers[atk.id].includes(b.id)) &&
-        this.getCurrentBlockCount(b.id) < this.getMaxBlocks(b)
-      );
-
-      const minBlockers = this.getMinBlockersRequired(atk);
-      if (validBlockers.length < minBlockers) continue;
-
-      if (this.difficulty === 'easy') {
-        if (validBlockers.length > 0) {
-          this.assignBlocker(atk.id, validBlockers[0].id);
-          if (minBlockers > 1 && validBlockers.length > 1) {
-            this.assignBlocker(atk.id, validBlockers[1].id);
-          }
-        }
-      } else if (this.difficulty === 'medium') {
-        const goodBlockers = validBlockers.filter(b => b.toughness >= atk.power && b.power >= 1);
-        if (goodBlockers.length > 0) {
-          this.assignBlocker(atk.id, goodBlockers[0].id);
-          if (minBlockers > 1 && goodBlockers.length > 1) {
-            this.assignBlocker(atk.id, goodBlockers[1].id);
-          }
-        } else if (atk.power >= 3 && validBlockers.length > 0) {
-          this.assignBlocker(atk.id, validBlockers[0].id);
-          if (minBlockers > 1 && validBlockers.length > 1) {
-            this.assignBlocker(atk.id, validBlockers[1].id);
-          }
-        }
-      } else {
-        const totalPower = attackers.reduce((s, a) => s + a.power, 0);
-        if (totalPower >= this.ai.life || atk.power >= 4) {
-          const sorted = [...validBlockers].sort((a, b) => a.power - b.power);
-          const needed = Math.min(minBlockers, sorted.length);
-          for (let i = 0; i < needed; i++) {
-            this.assignBlocker(atk.id, sorted[i].id);
-          }
-        }
-      }
-    }
-  }
-
   executePhase() {
     const p = this.active;
     switch (this.phase) {
