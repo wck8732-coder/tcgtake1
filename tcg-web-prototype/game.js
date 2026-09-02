@@ -1428,8 +1428,9 @@ defenderEl.appendChild(attackerEl);
 
   checkWin() {
     if (this.gameOver) return;
-    if (this.me.life <= 0) { this.gameOver = true; this.winner = 1; log('You lose!', 'damage'); }
-    else if (this.ai.life <= 0) { this.gameOver = true; this.winner = 0; log('You win!', 'heal'); }
+    super.checkWin();
+    if (this.me.life <= 0) log('You lose!', 'damage');
+    else if (this.ai.life <= 0) log('You win!', 'heal');
     if (this.gameOver) this.showEndGameModal();
   }
 
