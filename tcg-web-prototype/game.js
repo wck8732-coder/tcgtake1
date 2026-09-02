@@ -360,6 +360,18 @@ undefineAttacker(player, champion) {
   // --- Recall (return from exile at 2x cost) ---
   // --- Ability System ---
 
+  // NOTE: executeAbility is INTENTIONALLY RETAINED in game.js despite the
+  // v0.1053 dedup. Two reasons:
+  //   1. game.js's `damage_any_target` case uses `context.target` (chosen
+  //      via UI); engine.js's version picks a random enemy unless
+  //      `ability.target === 'enemy_leader'`. Deleting game.js would
+  //      break UI-driven target selection.
+  //   2. 88 `log()` calls are woven throughout the switch cases.
+  //      Extracting them requires either (a) a switch re-duplication
+  //      in game.js (defeats the dedup) or (b) an event-subscription
+  //      refactor where game.js subscribes to engine's per-effect
+  //      events and emits the log messages itself.
+  // Tracked as deferred work for a future v0.1054+ refactor.
   executeAbility(ability, source, player, opponent, context) {
     const enemyChampions = opponent.battlefield.champions;
     const friendlyChampions = player.battlefield.champions;
