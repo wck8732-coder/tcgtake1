@@ -235,8 +235,6 @@ class GameState extends RULES_ENGINE.GameState {
   }
 
    // --- Mana ---
-  resetMana(player) { Object.keys(player.mana).forEach(k => player.mana[k] = 0); }
-
   // --- Cost Modification ---
 
   // --- Exile / Purge ---
