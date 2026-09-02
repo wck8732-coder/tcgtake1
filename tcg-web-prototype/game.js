@@ -264,27 +264,6 @@ class GameState extends RULES_ENGINE.GameState {
 
 
   // --- Drawing ---
-  drawCard(player) {
-    if (player.deck.length === 0) {
-      player.life = 0;
-      this.checkWin();
-      return null;
-    }
-    const card = player.deck.shift();
-    debug(`drawCard: ${player.name} draws ${card.name}`);
-    if (player.hand.length >= 7) {
-      player.graveyard.push(card);
-      log(`${player.name} discards ${card.name} (hand full).`, 'info');
-      this.processAbilities('on_discard', { player, card });
-    } else {
-      player.hand.push(card);
-    }
-    this.processAbilities('on_draw', { player, card });
-    if (this.phase !== 'draw') {
-      this.processAbilities('on_non_draw_step', { player, card });
-    }
-    return card;
-  }
 
   // --- Playing Cards ---
   playChampion(player, cardIndex) {
