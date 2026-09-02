@@ -207,19 +207,9 @@ class GameState extends RULES_ENGINE.GameState {
 
   startGame() {
     CARD_DB = window.__CARD_DB__;
-    const deckDB = window.__DECK_DB__;
+    super.startGame();
     const decks = this.getFormatDecks();
     const playerDeckDef = decks[this.deckKey];
-
-    // Build player deck from deck definition
-    this.me.deck = this.buildDeckFromDef(playerDeckDef);
-    this.me.hand = this.me.deck.splice(0, 7);
-
-    // AI gets a random deck
-    const deckKeys = Object.keys(decks);
-    const aiDeckKey = deckKeys[Math.floor(Math.random() * deckKeys.length)];
-    this.ai.deck = this.buildDeckFromDef(decks[aiDeckKey]);
-    this.ai.hand = this.ai.deck.splice(0, 7);
 
     // AI auto-mulligan bad hands (<2 lands or >5 lands)
     let aiLands = this.ai.hand.filter(c => c.type === 'Land').length;
@@ -228,9 +218,8 @@ class GameState extends RULES_ENGINE.GameState {
       aiLands = this.ai.hand.filter(c => c.type === 'Land').length;
     }
 
-    this.updateUI();
     log('Game started! You are playing ' + playerDeckDef.name + '.', 'info');
-    log('Opponent is playing ' + decks[aiDeckKey].name + ' (' + this.format + ').', 'info');
+    log('Opponent is playing ' + decks[this.aiDeckKey].name + ' (' + this.format + ').', 'info');
     bus.emit('gameStart');
   }
 
