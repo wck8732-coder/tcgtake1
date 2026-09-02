@@ -426,46 +426,6 @@ class GameState extends RULES_ENGINE.GameState {
 
 
 
-
-  clearEndOfTurnEffects(player) {
-    player.battlefield.champions.forEach(c => {
-      if (c._eotPower) { c.power -= c._eotPower; c._eotPower = 0; }
-      if (c._eotToughness) { c.toughness -= c._eotToughness; c._eotToughness = 0; }
-      if (c._doubleDamage) c._doubleDamage = false;
-      if (c.abilities) c.abilities = c.abilities.filter(a => !a._temp);
-    });
-    player._doubleDamageActive = false;
-    player.combatDamageReduction = 0;
-    player.costDiscount = 0;
-    player.costDiscountUses = 0;
-    player.costTax = 0;
-    player.recallDiscount = 0;
-    this.statsInverted = false;
-    this._unitDiedThisTurn = false;
-    this._attackerDiedThisTurn = false;
-    player._attacksThisTurn = 0;
-    player._nextDecreeTriggersTwice = false;
-    player._drainHealExtra = 0;
-    player._purgeDiscount = 0;
-    player._purgeDiscountUses = 0;
-    player._firstAllyDeathReturned = false;
-    player._firstPurgeCostLess = 0;
-    player._firstDiscardCostLess = 0;
-    player._omenDrawIfNeutral = false;
-    player._omenChoiceEffect = null;
-    player._pendingGuardGrants = [];
-    if (player._returnFirstAllyDeath && player._returnFirstAllyDeathCard) {
-      const card = player._returnFirstAllyDeathCard;
-      player.graveyard = player.graveyard.filter(c => c !== card);
-      card.toughness = card.toughness || 1;
-      card.summoned = true;
-      player.battlefield.champions.push(card);
-      log(`${card.name} returns to battlefield (first ally death).`, 'heal');
-      player._returnFirstAllyDeath = false;
-      player._returnFirstAllyDeathCard = null;
-    }
-  }
-
   playSpell(player, cardIndex, targets) {
     const card = player.hand[cardIndex];
     if (!card || (card.type !== 'Spell' && card.type !== 'Instant' && card.type !== 'Decree')) return false;
@@ -539,25 +499,6 @@ class GameState extends RULES_ENGINE.GameState {
 
 
   // --- Combat ---
-  declareAttacker(player, championIndex) {
-    const champion = player.battlefield.champions[championIndex];
-    if (!champion || champion.tapped) return false;
-    const hasHaste = this.championHasKeyword(champion, 'haste');
-    if (champion.summoned && !hasHaste) return false;
-    champion.attacking = true;
-    this.declaredAttackers[champion.id] = true;
-    if (!this.championHasKeyword(champion, 'vigilance')) {
-      champion.tapped = true;
-    }
-    player.attackerIds.push(champion.id);
-    player._attacksThisTurn = (player._attacksThisTurn || 0) + 1;
-    this.processGameEvent('ON_ENEMY_ATTACK', { champion: champion, attackerId: champion.id, attackerOwnerId: this.players.indexOf(player) });
-    log(`${player.name} attacks with ${champion.name}.`, 'combat');
-    this.processAbilities('attacks', { player, card: champion });
-    const defender = player === this.me ? this.ai : this.me;
-    this.processAbilities('on_enemy_attack', { player: defender, card: champion });
-  }
-
 undefineAttacker(player, champion) {
     champion.attacking = false;
     delete this.declaredAttackers[champion.id];
@@ -565,31 +506,6 @@ undefineAttacker(player, champion) {
     player.attackerIds = player.attackerIds.filter(id => id !== champion.id);
   }
 
-
-
-  assignBlocker(attackerId, blockerId) {
-    const attacker = this.me.battlefield.champions.find(c => c.id === attackerId)
-      || this.ai.battlefield.champions.find(c => c.id === attackerId);
-    const defender = this.currentPlayer === 0 ? this.me : this.ai;
-    const blocker = defender.battlefield.champions.find(c => c.id === blockerId);
-    if (!attacker || !blocker || blocker.tapped) return false;
-    if (!this.canBlock(attacker, blocker, this.active)) return false;
-
-    if (!this.declaredBlockers[attackerId]) this.declaredBlockers[attackerId] = [];
-    const existing = this.declaredBlockers[attackerId];
-    if (existing.includes(blockerId)) return false;
-    if (existing.length > 0 && !this.canBlockAsPartOfGroup(attacker, existing)) return false;
-
-    // Guard: enforce max blocks limit
-    const maxBlocks = this.getMaxBlocks(blocker);
-    const currentBlocks = this.getCurrentBlockCount(blockerId);
-    if (currentBlocks >= maxBlocks) return false;
-
-    existing.push(blockerId);
-    log(`${blocker.name} blocks ${attacker.name}.`, 'combat');
-    this.updateUI();
-    return true;
-  }
 
 
   resolveCombat() {
@@ -756,37 +672,6 @@ undefineAttacker(player, champion) {
   }
 
   // --- Ability System ---
-
-  checkCondition(ability, context, player, opponent) {
-    if (!ability.condition) return true;
-    switch (ability.condition) {
-      case 'unit_died_this_turn':
-        return this._unitDiedThisTurn === true;
-      case 'revealed_was_omen':
-        return context._revealedCard && context._revealedCard.type === 'Omen';
-      case 'revealed_cost_lte_2':
-        return context._revealedCard && this.totalCostValue(context._revealedCard.cost) <= 2;
-      case 'purged_was_hidden':
-        return context._purgedWasHidden === true;
-      case 'target_attacked_this_turn':
-        return context.target && context.target.attacking === true;
-      case 'target_is_champion':
-        return context.target && context.target.type === 'Champion' && !context.target.isFace;
-      case 'control_faction_champion':
-        return context.chosenFaction && player.battlefield.champions.some(c => c.color === context.chosenFaction);
-      case 'discarded_cost_gte_4':
-        return context.discardedCard && this.totalCostValue(context.discardedCard.cost) >= 4;
-      case 'target_was_damaged':
-        return context.target && (context.target._damagedThisTurn || (context.target._damageTaken && context.target._damageTaken > 0));
-      case 'three_plus_attacked':
-        return (player.attackerIds && player.attackerIds.length >= 3) || (player._attacksThisTurn && player._attacksThisTurn >= 3);
-      case 'attacker_died_this_turn':
-        return this._attackerDiedThisTurn === true;
-      default:
-        return true;
-    }
-  }
-
   processAbilities(trigger, context) {
     const { player } = context;
     const opponent = player === this.me ? this.ai : this.me;
@@ -1599,138 +1484,7 @@ undefineAttacker(player, champion) {
     this.updateUI();
   }
 
-
-  applyStaticAbilities(player) {
-    const opponent = player === this.me ? this.ai : this.me;
-
-    // Reset pump bonuses
-    player.battlefield.champions.forEach(c => {
-      if (c._staticPump) {
-        c.power -= c._staticPump;
-        c.toughness -= c._staticPump;
-        c._staticPump = 0;
-      }
-      if (c._staticAtkPump) {
-        c.power -= c._staticAtkPump;
-        c._staticAtkPump = 0;
-      }
-      if (c._staticToughPump) {
-        c.toughness -= c._staticToughPump;
-        c._staticToughPump = 0;
-      }
-    });
-
-    // Apply pump_all_champions from all permanents
-    const allPermanents = [
-      ...player.battlefield.champions,
-      ...player.battlefield.relics,
-      ...player.battlefield.domains
-    ];
-
-    // Re-derive global auras
-    player._doubleDamageActive = allPermanents.some(p => p.abilities &&
-      p.abilities.some(a => a.trigger === 'static' && a.effect === 'double_fire_damage'));
-    player._drainHealExtra = 0;
-    player.recallDiscount = 0;
-    for (const permanent of allPermanents) {
-      if (!permanent.abilities) continue;
-      for (const ability of permanent.abilities) {
-        if (ability.trigger !== 'static') continue;
-        if (ability.effect === 'recall_cost_less') {
-          player.recallDiscount = Math.max(player.recallDiscount, ability.value || 1);
-        }
-        if (ability.effect === 'drain_heal_extra') {
-          player._drainHealExtra = Math.max(player._drainHealExtra || 0, ability.value || 1);
-        }
-        if (ability.effect === 'first_purge_cost_less') {
-          player._purgeDiscount = Math.max(player._purgeDiscount || 0, ability.value || 1);
-        }
-        if (ability.effect === 'next_card_costs_less') {
-          player._staticCostDiscount = Math.max(player._staticCostDiscount || 0, ability.value || 1);
-        }
-      }
-    }
-
-    for (const permanent of allPermanents) {
-      if (!permanent.abilities) continue;
-      for (const ability of permanent.abilities) {
-        if (ability.trigger !== 'static') continue;
-        if (ability.effect === 'pump_all_champions' || ability.effect === 'pump_all' || ability.effect === 'buff_all_allies') {
-          const targets = ability.scope === 'global'
-            ? [...player.battlefield.champions, ...this.getOpponent(player).battlefield.champions]
-            : player.battlefield.champions;
-          targets.forEach(c => {
-            c.power += ability.value;
-            c.toughness += ability.value;
-            c._staticPump = (c._staticPump || 0) + ability.value;
-          });
-        } else if (ability.effect === 'buff_crimson_attack') {
-          const targets = ability.scope === 'global'
-            ? [...player.battlefield.champions, ...this.getOpponent(player).battlefield.champions]
-            : player.battlefield.champions;
-          targets.forEach(c => {
-            if (c.color === 'Crimson') {
-              c.power += ability.value;
-              c._staticAtkPump = (c._staticAtkPump || 0) + ability.value;
-            }
-          });
-        } else if (ability.effect === 'buff_ally_toughness') {
-          player.battlefield.champions.forEach(c => {
-            if (c === permanent) return;
-            c.toughness += ability.value;
-            c._staticToughPump = (c._staticToughPump || 0) + ability.value;
-          });
-        }
-      }
-    }
-
-    this.updateUI();
-  }
-
-
-  hasStaticAbility(player, effectName) {
-    const allPermanents = [
-      ...player.battlefield.champions,
-      ...player.battlefield.relics,
-      ...player.battlefield.domains
-    ];
-    for (const permanent of allPermanents) {
-      if (!permanent.abilities) continue;
-      for (const ability of permanent.abilities) {
-        if (ability.trigger === 'static' && ability.effect === effectName) return true;
-      }
-    }
-    return false;
-  }
-
   // --- Keyword System ---
-
-  canBlock(attacker, blocker, attackingPlayer) {
-    const attackerKeywords = this.getKeywords(attacker);
-    const blockerKeywords = this.getKeywords(blocker);
-
-    if (blocker.tapped) return false;
-
-    // Flying: only blockable by champions with flying or reach
-    if (attackerKeywords.has('flying') && !blockerKeywords.has('flying') && !blockerKeywords.has('reach')) {
-      return false;
-    }
-
-    // Unblockable: can't be blocked at all
-    if (attackerKeywords.has('unblockable')) return false;
-
-    // Menace: must be blocked by 2+ champions
-    // (checked separately in blocker assignment)
-
-    return true;
-  }
-
-
-  canBlockAsPartOfGroup(attacker, existingBlockers) {
-    const minRequired = this.getMinBlockersRequired(attacker);
-    return existingBlockers.length + 1 >= minRequired;
-  }
-
 
 
   destroyRelic(player, relic) {
@@ -1781,27 +1535,6 @@ undefineAttacker(player, champion) {
     el.style.animation = '';
     setTimeout(() => { el.className = 'hidden'; }, 1800);
   }
-
-  confirmAttackers() {
-    const attacker = this.active;
-    const hasAttackers = attacker.attackerIds.length > 0;
-    if (!hasAttackers) {
-      this.phase = 'main2';
-      this.combatStep = null;
-      this.updateUI();
-      return;
-    }
-    this.combatStep = 'declare_blockers';
-    this.showCombatBanner('Declare Blockers!', 'declare-blockers');
-    if (attacker.isAI) {
-      this.playerAssignBlockers();
-    } else {
-      // Human player: show blocker selection UI
-      this.playerAssignBlockersUI();
-    }
-    this.updateUI();
-  }
-
   playerAssignBlockersUI() {
     const attacker = this.ai;
     const defenders = this.me.battlefield.champions.filter(c => !c.tapped && !c.attacking);
@@ -2484,50 +2217,6 @@ defenderEl.appendChild(attackerEl);
 
 
 
-
-  aiCardValue(card) {
-    let v = 0;
-    if (card.type === 'Champion') v = card.power + card.toughness;
-    else if (card.type === 'Relic') v = 3;
-    else if (card.type === 'Domain') v = 4;
-    else if (card.type === 'Omen') v = 3;
-    else if (card.type === 'Spell' || card.type === 'Instant' || card.type === 'Decree') v = 2;
-    if (card.abilities && card.abilities.length) {
-      v += 2;
-      // Extra value for impactful structured abilities
-      for (const ability of card.abilities) {
-        if (typeof ability === 'object') {
-          if (ability.effect === 'haste' || ability.effect === 'trample' || ability.effect === 'unblockable') v += 2;
-          if (ability.effect === 'damage_all_enemies' || ability.effect === 'destroy_all_enemies') v += 3;
-          if (ability.effect === 'invert_stats_all') v += 3;
-          if (ability.effect === 'purge_target' || ability.effect === 'purge_weakest' || ability.effect === 'purge_all_enemies' || ability.effect === 'purge_hidden' || ability.effect === 'opponent_chooses_purge') v += 2;
-          if (ability.effect === 'swap_champion' || ability.effect === 'destroy_weakest_enemy' || ability.effect === 'destroy_relic') v += 2;
-          if (ability.effect === 'reduce_combat_damage_all') v += 2;
-          if (ability.effect === 'damage_any_target' || ability.effect === 'damage_two_targets' || ability.effect === 'damage_all_champions') v += ability.value;
-          if (ability.effect === 'create_token') v += ability.value;
-          if (ability.effect === 'draw_cards' || ability.effect === 'draw_then_discard') v += ability.value;
-           if (ability.effect === 'tap_enemy_champion' || ability.effect === 'bounce_champion' || ability.effect === 'bounce_relic' || ability.effect === 'ready_champion' || ability.effect === 'next_card_costs_less' || ability.effect === 'next_two_cards_cost_less' || ability.effect === 'next_opponent_card_costs_more') v += 1;
-           if (ability.effect === 'each_player_lose_1') v += ability.value || 1;
-           if (ability.effect === 'drain_heal_extra') v += 1;
-           if (ability.effect === 'gain_life') v += ability.value || 1;
-           if (ability.effect === 'next_decree_triggers_twice') v += 2;
-           if (ability.effect === 'grant_guard_all_champions' || ability.effect === 'grant_guard_until_next_turn' || ability.effect === 'grant_guard_self_if_two_plus_attack') v += 1;
-           if (ability.effect === 'first_purge_cost_less' || ability.effect === 'first_discard_cost_less') v += 1;
-           if (ability.effect === 'stat_change_target') v += 1;
-         }
-      }
-    }
-    if (this.difficulty === 'hard' && this.totalCostValue(card.cost) <= 2) v += 1;
-    if (card.rarity === 'Mythic' || card.rarity === 'Legendary') v += 2;
-    if (card.type === 'Champion' && this.championHasKeyword(card, 'ominous')) v -= 1;
-    if (card.flipCost) {
-      if (card.flipCost.sacrificeChampion) v -= 2;
-      if (card.flipCost.selfDamage) v -= 1;
-      if (card.flipCost.tapFriendly) v -= 1;
-      if (card.flipCost.bounceFriendlyLand) v -= 1;
-    }
-    return v;
-  }
 }
 
 // --- Initialization ---
