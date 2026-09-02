@@ -1298,12 +1298,8 @@ undefineAttacker(player, champion) {
   // --- Phase Management ---
 
   enterCombat() {
-    this.phase = 'combat';
-    this.combatStep = 'declare_attackers';
-    this.declaredAttackers = {};
-    this.declaredBlockers = {};
+    super.enterCombat();
     this.showCombatBanner('Declare Attackers!', 'declare-attackers');
-    this.updateUI();
   }
 
   showCombatBanner(text, cls) {
