@@ -194,12 +194,23 @@ class GameState extends RULES_ENGINE.GameState {
     super(difficulty, deckKey, window.__CARD_DB__ || [], window.__DECK_DB__ || { decks: {} }, format);
     this.ai.name = 'Opponent';
     this.aiSpeed = 1;
+    this.stats = this._freshStats();
+  }
+
+  _freshStats() {
+    return { champions: { me: 0, ai: 0 }, spells: { me: 0, ai: 0 }, mulligans: 0 };
+  }
+  _countPlay(player, kind) {
+    if (!this.stats) this.stats = this._freshStats();
+    const side = player === this.me ? 'me' : 'ai';
+    if (this.stats[kind]) this.stats[kind][side]++;
   }
 
 
   startGame() {
     CARD_DB = window.__CARD_DB__;
     this._clearAiTimeouts();
+    this.stats = this._freshStats();
     super.startGame();
     const decks = this.getFormatDecks();
     const playerDeckDef = decks[this.deckKey];
@@ -261,6 +272,7 @@ class GameState extends RULES_ENGINE.GameState {
     debug(`playChampion: ${player.name} plays ${card.name} cost=${card.cost}`);
     const result = super.playChampion(player, cardIndex);
     if (!result) return false;
+    this._countPlay(player, 'champions');
     if (card.faceDown) {
       log(`${player.name} plays ${card.name} face-down (Ominous).`, 'play');
       bus.emit('omenPlayed', { player, card });
@@ -288,6 +300,7 @@ class GameState extends RULES_ENGINE.GameState {
     const deferResolve = proc !== 0 && viable.length > 0;
     const result = super.playSpell(player, cardIndex, targets, userId, deferResolve);
     if (!result) return false;
+    this._countPlay(player, 'spells');
     if (!card.faceDown) {
       bus.emit('spellCast', { player, card, targets });
       // Player responding during an open window: close it — this spell landed on top of the
@@ -1291,6 +1304,21 @@ defenderEl.appendChild(attackerEl);
     subtitle.textContent = won
       ? `You defeated the AI in ${this.turnNumber} turn${this.turnNumber === 1 ? '' : 's'}.`
       : `The AI defeated you in ${this.turnNumber} turn${this.turnNumber === 1 ? '' : 's'}.`;
+    const statsEl = document.getElementById('end-game-stats');
+    if (statsEl) {
+      const s = this.stats || this._freshStats();
+      const rows = [
+        ['Turns', String(this.turnNumber)],
+        ['Your champions', String(s.champions.me)],
+        ['AI champions', String(s.champions.ai)],
+        ['Your spells', String(s.spells.me)],
+        ['AI spells', String(s.spells.ai)],
+        ['Your mulligans', String(s.mulligans)],
+        ['Final life (you / AI)', this.me.life + ' / ' + this.ai.life]
+      ];
+      statsEl.innerHTML = rows.map(([k, v]) =>
+        '<div class="end-stat"><span>' + k + '</span><span>' + v + '</span></div>').join('');
+    }
     modal.classList.remove('hidden');
   }
 
@@ -1922,6 +1950,7 @@ document.addEventListener('DOMContentLoaded', () => {
     keepBtn.onclick = () => {
       mullScreen.classList.add('hidden');
       game._mulliganResolved = true;
+      game.stats.mulligans = mullCount;
       onDone();
     };
     tossBtn.onclick = () => {

@@ -702,6 +702,9 @@ body {
 .end-game-panel h2 { color: #f0c040; font-size: 2rem; margin: 0; }
 .end-game-panel p { color: #ccc; font-size: 1.1rem; margin: 0; }
 .end-game-actions { display: flex; gap: 16px; }
+#end-game-stats { display: flex; flex-direction: column; gap: 4px; min-width: 280px; }
+.end-stat { display: flex; justify-content: space-between; gap: 24px; color: #ccc; font-size: 0.95rem; }
+.end-stat span:last-child { color: #f0c040; }
 
 /* === ENCHANTMENTS OFFSET === */
 #blocker-screen {
