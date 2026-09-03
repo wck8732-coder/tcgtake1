@@ -1809,6 +1809,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.__CARD_MAP__ = new Map(cards.map(c => [c.id, c]));
     deckData = decks;
     window.__DECK_DB__ = decks;
+    if (typeof COLLECTION !== 'undefined') COLLECTION.ensureStarter(cards);
   }).catch(err => console.error('Failed to load data:', err));
 
   // Difficulty selection
@@ -1856,6 +1857,31 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
     deckSelect.appendChild(brew);
+    if (typeof COLLECTION !== 'undefined') {
+      COLLECTION.listDecks(selectedFormat).forEach((saved) => {
+        const mine = document.createElement('div');
+        mine.className = 'deck-option deck-mine';
+        mine.innerHTML = `
+          <div class="deck-name">${saved.name}</div>
+          <div class="deck-faction">My Deck — ${saved.faction}</div>
+          <div class="deck-strategy">${saved.cards.length} unique cards. Click to play, ✕ to delete.</div>
+        `;
+        const del = document.createElement('button');
+        del.className = 'control-btn mini-btn deck-del';
+        del.textContent = '✕';
+        del.addEventListener('click', (e) => {
+          e.stopPropagation();
+          COLLECTION.deleteDeck(saved.name, saved.format);
+          buildDeckOptions();
+        });
+        mine.appendChild(del);
+        mine.addEventListener('click', () => {
+          pendingCustomDeck = saved;
+          startGameWithDeck('__custom');
+        });
+        deckSelect.appendChild(mine);
+      });
+    }
     Object.entries(formatDecks).forEach(([key, deck]) => {
       const opt = document.createElement('div');
       opt.className = 'deck-option';

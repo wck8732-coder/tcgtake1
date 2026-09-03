@@ -191,10 +191,13 @@
       </div>
       <div class="builder-deck">
         <h2>Your Deck <span id="builder-count">0/70</span></h2>
+        <p class="builder-note">Alpha: full collection unlocked. Decks save in this browser.</p>
         <div id="builder-meter"></div>
         <div id="builder-curve"></div>
         <div id="builder-list"></div>
         <div class="builder-actions">
+          <input id="builder-name" placeholder="Deck name">
+          <button id="builder-save" class="control-btn">Save</button>
           <button id="builder-auto-lands" class="control-btn">Auto Lands (24)</button>
           <button id="builder-sample" class="control-btn">Sample Hand</button>
           <button id="builder-export" class="control-btn">Export</button>
@@ -295,6 +298,7 @@
   <script src="shared/effects.js"></script>
   <script src="shared/card-schema.js"></script>
   <script src="shared/deck-rules.js"></script>
+  <script src="shared/collection.js"></script>
   <script src="rules_engine.js"></script>
   <script src="game.js"></script>
   <script src="builder-ui.js"></script>

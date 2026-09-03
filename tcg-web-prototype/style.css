@@ -139,6 +139,16 @@ body {
 .builder-sample-row .card-name { font-size: 0.6rem; }
 .builder-sample-row .card-text { display: none; }
 .deck-brew { border-style: dashed; }
+.deck-mine { border-color: #27ae60; position: relative; }
+.deck-del { position: absolute; top: 6px; right: 6px; }
+.builder-filters input#builder-name, #builder-name {
+  padding: 6px 10px;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  border: 1px solid #f0c040;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
 
 .deck-option:hover {
   background: #f0c040;
