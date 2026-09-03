@@ -519,6 +519,9 @@ body {
 .control-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 .danger-btn { border-color: #e74c3c; color: #e74c3c; }
 .danger-btn:hover { background: #e74c3c; color: #fff; }
+#ai-speed-select { display: flex; gap: 4px; margin-left: 8px; }
+#ai-speed-select .control-btn { padding: 3px 8px; min-width: 32px; }
+#ai-speed-select .control-btn.selected { background: #f0c040; color: #1a1a2e; }
 
 /* === CARD MODAL === */
 #card-modal {

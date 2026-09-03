@@ -193,6 +193,7 @@ class GameState extends RULES_ENGINE.GameState {
   constructor(difficulty = 'easy', deckKey = null, format = 'Classic') {
     super(difficulty, deckKey, window.__CARD_DB__ || [], window.__DECK_DB__ || { decks: {} }, format);
     this.ai.name = 'Opponent';
+    this.aiSpeed = 1;
   }
 
 
@@ -220,11 +221,12 @@ class GameState extends RULES_ENGINE.GameState {
   // callback clears it on fire. Errors during AI pacing surface in the log
   // instead of silently hanging the chain.
   _pushAiTimeout(fn, ms) {
+    const scaled = Math.max(0, Math.round(ms / (this.aiSpeed || 1)));
     const id = setTimeout(() => {
       const i = this._aiTimeouts ? this._aiTimeouts.indexOf(id) : -1;
       if (i >= 0) this._aiTimeouts.splice(i, 1);
       try { fn(); } catch (e) { log('AI pacing error: ' + (e && e.message || e), 'error'); }
-    }, ms);
+    }, scaled);
     if (!this._aiTimeouts) this._aiTimeouts = [];
     this._aiTimeouts.push(id);
     return id;
@@ -1767,7 +1769,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let game = null;
   let selectedDifficulty = null;
   let selectedFormat = 'Classic';
-  let selectedAISpeed = 'normal';
+  let selectedAISpeed = 1;
   let deckData = null;
 
   // Load card database and deck data
@@ -1791,17 +1793,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // AI Speed selection (POSTPONED until final touches phase)
-  /*
   document.querySelectorAll('#ai-speed-select button').forEach(btn => {
     btn.addEventListener('click', () => {
-      selectedAISpeed = btn.dataset.speed;
+      selectedAISpeed = parseInt(btn.dataset.speed, 10) || 1;
       document.querySelectorAll('#ai-speed-select button')
         .forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
+      if (game) game.aiSpeed = selectedAISpeed;
     });
   });
-  */
 
   document.querySelectorAll('#format-select button').forEach(btn => btn.addEventListener('click', () => {
     selectedFormat = btn.dataset.format;
@@ -1879,6 +1879,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function launchGame(playerFirst) {
     game = new GameState(selectedDifficulty, pendingDeckKey, selectedFormat || 'Classic');
+    game.aiSpeed = selectedAISpeed || 1;
     gameContainer.classList.remove('hidden');
     if (!playerFirst) {
       game.currentPlayer = 1;
@@ -1888,7 +1889,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showMulligan(() => {
       if (!playerFirst) {
-        setTimeout(() => game.runAI(), 600);
+        game._pushAiTimeout(() => game.runAI(), 600);
       }
     });
   }
