@@ -1905,10 +1905,16 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('mull-count').textContent = 'Cards: ' + game.me.hand.length;
       document.getElementById('mull-lands').textContent =
         'Lands: ' + game.me.hand.filter(c => c.type === 'Land').length;
+      document.getElementById('mull-title').textContent =
+        mullCount === 0 ? 'Your Opening Hand — 7 cards' : 'Mulligan #' + mullCount + ' — ' + game.me.hand.length + ' cards';
+      keepBtn.textContent = 'Keep (' + game.me.hand.length + ')';
       const preview = document.getElementById('mull-hand-preview');
       preview.innerHTML = '';
-      game.me.hand.forEach(card => {
-        preview.appendChild(CardRenderer.create(card));
+      game.me.hand.forEach((card, i) => {
+        const el = CardRenderer.create(card);
+        el.classList.add('mull-deal');
+        el.style.animationDelay = (i * 55) + 'ms';
+        preview.appendChild(el);
       });
       tossBtn.disabled = game.me.hand.length <= 1;
     }
@@ -1920,12 +1926,21 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     tossBtn.onclick = () => {
       if (game.me.hand.length <= 1) return;
-      game.mulligan(game.me);
-      mullCount++;
-      document.getElementById('mull-title').textContent = 'Mulligan #' + mullCount;
-      updateMulliganUI();
+      keepBtn.disabled = true;
+      tossBtn.disabled = true;
+      const preview = document.getElementById('mull-hand-preview');
+      preview.classList.add('mull-shuffling');
+      setTimeout(() => {
+        game.mulligan(game.me);
+        mullCount++;
+        preview.classList.remove('mull-shuffling');
+        updateMulliganUI();
+        keepBtn.disabled = false;
+        tossBtn.disabled = game.me.hand.length <= 1;
+      }, 240);
     };
 
+    keepBtn.disabled = false;
     updateMulliganUI();
     mullScreen.classList.remove('hidden');
   }

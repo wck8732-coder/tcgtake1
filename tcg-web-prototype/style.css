@@ -662,6 +662,13 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
+  transition: opacity 0.22s ease;
+}
+#mull-hand-preview.mull-shuffling { opacity: 0; }
+#mull-hand-preview .card.mull-deal { animation: mullDeal 0.3s ease both; }
+@keyframes mullDeal {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+  to { opacity: 1; transform: none; }
 }
 #mull-hand-preview .card { width: 150px; height: 210px; }
 #mull-hand-preview .card-name { font-size: 0.85rem; }
