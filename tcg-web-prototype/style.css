@@ -284,6 +284,7 @@ body {
 }
 .keyword:hover::after {
   opacity: 1;
+  transition-delay: 0.25s;
 }
 
 /* Card header */

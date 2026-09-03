@@ -50,7 +50,7 @@ const CardRenderer = {
     el.querySelector('.card-type-line').textContent = `${cardData.color} ${cardData.type}`;
     el.querySelector('.card-color-badge').style.background = this.colorHex(cardData.color);
 
-    const keywordDefs = KEYWORDS.DEFS;
+    const keywordDefs = (typeof GLOSSARY !== 'undefined') ? GLOSSARY.terms() : KEYWORDS.DEFS;
     const describeAbility = EFFECTS.describe;
 
     const abilities = cardData.abilities || [];
