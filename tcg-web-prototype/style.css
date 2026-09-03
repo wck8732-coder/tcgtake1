@@ -42,6 +42,104 @@ body {
   width: 300px;
   text-align: center;
 }
+/* === DECK BUILDER === */
+#builder-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 15, 30, 0.94);
+  z-index: 50;
+}
+.builder-layout {
+  display: flex;
+  gap: 20px;
+  width: 96%;
+  max-width: 1280px;
+  height: 88vh;
+  padding: 20px;
+  background: #16213e;
+  border: 2px solid #f0c040;
+  border-radius: 14px;
+}
+.builder-pool { flex: 3; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.builder-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.builder-filters input, .builder-filters select {
+  padding: 6px 10px;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  border: 1px solid #f0c040;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.builder-filters input { flex: 2; min-width: 160px; }
+#builder-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 4px;
+}
+#builder-results .card { width: 120px; height: 168px; }
+#builder-results .card-name { font-size: 0.7rem; }
+#builder-results .card-text { font-size: 0.6rem; }
+#builder-results .card-cost { font-size: 0.7rem; }
+.builder-card { position: relative; cursor: pointer; }
+.builder-owned {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #f0c040;
+  color: #1a1a2e;
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 1px 7px;
+  border-radius: 10px;
+}
+.builder-deck { flex: 2; display: flex; flex-direction: column; gap: 10px; min-width: 300px; overflow-y: auto; }
+.builder-deck h2 { color: #f0c040; font-size: 1.4rem; margin: 0; }
+#builder-count { color: #aaa; font-size: 1rem; }
+.meter-line { font-size: 0.9rem; color: #ccc; }
+.meter-ok { color: #27ae60; }
+.meter-bad { color: #e74c3c; }
+.meter-err { font-size: 0.85rem; color: #e74c3c; }
+#builder-curve { display: flex; gap: 6px; align-items: flex-end; }
+.curve-col { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; }
+.curve-bar { width: 100%; background: #f0c040; border-radius: 3px 3px 0 0; min-height: 2px; }
+.curve-label, .curve-n { font-size: 0.75rem; color: #aaa; }
+#builder-list { display: flex; flex-direction: column; gap: 4px; max-height: 30vh; overflow-y: auto; }
+.builder-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  background: rgba(240, 192, 64, 0.05);
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+.builder-row.is-land { border-color: #27ae60; }
+.builder-row-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.builder-row-count { color: #f0c040; font-weight: bold; }
+.mini-btn { padding: 1px 7px; font-size: 0.75rem; }
+.builder-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.builder-note { color: #aaa; font-size: 0.9rem; }
+#builder-io {
+  width: 100%;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  border: 1px solid #f0c040;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+.builder-sample-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.builder-sample-row .card { width: 90px; height: 126px; }
+.builder-sample-row .card-name { font-size: 0.6rem; }
+.builder-sample-row .card-text { display: none; }
+.deck-brew { border-style: dashed; }
+
 .deck-option:hover {
   background: #f0c040;
   color: #1a1a2e;

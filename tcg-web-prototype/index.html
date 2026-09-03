@@ -166,6 +166,49 @@
     <button id="coin-continue" class="control-btn hidden">Continue</button>
   </div>
 
+  <!-- DECK BUILDER -->
+  <div id="builder-screen" class="hidden">
+    <div class="builder-layout">
+      <div class="builder-pool">
+        <div class="builder-filters">
+          <input id="builder-search" placeholder="Search name or text">
+          <select id="builder-faction">
+            <option>All</option><option>Crimson</option><option>Sunforged</option>
+            <option>Lantern</option><option>Gilded</option><option>Zealot</option>
+            <option>Colorless</option>
+          </select>
+          <select id="builder-type">
+            <option>All</option><option>Champion</option><option>Spell</option>
+            <option>Instant</option><option>Decree</option><option>Relic</option>
+            <option>Domain</option><option>Omen</option><option>Land</option>
+          </select>
+          <select id="builder-rarity">
+            <option>All</option><option>Common</option><option>Uncommon</option>
+            <option>Rare</option><option>Mythic</option><option>Legendary</option>
+          </select>
+        </div>
+        <div id="builder-results"></div>
+      </div>
+      <div class="builder-deck">
+        <h2>Your Deck <span id="builder-count">0/70</span></h2>
+        <div id="builder-meter"></div>
+        <div id="builder-curve"></div>
+        <div id="builder-list"></div>
+        <div class="builder-actions">
+          <button id="builder-auto-lands" class="control-btn">Auto Lands (24)</button>
+          <button id="builder-sample" class="control-btn">Sample Hand</button>
+          <button id="builder-export" class="control-btn">Export</button>
+          <button id="builder-import" class="control-btn">Import</button>
+          <button id="builder-clear" class="control-btn">Clear</button>
+          <button id="builder-back" class="control-btn">Back</button>
+          <button id="builder-play" class="control-btn" disabled>Play</button>
+        </div>
+        <textarea id="builder-io" class="hidden" rows="8"></textarea>
+        <div id="builder-sample-out"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- MULLIGAN -->
   <div id="mulligan-screen" class="hidden">
     <div class="mull-panel">
@@ -251,7 +294,9 @@
   <script src="shared/factions.js"></script>
   <script src="shared/effects.js"></script>
   <script src="shared/card-schema.js"></script>
+  <script src="shared/deck-rules.js"></script>
   <script src="rules_engine.js"></script>
   <script src="game.js"></script>
+  <script src="builder-ui.js"></script>
 </body>
 </html>

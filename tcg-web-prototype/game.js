@@ -1835,10 +1835,27 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedFormat = btn.dataset.format;
   }));
 
+  if (typeof BuilderUI !== 'undefined') BuilderUI.wire();
+
   function buildDeckOptions() {
     deckSelect.innerHTML = '';
     const formatDecks = deckData.formats[selectedFormat].decks;
-    const factionColors = { Crimson: '#e67e22', Sunforged: '#27ae60', Lantern: '#8e44ad', Gilded: '#2980b9' };
+    const factionColors = { Crimson: '#e67e22', Sunforged: '#27ae60', Lantern: '#8e44ad', Gilded: '#2980b9', Zealot: '#f0c040', Colorless: '#95a5a6' };
+    const brew = document.createElement('div');
+    brew.className = 'deck-option deck-brew';
+    brew.innerHTML = `
+      <div class="deck-name">Build New Deck</div>
+      <div class="deck-faction">Custom ${selectedFormat}</div>
+      <div class="deck-strategy">Brew your own 70-card deck from the full card pool.</div>
+    `;
+    brew.addEventListener('click', () => {
+      if (typeof BuilderUI === 'undefined') return;
+      BuilderUI.open(selectedFormat, (def) => {
+        pendingCustomDeck = def;
+        startGameWithDeck('__custom');
+      });
+    });
+    deckSelect.appendChild(brew);
     Object.entries(formatDecks).forEach(([key, deck]) => {
       const opt = document.createElement('div');
       opt.className = 'deck-option';
@@ -1854,6 +1871,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   let pendingDeckKey = null;
+  let pendingCustomDeck = null;
 
   function startGameWithDeck(deckKey) {
     pendingDeckKey = deckKey;
@@ -1906,7 +1924,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function launchGame(playerFirst) {
-    game = new GameState(selectedDifficulty, pendingDeckKey, selectedFormat || 'Classic');
+    let deckDB = window.__DECK_DB__;
+    if (pendingDeckKey === '__custom' && pendingCustomDeck) {
+      const fmt = selectedFormat || 'Classic';
+      const decks = Object.assign({}, deckDB.formats[fmt].decks, { __custom: pendingCustomDeck });
+      deckDB = { formats: Object.assign({}, deckDB.formats, { [fmt]: { decks } }) };
+    }
+    game = new GameState(selectedDifficulty, pendingDeckKey, window.__CARD_DB__ || [], deckDB || { decks: {} }, selectedFormat || 'Classic');
     game.aiSpeed = selectedAISpeed || 1;
     gameContainer.classList.remove('hidden');
     if (!playerFirst) {
