@@ -9,7 +9,7 @@ original 120-card generation provenance bundle, and checkpoint/verification tool
 |---|---|
 | `tcg-web-prototype/` | **Web game** — full mirror of the live working copy (`Documents\Default Project`). All game/engine/data files, `verify.ps1` 7-step gate, `shared/` modules, `.opencode/` config. |
 | `tcg-unity-engine/` | Reserved for the standalone Unity engine port (current template at `tcg-web-prototype/unity/`). |
-| `docs/` | Future design/rule/roadmap docs. |
+| `docs/` | Voice guide, Wave 8 brief, auto current-state (`CURRENT.md`). |
 | `tools/` | Future repo-wide dev/CI tooling. |
 | `archive/` | Future retired/legacy content. |
 | `backups/` | Future local-only snapshot destination (not committed). |

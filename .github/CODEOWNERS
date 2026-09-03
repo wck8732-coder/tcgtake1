@@ -1,0 +1,7 @@
+# Draft — apply repo settings yourself (branch protection + this file).
+# Default owner
+* @wck8732-coder
+
+# Unity is a separate workstream — do not review/merge Unity changes from web-prototype PRs
+/tcg-web-prototype/unity/ @wck8732-coder
+/tcg-unity-engine/ @wck8732-coder

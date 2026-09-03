@@ -12,7 +12,7 @@ Push-Location $root
 Write-Host "=== 1/7 Syntax gate ===" -ForegroundColor Cyan
 node --check rules_engine.js game.js simulate.js
 node --check build-cards.js build-unity-cards.js gen_decks.js
-node --check validate-data.js
+node --check validate-data.js validate-identity.js
 
 Write-Host "=== 2/7 Card build identity ===" -ForegroundColor Cyan
 node build-cards.js verify
@@ -22,6 +22,9 @@ node recall_ominous_test.js | Select-String -Pattern "passed|failed"
 
 Write-Host "=== 4/7 Semantic data validation ===" -ForegroundColor Cyan
 node validate-data.js | Select-String -Pattern "PASS|FAIL|WARN|checks:"
+
+Write-Host "=== 4b/7 Identity lint ===" -ForegroundColor Cyan
+node validate-identity.js | Select-String -Pattern "PASS|FAIL|WARN|checks:|IDENTITY"
 
 Write-Host "=== 5/7 Headless sim: Classic ===" -ForegroundColor Cyan
 node simulate.js 10 medium Classic

@@ -1,0 +1,34 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tcg-web-prototype
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax gate
+        run: |
+          node --check rules_engine.js game.js simulate.js
+          node --check build-cards.js validate-data.js validate-identity.js
+      - name: Card build identity
+        run: node build-cards.js verify
+      - name: Tests
+        run: node recall_ominous_test.js
+      - name: Data validation
+        run: node validate-data.js
+      - name: Identity lint
+        run: node validate-identity.js
+      - name: Classic sim
+        run: node simulate.js 10 medium Classic
+      - name: Standard sim
+        run: node simulate.js 10 medium Standard
