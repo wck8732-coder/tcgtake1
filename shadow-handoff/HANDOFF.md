@@ -4,6 +4,11 @@ You are picking up on the shadow PC exactly where the GUI-PC agent left off.
 Read this whole file before touching anything. The recreation task is in
 `RECREATE_ROUTER_PROMPT.md`; this file is the intuition behind it.
 
+**Self-containment:** everything the task needs is inside this folder
+(`router.py` reference copy, `ref-` script/doc copies). Repo-root paths
+quoted below describe the GUI-PC layout for orientation only — if you only
+received this folder, ignore them and work from the bundled copies.
+
 ## 1. Machine map
 
 - **GUI PC (main):** everything below lives at
