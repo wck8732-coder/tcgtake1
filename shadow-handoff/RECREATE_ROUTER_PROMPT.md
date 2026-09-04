@@ -4,6 +4,20 @@ Paste everything below the line to the agent on the shadow PC.
 
 ---
 
+## Prerequisites — read IN ORDER (repo root = where you ran `git pull`)
+
+1. `shadow-handoff/HANDOFF.md` — full briefing. Read all of it.
+2. `shadow-handoff/RECREATE_ROUTER_PROMPT.md` (this file, below the line) — the task.
+3. `shadow-handoff/router.py` — byte-identical reference copy. Do NOT edit.
+4. `start-router.ps1` (repo root) — template for your starter script.
+5. `router-smoke.ps1` (repo root) — template for your smoke script.
+6. `README.md`, "AI Router" section only — how OpenCode wires to a router.
+
+Read nothing else unless the task forces you to. Never open
+`card_database*.json`, `cards.json`, `decks.json`, `backups/`, `unity/`,
+or `tcg-unity-engine/` — huge or off-limits.
+
+
 You are working on the shadow PC. In your working folder you have `router.py`
 (byte-identical copy of the canonical project router, SHA
 `AF87C0ECE8996852258D28A857146830E78E056E8C98DA219A7A1F65C941E030`)
