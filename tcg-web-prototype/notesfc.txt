@@ -406,5 +406,13 @@ top). Do not create a checkpoint or touch AGENT.md. Report back to the primary
 terminal.
 
 ================================================================================
+SECTION 7 — M1→M4 AGENDA (v0.1054, no new files per function — keep here + AGENTS.md)
+================================================================================
+M1 Wave 8 final — DONE 2026-09-04: 7 cards 22/23/27/30/31/101/497 via build-cards textPatch/flavorPatch (exact user flavors), build/init/verify IDENTICAL, 130/130, sims clean, checkpoint v0.1054.
+M2 Deckbuilder prototype — DONE 2026-09-04: MTG premade history + Karsten 19.59+1.90*avgMV + hypergeometric s_n + Arena NPE/smoother research; deleted old decks (bak 102017/102022), qwen2.5-coder:14b draft gen_decks.js, fixed getCost/buildLands/lands/shape/curveSlots to per-faction [Crimson 12,11,9,6,4,4 → avgMV 2.80 etc], now 12x70 valid (24/46/4-copy).
+M3 Cinders economy — NEXT: shared/collection.js {cinders,owned} in tcg.v1.*, CRAFT_COST 100/300/800/1600/3200 & DUST 25/75/200/400/800 (stub, 4:1), canCraft/craft/disenchant/migrateFromFullUnlock; builder-ui craft/dust buttons + #cinders-counter; game.js custom-deck owned check only. UNSAID: no packs/earn (M4 ladder does), no trade/server/premium, no Unity, no deck legality change.
+M4 PvE ladder — QUEUED: 8 rungs x easy/normal/card-shark, weekly rotation, rewards in Cinders — ranked stays stub for PvP project. No new files per function — update this file + AGENTS.md only.
+
+================================================================================
 END OF NOTESFC.TXT
 ================================================================================

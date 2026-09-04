@@ -26,8 +26,8 @@
 | `game.js` | Browser UI layer. `class GameState extends RULES_ENGINE.GameState` — keeps only UI/async-AI/combat overrides; pure rules inherited. Reads `card_database.json` via `fetch`. Card renderer (v0.1048): `textOverride` via `cardData.text` (keyword tooltips still scanned), `.card-flavor` italic line, pluralization cleaned. **v0.1050:** mirrors the engine's `damage_any_target` leader-target honor for human-targetable casts. |
 | `simulate.js` | Headless harness over `rules_engine.js` (AI vs AI). Usage: `node simulate.js [games] [difficulty] [format]`. |
 | `slug_mappings.js` | Canonical deck-slug map (faction→slug, strategy blurbs, `slugToFaction`/`factionToSlug`). Consumed by gen_decks.js; deck slug keys must match decks.json. |
-| `decks.json` | 70-card format-split decks — **Classic** and **Standard** both max 4 copies/card (no rarity caps). 12 decks (6 Classic + 6 Standard), each exactly 70 cards (24 lands + 46 non-land). gen_decks.js generates format-split decks; rules_engine.js enforces min 70 cards + 4-copy limit. **Deck-construction revamp is DEFERRED — research-backed spec in `DECKBUILDER_PLAN.md` (Karsten curve-slot math + MTGA hand-smoother consistency).** | |
-| `DECKBUILDER_PLAN.md` | Approved-spec candidate for the deck-builder script (not yet implemented). MTGA/Carsten-derived: avgMV curve audit, hypergeometric curve-slot targets, Arena smoother-based consistency score. `gen_decks.js` unchanged until this is approved. |
+| `decks.json` | 70-card format-split decks — **Classic** and **Standard** both max 4 copies/card (no rarity caps). 12 decks (6 Classic + 6 Standard), each exactly 70 cards (24 lands + 46 non-land) via **Karsten curve-slot + MTGA smoother** (`gen_decks.js` prototype v0.1054). Per-faction slots sum 46: Crimson [12,11,9,6,4,4] → avgMV 2.8 etc. |
+| `DECKBUILDER_PLAN.md` | Research-backed spec (MTG premade history + Karsten `19.59+1.90×avgMV` + hypergeometric + Arena BO1 smoother) — **prototype implemented in `gen_decks.js` v0.1054** (qwen2.5-coder:14b + manual Karsten fixes). No new files per function — keep spec here. |
 | `recall_ominous_test.js` | 123-test harness for Recall/Ominous/Decree + stack/priority/combat/fatigue rules. Run `node recall_ominous_test.js`. MUST stay green. |
 | `tcgtake1/` | 120-card CSV source + Gemini mapping (`mapped_cards.json`, ids 1001-1120) — self-contained provenance bundle. Include `batch01-06.json` (Gemini batch inputs) + `merge_batches.js`/`merge-cards.js` (pipeline) + `INTEGRATION_PLAN.md`. |
 | `unity/` | Unity template (Assets/ — proper Unity project layout). Engine logic stubbed (gated on decks rebuild). Data: `Assets/StreamingAssets/cards.json` (480-card, generated from `card_database.json`). Regenerate via `node build-unity-cards.js` or **TCG → Build Unity Card Data**. Godot port deleted (dropped target). |
@@ -75,11 +75,22 @@ powershell -ExecutionPolicy Bypass -File backups\restore-checkpoint.ps1 [-Snapsh
 - **Shared modules (UMD):** shared/utils.js, keywords.js, glossary.js (keyword + mechanic hover terms), deck-rules.js (70/24/46/4-copy validation — builder UI + generator + future server), collection.js (tcg.v1.* persistence: full-unlock alpha collection, saved decks, Cinders stub), cost-utils.js, phases.js, factions.js, effects.js, card-schema.js. Loaded via `<script>` in index.html (browser) / `require()` in simulate.js. `rules_engine.js` wraps the engine the same way (global `RULES_ENGINE` in browser). `builder-ui.js` (browser deck builder, in-memory entries + saved decks; custom defs launch via `__custom` deckDB injection, engine untouched).
 - **Static data protection:** `.opencode/plugins/ignore-static-data.js` blocks full reads/greps/lists of `card_database*.json`, `cards.json`, `decks.json`, `tcgtake1/`, `backups/`, `unity/Assets/StreamingAssets/`, `*.csv`. Unblocked by naming the file in a request (edit intent) or by bounded reads. Use `node -e` filters or grep with a specific pattern instead.
 
-## Current Set State (v0.1042)
-- 480 cards: 100 Lands (20×5 factions; Colorless has no colored lands — borrow from others), 380 non-land. **Colorless = neutral/artifact (not a faction).**
+## Current Set State (v0.1054)
+- 480 cards: 100 Lands, 380 non-land (380/380 authored — Wave 8 final `22/23/27/30/31/101/497` done). **Colorless = neutral/artifact (not a faction).**
 - Rarity: Common 175 / Uncommon 208 / Rare 48 / Mythic 24 / Legendary 25.
-- Draw pie rebalanced: Colorless draw effects 17→3 (Wanderer's Counsel→scry, Far-Way Merchant→ramp, Hearth of Many Paths→extra land); Gilded is now primary draw color (6 effects).
-- All 123 tests pass; 100-game sim clean.
+- Decks: 12×70 (24 lands/46 nonland, ≤4 copies) via Karsten per-faction slots (Crimson 2.80, Zealot 2.93, Lantern 3.17, Colorless 3.28, Sunforged 3.46, Gilded 3.52) — prototype, needs avgMV tuning to targets 2.3-3.3.
+- Tests: 130/130 `recall_ominous_test.js`; sims clean (Classic/Standard 10× medium).
+
+## Roadmap — M1→M4 (no new files per function — keep here + notesfc.txt)
+- **M1 Wave 8 final — DONE v0.1054:** 7 cards `22/23/27/30/31/101/497` authored via `build-cards.js:341` textPatch/flavorPatch (your exact flavors), `build → init → verify` IDENTICAL, 130/130, sims clean.
+- **M2 Deckbuilder prototype — DONE v0.1054:** MTG premade research (Intro→Planeswalker→Challenger, 60-card ready-to-play + showcase) + Karsten `19.59+1.90×avgMV` & `s1..s6 hypergeometric 89+n%` + Arena NPE/smoother; backed up & deleted old `decks.json`, qwen2.5-coder:14b draft `gen_decks.js`, fixed `getCost`/`buildLands`/`lands` shape/curveSlots and per-faction slots, now 12×70 valid.
+- **M3 Cinders economy — NEXT:** `shared/collection.js` sink-first (craft/dust stub costs `Common100/300` etc., `cinders/owned` in `tcg.v1.*`, `canCraft/craft/disenchant/migrateFromFullUnlock`), `builder-ui.js` craft/dust buttons + `#cinders-counter`, `game.js` custom-deck owned check only; NO packs/earn, NO trade/server, NO Unity — gate via `validate-data` still 70/24/46.
+- **M4 PvE ladder — QUEUED:** 8 rungs × easy/normal/card-shark AI, weekly rotation, rewards in Cinders — `ranked` stays stub for PvP project.
+
+## v0.1054 (2026-09-04) — Wave 8 + Deckbuilder Prototype
+- **Checkpoint:** `backups/v0.1054_2026-09-04_1037` verified intact (37 files, 76 manifest).
+- **Commit:** `4d4b9fe` feat: v0.1054 Wave 8 final + deckbuilder prototype (Karsten/Arena).
+- **Gate:** build IDENTICAL, 130/130, Classic/Standard sims clean.
 
 ## Commits / PRs
 Prefix: `feat:` `fix:` `docs:` `refactor:` `wave8:`. PRs use `.github/pull_request_template.md`. CI: `.github/workflows/verify.yml` (Unity step skipped). CODEOWNERS draft: `.github/CODEOWNERS` (repo settings are applied by the owner). Live snapshot: `docs/CURRENT.md` via `node tcg-web-prototype/update-handoff.js`.
