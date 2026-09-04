@@ -1,7 +1,7 @@
-# TCG Prototype — Agent Context (v0.1050)
+# TCG Prototype — Agent Context (v0.1054)
 
-**Current version:** v0.1050 (2026-08-29) — Set rebalance LIVE (Crimson bolster, engine-target fix), canonical root at `Desktop\tcg_master_project` (Documents root obsolete), 284/380 non-land authored, 123/123 tests, verify 7/7 green.  
-**Current snapshot:** `backups/v0.1050_engine_target_deckbuilder_pre_2026-08-29_1103` (pre-edit baseline for current work).  
+**Current version:** v0.1054 (2026-09-04) — Wave 8 final authored (380/380), deckbuilder prototype (Karsten curve + Arena smoother + MTG premade research), `backups/v0.1054_2026-09-04_1037` verified intact, 130/130 tests, verify 7/7 green.  
+**Current snapshot:** `backups/v0.1054_2026-09-04_1037` (Wave 8 + deckbuilder prototype, 380/380 authored).  
 **Active snapshot:** desktop root `C:\Users\Blayne\Desktop\tcg_master_project\tcg-web-prototype` (mirrors GitHub; old `Documents\Default Project` is obsolete).  
 **Type-disparity rebalance:** point Gemini at **machine-generated files** (source of truth, no hallucinated ids) — `gemini_rebalance_input.tsv` (380-card roster: id|name|type|faction|rarity|cost|stats|abilities) + `gemini_vocabulary.txt` (real string keywords + trigger|effect pairs). Legacy `gemini_rebalance_prompt.md` deleted (2026-08-31).
 

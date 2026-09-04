@@ -248,7 +248,8 @@
       "Swiftstrike"
     ],
     "rarity": "Common",
-    "flavor": "A coin’s spirit, lightning-fast and just as fragile."
+    "text": "Swiftstrike",
+    "flavor": "A spark escaping the furnace never returns."
   },
   {
     "id": 23,
@@ -263,7 +264,8 @@
       "Swiftstrike"
     ],
     "rarity": "Common",
-    "flavor": "Fresh from the press and already on duty."
+    "text": "Swiftstrike",
+    "flavor": "Debt forged in blood is always collected early."
   },
   {
     "id": 27,
@@ -278,7 +280,8 @@
       "Swiftstrike"
     ],
     "rarity": "Common",
-    "flavor": "It counts your fortune before you know you risked it."
+    "text": "Swiftstrike",
+    "flavor": "The first ash signals the inevitable inferno."
   },
   {
     "id": 28,
@@ -335,7 +338,8 @@
       "Intimidate"
     ],
     "rarity": "Common",
-    "flavor": "Heads, mayhem. Tails, worse."
+    "text": "Swiftstrike\\nIntimidate",
+    "flavor": "Blood wagers are drawn from a rigged furnace."
   },
   {
     "id": 31,
@@ -360,7 +364,7 @@
     ],
     "rarity": "Rare",
     "text": "When you cast this, deal 2 damage to target relic.\\nSwiftstrike\\nOverrun",
-    "flavor": "A vault is only a promise until the winch turns."
+    "flavor": "Stone melts beneath the restless fury of the mountain."
   },
   {
     "id": 33,
@@ -1422,7 +1426,8 @@
       "Deathshroud"
     ],
     "rarity": "Common",
-    "flavor": "Cities fall to kings; kings fall to rats."
+    "text": "Deathshroud",
+    "flavor": "The shadow of the crypt spreads with every bite."
   },
   {
     "id": 104,
@@ -8804,7 +8809,8 @@
         "activationCost": null
       }
     ],
-    "text": "All combat damage to your side is reduced by 3 this turn."
+    "text": "All combat damage to your side is reduced by 3 this turn.",
+    "flavor": "True faith requires no iron to deflect heresy."
   },
   {
     "id": 498,

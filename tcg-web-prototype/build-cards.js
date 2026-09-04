@@ -731,6 +731,12 @@ function transformCards(cards) {
     1117: 'Omen - At the end of turn, the next card you play costs 1 less.',
     1119: 'When this enters, choose a faction. If the defending player is that faction, this gets +1/+0 while attacking.',
     1120: 'When this is revealed, you gain 1 life and target opponent loses 1 life.\\nWhenever you draw a card, you gain 1 life and target opponent loses 1 life.',
+    22: 'Swiftstrike',
+    23: 'Swiftstrike',
+    27: 'Swiftstrike',
+    30: 'Swiftstrike\\nIntimidate',
+    31: 'When you cast this, deal 2 damage to target relic.\\nSwiftstrike\\nOverrun',
+    101: 'Deathshroud',
   };
   const flavorPatch = {
     21: 'Every coin has two sides; this one has a sword.',
@@ -769,15 +775,15 @@ function transformCards(cards) {
     149: 'The deep yields only to those who do not fear it.',
     145: 'It reads the floor where the drowned left advice.',
     353: 'Every wave is a border waiting to be drawn.',
-    22: 'A coin\u2019s spirit, lightning-fast and just as fragile.',
-    23: 'Fresh from the press and already on duty.',
-    27: 'It counts your fortune before you know you risked it.',
-    30: 'Heads, mayhem. Tails, worse.',
+    22: 'A spark escaping the furnace never returns.',
+    23: 'Debt forged in blood is always collected early.',
+    27: 'The first ash signals the inevitable inferno.',
+    30: 'Blood wagers are drawn from a rigged furnace.',
     38: 'Gold now, gold later \u2014 interest is a hunter.',
     233: 'The furnace never cools; it only waits.',
     291: 'What the forest promises, the forest delivers.',
     361: 'Rest is a weapon; wield it well.',
-    101: 'Cities fall to kings; kings fall to rats.',
+    101: 'The shadow of the crypt spreads with every bite.',
     117: 'It returns for the life it was owed.',
     1089: 'Thinking is a decree writ in equations.',
     1097: 'Every road is for sale to the right coin.',
@@ -1132,6 +1138,8 @@ function transformCards(cards) {
     1117: 'The compass spins wildly, pointing toward a destiny unburdened by past mistakes.',
     1119: 'My sword cares nothing for your banner, only that the contract is paid in full.',
     1120: 'He catalogs every footstep, drawing quiet sustenance from the endless journey of others.',
+    31: 'Stone melts beneath the restless fury of the mountain.',
+    497: 'True faith requires no iron to deflect heresy.',
   };
 
   // -------------------------------------------------------------------------
