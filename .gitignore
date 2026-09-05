@@ -9,6 +9,8 @@ $RECYCLE.BIN/
 *.local
 router.log
 **/router.log
+router-fallback.log
+**/router-fallback.log
 router.pid
 *.bak_*
 
